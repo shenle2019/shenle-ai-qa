@@ -1,0 +1,6 @@
+﻿order_no,customer,phone,email,sku,qty,amount
+SO20261116E01EAE,郑平,16585908308,qa.10c9323a@example.com,SKU-1,5,631.2
+SO20261116251C9A,卫秀,17685840396,qa.d682a8c0@example.com,SKU-2,4,462.41
+SO20261116EB6BB1,李丽秀,14900367232,qa.36ddce0a@example.com,SKU-3,2,728.97
+SO202611162776B5,王敏秀,17137370612,qa.c3e324b2@example.com,SKU-4,5,323.12
+SO20261116331197,沈军,16178146698,qa.7f3c11cd@example.com,SKU-5,2,493.87

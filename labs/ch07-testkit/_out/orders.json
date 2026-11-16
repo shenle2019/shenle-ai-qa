@@ -1,0 +1,47 @@
+[
+  {
+    "order_no": "SO20261116E01EAE",
+    "customer": "郑平",
+    "phone": "16585908308",
+    "email": "qa.10c9323a@example.com",
+    "sku": "SKU-1",
+    "qty": 5,
+    "amount": 631.2
+  },
+  {
+    "order_no": "SO20261116251C9A",
+    "customer": "卫秀",
+    "phone": "17685840396",
+    "email": "qa.d682a8c0@example.com",
+    "sku": "SKU-2",
+    "qty": 4,
+    "amount": 462.41
+  },
+  {
+    "order_no": "SO20261116EB6BB1",
+    "customer": "李丽秀",
+    "phone": "14900367232",
+    "email": "qa.36ddce0a@example.com",
+    "sku": "SKU-3",
+    "qty": 2,
+    "amount": 728.97
+  },
+  {
+    "order_no": "SO202611162776B5",
+    "customer": "王敏秀",
+    "phone": "17137370612",
+    "email": "qa.c3e324b2@example.com",
+    "sku": "SKU-4",
+    "qty": 5,
+    "amount": 323.12
+  },
+  {
+    "order_no": "SO20261116331197",
+    "customer": "沈军",
+    "phone": "16178146698",
+    "email": "qa.7f3c11cd@example.com",
+    "sku": "SKU-5",
+    "qty": 2,
+    "amount": 493.87
+  }
+]

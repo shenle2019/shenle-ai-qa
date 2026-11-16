@@ -19,7 +19,15 @@ export default defineConfig({
       '/chapters/': [
         {
           text: '第一阶段 · Python 与工程基础',
-          items: [{ text: '01 Python 入门与第一个 AI 程序', link: '/chapters/ch01' }]
+          items: [
+            { text: '01 环境与基础语法', link: '/chapters/ch01' },
+            { text: '02 条件、循环与函数', link: '/chapters/ch02' },
+            { text: '03 容器与推导式', link: '/chapters/ch03' },
+            { text: '04 函数进阶与内存', link: '/chapters/ch04' },
+            { text: '05 面向对象与装饰器', link: '/chapters/ch05' },
+            { text: '06 标准库与异常', link: '/chapters/ch06' },
+            { text: '07 实战：数据工具箱', link: '/chapters/ch07' }
+          ]
         }
       ]
     },
