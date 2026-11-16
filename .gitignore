@@ -6,15 +6,10 @@ __pycache__/
 *.pyc
 .venv/
 
-# 实验输出
+# 实验运行产物
 labs/*/generated/
-
-# 语雀原始 JSON（体积大，只保留转换后的 md 与索引）
-corpus/yuque/raw/
-
-# 抓取用的 cookie 与日志
-cookies.txt
-corpus/yuque/_harvest.log
+labs/*/output/
+labs/*/tmp/
 
 # 本地环境
 .env
@@ -26,3 +21,6 @@ corpus/yuque/_harvest.log
 .idea/
 .DS_Store
 Thumbs.db
+
+# 本地参考资料（只在本机，不入库）
+corpus/
