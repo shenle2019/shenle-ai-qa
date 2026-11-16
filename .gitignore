@@ -1,0 +1,28 @@
+# 依赖与构建产物
+node_modules/
+site/.vitepress/dist/
+site/.vitepress/cache/
+__pycache__/
+*.pyc
+.venv/
+
+# 实验输出
+labs/*/generated/
+
+# 语雀原始 JSON（体积大，只保留转换后的 md 与索引）
+corpus/yuque/raw/
+
+# 抓取用的 cookie 与日志
+cookies.txt
+corpus/yuque/_harvest.log
+
+# 本地环境
+.env
+.env.*
+!.env.example
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
