@@ -1,0 +1,213 @@
+【角色】你是接口测试工程师。你只输出 JSON，不解释。
+
+【接口契约】
+{
+  "title": "MiniSUT",
+  "base_url": "http://127.0.0.1:8010",
+  "auth": {
+    "type": "bearer",
+    "header": "Authorization",
+    "expires_in": 3600
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/login",
+      "summary": "登录换 token",
+      "auth": false,
+      "params": [
+        {
+          "name": "username",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "max_length": 32
+        },
+        {
+          "name": "password",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "max_length": 64
+        }
+      ],
+      "responses": {
+        "200": [
+          "token",
+          "expires_in"
+        ],
+        "401": [
+          "error"
+        ],
+        "422": [
+          "error",
+          "message"
+        ]
+      },
+      "rules": [
+        "口令错误返回 401，不区分「用户不存在」与「密码错误」"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/users",
+      "summary": "用户列表（分页）",
+      "auth": true,
+      "params": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "int",
+          "required": false,
+          "min": 1,
+          "default": 1
+        },
+        {
+          "name": "size",
+          "in": "query",
+          "type": "int",
+          "required": false,
+          "min": 1,
+          "max": 100,
+          "default": 10
+        }
+      ],
+      "responses": {
+        "200": [
+          "total",
+          "page",
+          "size",
+          "items"
+        ],
+        "401": [
+          "error"
+        ],
+        "422": [
+          "error",
+          "message"
+        ]
+      },
+      "rules": [
+        "size 上限 100",
+        "items 里每个元素含 id/name/role"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/users",
+      "summary": "创建用户",
+      "auth": false,
+      "params": [
+        {
+          "name": "name",
+          "in": "body",
+          "type": "string",
+          "required": true,
+          "max_length": 32
+        },
+        {
+          "name": "role",
+          "in": "body",
+          "type": "enum",
+          "values": [
+            "admin",
+            "tester",
+            "viewer"
+          ],
+          "default": "tester"
+        },
+        {
+          "name": "email",
+          "in": "body",
+          "type": "string",
+          "required": false,
+          "format": "email"
+        }
+      ],
+      "responses": {
+        "201": [
+          "id",
+          "name",
+          "role"
+        ],
+        "409": [
+          "error"
+        ],
+        "422": [
+          "error",
+          "message"
+        ]
+      },
+      "rules": [
+        "name 唯一，重名返回 409",
+        "成功要带 Location 头"
+      ]
+    }
+  ]
+}
+
+【用例矩阵】已由人确定，你只负责把每个格子写具体：
+- POST /api/login: 已覆盖 7 条；缺：鉴权, 状态, 幂等, 数据量
+- GET /api/users: 已覆盖 12 条；缺：位置, 状态, 幂等, 兼容
+- POST /api/users: 已覆盖 7 条；缺：鉴权, 幂等, 数据量
+
+【任务】上面每个 (接口, 维度) 组合至少 1 条用例，缺失的格子必须补齐。
+
+【输出】严格输出 JSON 数组，每个元素字段固定为：
+id, endpoint, dimension, title, priority, request, expected, note
+
+【硬约束】
+1. expected 必须可判定：至少包含 status，其余用 "字段=值" 形式；
+2. 禁止出现「返回正确」「功能正常」「验证稳定性」这类无法判定的描述；
+3. 每条用例的 request 必须能独立执行（含 method/path/query/body/headers）；
+4. 不确定的前置条件写进 note，并标注 "TODO:"。
+
+
+【风格示例】
+[
+  {
+    "id": "POST--api-login-01",
+    "endpoint": "POST /api/login",
+    "dimension": "参数",
+    "title": "全部合法参数",
+    "priority": "P0",
+    "request": {
+      "method": "POST",
+      "path": "/api/login",
+      "query": {},
+      "body": {
+        "username": "v_username",
+        "password": "v_password"
+      },
+      "headers": {}
+    },
+    "expected": {
+      "status": 200,
+      "has": [
+        "token",
+        "expires_in"
+      ]
+    },
+    "note": ""
+  },
+  {
+    "id": "POST--api-login-02",
+    "endpoint": "POST /api/login",
+    "dimension": "参数",
+    "title": "缺少必填 username",
+    "priority": "P0",
+    "request": {
+      "method": "POST",
+      "path": "/api/login",
+      "query": {},
+      "body": {
+        "password": "v_password"
+      },
+      "headers": {}
+    },
+    "expected": {
+      "status": 422
+    },
+    "note": ""
+  }
+]

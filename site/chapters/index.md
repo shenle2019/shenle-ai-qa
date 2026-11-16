@@ -14,11 +14,23 @@
 | 06 | 标准库、文件、JSON 与异常 | [ch06](/chapters/ch06) | `labs/ch06-stdlib` |
 | 07 | 实战：测试数据工具箱 | [ch07](/chapters/ch07) | `labs/ch07-testkit` |
 
-阶段验收：`python -m pytest labs -q` 全绿（当前 91 条）。
+## 第二阶段 · 接口自动化
+
+| 章 | 主题 | 笔记 | 实验目录 |
+| --- | --- | --- | --- |
+| 08 | 接口与接口测试基础 | [ch08](/chapters/ch08) | `labs/ch08-http-basics` |
+| 09 | 用 AI 生成接口用例 | [ch09](/chapters/ch09) | `labs/ch09-ai-cases` |
+| 10 | requests 发请求 | [ch10](/chapters/ch10) | `labs/ch10-requests` |
+| 11 | 封装 HttpClient | [ch11](/chapters/ch11) | `labs/ch11-httpclient` |
+| 12 | 用 pytest 组织接口用例 | [ch12](/chapters/ch12) | `labs/ch12-pytest-org` |
+| 13 | 业务链路与数据准备 | [ch13](/chapters/ch13) | `labs/ch13-flows` |
+| 14 | 报告与智能断言 | [ch14](/chapters/ch14) | `labs/ch14-report-assert` |
+| 15 | 收口：一个能交给别人的框架 | [ch15](/chapters/ch15) | `labs/ch15-framework` |
+
+阶段验收：`python -m pytest labs -q` 全绿（当前 184 条）。
 
 ## 后续规划
 
-- 第二阶段：接口自动化（单接口 → 场景 → 数据驱动）
 - 第三阶段：Web / APP UI 自动化
 - 第四阶段：测试平台与 AI 能力（用例生成、失败归因、知识库）
 - 选修：性能测试、Agent 与大模型评估

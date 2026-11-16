@@ -29,6 +29,19 @@ export default defineConfig({
             { text: '06 标准库与异常', link: '/chapters/ch06' },
             { text: '07 实战：数据工具箱', link: '/chapters/ch07' }
           ]
+        },
+        {
+          text: '第二阶段 · 接口自动化',
+          items: [
+            { text: '08 接口与测试基础', link: '/chapters/ch08' },
+            { text: '09 用 AI 生成用例', link: '/chapters/ch09' },
+            { text: '10 requests 发请求', link: '/chapters/ch10' },
+            { text: '11 封装 HttpClient', link: '/chapters/ch11' },
+            { text: '12 pytest 组织用例', link: '/chapters/ch12' },
+            { text: '13 业务链路与数据', link: '/chapters/ch13' },
+            { text: '14 报告与智能断言', link: '/chapters/ch14' },
+            { text: '15 收口：框架成型', link: '/chapters/ch15' }
+          ]
         }
       ],
       '/labs/': [
@@ -49,6 +62,19 @@ export default defineConfig({
             { text: '05 面向对象', link: '/chapters/ch05' },
             { text: '06 标准库与异常', link: '/chapters/ch06' },
             { text: '07 数据工具箱', link: '/chapters/ch07' }
+          ]
+        },
+        {
+          text: '第二阶段 · 接口自动化',
+          items: [
+            { text: '08 接口基础', link: '/chapters/ch08' },
+            { text: '09 AI 生成用例', link: '/chapters/ch09' },
+            { text: '10 requests', link: '/chapters/ch10' },
+            { text: '11 HttpClient', link: '/chapters/ch11' },
+            { text: '12 pytest 组织', link: '/chapters/ch12' },
+            { text: '13 业务链路', link: '/chapters/ch13' },
+            { text: '14 报告与断言', link: '/chapters/ch14' },
+            { text: '15 框架收口', link: '/chapters/ch15' }
           ]
         }
       ]

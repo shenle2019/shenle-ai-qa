@@ -1,10 +1,10 @@
 # 实验
 
-每个实验都是一个能直接运行的 `.py`，配一份 pytest。不依赖第三方库，克隆下来就能跑。
+每个实验都是一个能直接运行的 `.py`（第二阶段起需要 `requests`），配一份 pytest。克隆下来就能跑。
 
 > 想不装环境先看效果？打开 [在线运行 playground](/labs/playground)，代码直接在浏览器里跑。
 
-## 七个实验
+## 第一阶段 · Python 与工程基础
 
 | 章 | 实验目录 | 源文件 | 覆盖的知识点 | 测试 |
 | --- | --- | --- | --- | --- |
@@ -16,7 +16,20 @@
 | 06 | `labs/ch06-stdlib` | `stdlib_demo.py` | UTF-8 读写、JSON、CSV、唯一文件名、异常链 | 14 |
 | 07 | `labs/ch07-testkit` | `testkit/`（3 个模块） | 校验器、数据生成（可复现 seed）、落盘夹具 | 20 |
 
-合计 **91 条测试**。
+## 第二阶段 · 接口自动化
+
+| 章 | 实验目录 | 源文件 | 覆盖的知识点 | 测试 |
+| --- | --- | --- | --- | --- |
+| 08 | `labs/ch08-http-basics` | `explore_api.py` + `_shared/mini_api.py` | 契约七要素、状态码分组、鉴权、幂等、multipart | 15 |
+| 09 | `labs/ch09-ai-cases` | `spec.py` / `matrix.py` / `prompt.py` | 7 维覆盖矩阵、提示词结构、生成后五道审 | 10 |
+| 10 | `labs/ch10-requests` | `session_demo.py` | Session 复用、超时元组、选择性重试、流式下载 | 11 |
+| 11 | `labs/ch11-httpclient` | `http_client.py` + `api.py` | 四层分层、统一异常、日志脱敏、transport 注入 | 10 |
+| 12 | `labs/ch12-pytest-org` | `conftest.py` + 4 个测试文件 | 夹具四层、参数化、标记、断言消息 | 23 |
+| 13 | `labs/ch13-flows` | `factories.py` + `test_order_flows.py` | 全链路、造数唯一性、自动清理、幂等、并发 | 6 |
+| 14 | `labs/ch14-report-assert` | `assertkit.py` + `report.py` | 契约断言、软断言、JUnit→HTML、断言草稿 | 11 |
+| 15 | `labs/ch15-framework` | `fw_config/fw_client/fw_api/run.py` | 多环境配置、上传下载、CSV 批量、CLI 入口 | 7 |
+
+合计 **184 条测试**。
 
 ## 怎么跑
 
@@ -25,10 +38,16 @@
 .venv\Scripts\python.exe -m pytest labs -q
 
 # 单章
-.venv\Scripts\python.exe -m pytest labs\ch05-oop -q
+.venv\Scripts\python.exe -m pytest labs\ch12-pytest-org -q
+
+# 只跑冒烟
+.venv\Scripts\python.exe -m pytest labs -q -m smoke
 
 # 单章直接看输出
-.venv\Scripts\python.exe labs\ch05-oop\oop_demo.py
+.venv\Scripts\python.exe labs\ch08-http-basics\explore_api.py
+
+# 框架入口（跑用例 + 出 HTML 报告）
+.venv\Scripts\python.exe labs\ch15-framework\run.py --env local --report
 ```
 
 ## 每个实验长什么样
@@ -47,8 +66,11 @@ class Counter:
 
 `test_oop_demo.py` 里每个行为一条断言，失败信息能直接定位到「哪个知识点没掌握」。
 
+第二阶段的实验都跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`，纯标准库，`serve()` 起在随机端口），所以不需要你自己搭后台。
+
 ## 约定
 
-- 一个 lab 只依赖标准库；需要密钥的实验从环境变量读，缺省走 mock。
-- 输出目录（`_out/`、`data/`）不入库。
+- 第一阶段只依赖标准库；第二阶段只多一个 `requests`。
+- 需要密钥的实验从环境变量读，缺省走 mock。
+- 输出目录（`_out/`、`data/`、`report.xml`/`report.html`）不入库。
 - 每个 `def` 都能单独被测试调用，不在模块顶层做副作用。

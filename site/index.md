@@ -26,6 +26,8 @@ features:
 
 ## 现在做到哪了
 
+### 第一阶段 · Python 与工程基础
+
 | 章 | 主题 | 笔记 | 实验 |
 | --- | --- | --- | --- |
 | 01 | 环境、第一个程序与基础语法 | [ch01](/chapters/ch01) | `labs/ch01-basics` |
@@ -36,11 +38,24 @@ features:
 | 06 | 标准库、文件、JSON 与异常 | [ch06](/chapters/ch06) | `labs/ch06-stdlib` |
 | 07 | 实战：测试数据工具箱 | [ch07](/chapters/ch07) | `labs/ch07-testkit` |
 
-91 条 pytest 用例全绿，七个实验都能单独运行：
+### 第二阶段 · 接口自动化
+
+| 章 | 主题 | 笔记 | 实验 |
+| --- | --- | --- | --- |
+| 08 | 接口与接口测试基础 | [ch08](/chapters/ch08) | `labs/ch08-http-basics` |
+| 09 | 用 AI 生成接口用例 | [ch09](/chapters/ch09) | `labs/ch09-ai-cases` |
+| 10 | requests 发请求 | [ch10](/chapters/ch10) | `labs/ch10-requests` |
+| 11 | 封装 HttpClient | [ch11](/chapters/ch11) | `labs/ch11-httpclient` |
+| 12 | 用 pytest 组织接口用例 | [ch12](/chapters/ch12) | `labs/ch12-pytest-org` |
+| 13 | 业务链路与数据准备 | [ch13](/chapters/ch13) | `labs/ch13-flows` |
+| 14 | 报告与智能断言 | [ch14](/chapters/ch14) | `labs/ch14-report-assert` |
+| 15 | 收口：一个能交给别人的框架 | [ch15](/chapters/ch15) | `labs/ch15-framework` |
+
+184 条 pytest 用例全绿，十五个实验都能单独运行：
 
 ```powershell
 python -m pytest labs -q
-python labs/ch07-testkit/demo.py
+python labs/ch15-framework/run.py --env local --report
 ```
 
 ## 仓库结构
@@ -53,4 +68,4 @@ site/      VitePress 站点（就是你现在看的这个）
 
 ## 下一步
 
-第二阶段：接口自动化。从单接口调试开始，把请求、断言、数据驱动、场景编排一层层叠上去，最后接上 AI 生成用例与失败归因。
+第三阶段：Web 与 APP 自动化。把 Playwright 与设备农场接进来，链路从「接口通」推进到「界面对」，再回到测试平台做统一编排。
