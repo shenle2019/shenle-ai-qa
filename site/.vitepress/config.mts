@@ -13,6 +13,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '章节', link: '/chapters/' },
       { text: '实验', link: '/labs/' },
+      { text: '在线运行', link: '/labs/playground' },
       { text: 'GitHub', link: 'https://github.com/shenle2019/shenle-ai-qa' }
     ],
     sidebar: {
@@ -27,6 +28,27 @@ export default defineConfig({
             { text: '05 面向对象与装饰器', link: '/chapters/ch05' },
             { text: '06 标准库与异常', link: '/chapters/ch06' },
             { text: '07 实战：数据工具箱', link: '/chapters/ch07' }
+          ]
+        }
+      ],
+      '/labs/': [
+        {
+          text: '实验',
+          items: [
+            { text: '实验总览', link: '/labs/' },
+            { text: '在线运行 playground', link: '/labs/playground' }
+          ]
+        },
+        {
+          text: '第一阶段 · Python 与工程基础',
+          items: [
+            { text: '01 基础语法', link: '/chapters/ch01' },
+            { text: '02 条件与循环', link: '/chapters/ch02' },
+            { text: '03 容器与推导式', link: '/chapters/ch03' },
+            { text: '04 函数进阶', link: '/chapters/ch04' },
+            { text: '05 面向对象', link: '/chapters/ch05' },
+            { text: '06 标准库与异常', link: '/chapters/ch06' },
+            { text: '07 数据工具箱', link: '/chapters/ch07' }
           ]
         }
       ]
