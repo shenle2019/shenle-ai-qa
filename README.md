@@ -14,6 +14,8 @@ site/      VitePress 站点，聚合笔记与实验入口
 
 ## 章节进度
 
+### 第一阶段 · Python 与工程基础
+
 | 章 | 主题 | 笔记 | 实验 |
 | --- | --- | --- | --- |
 | 01 | 环境、第一个程序与基础语法 | [笔记](notes/ch01-basics.md) | [labs/ch01-basics](labs/ch01-basics) |
@@ -24,7 +26,22 @@ site/      VitePress 站点，聚合笔记与实验入口
 | 06 | 标准库、文件、JSON 与异常 | [笔记](notes/ch06-stdlib.md) | [labs/ch06-stdlib](labs/ch06-stdlib) |
 | 07 | 实战：测试数据工具箱 | [笔记](notes/ch07-testkit.md) | [labs/ch07-testkit](labs/ch07-testkit) |
 
-阶段验收：`python -m pytest labs -q` → 91 passed。
+### 第二阶段 · 接口自动化
+
+| 章 | 主题 | 笔记 | 实验 |
+| --- | --- | --- | --- |
+| 08 | 接口与接口测试基础 | [笔记](notes/ch08-http-basics.md) | [labs/ch08-http-basics](labs/ch08-http-basics) |
+| 09 | 用 AI 生成接口用例 | [笔记](notes/ch09-ai-cases.md) | [labs/ch09-ai-cases](labs/ch09-ai-cases) |
+| 10 | requests 发请求 | [笔记](notes/ch10-requests.md) | [labs/ch10-requests](labs/ch10-requests) |
+| 11 | 封装 HttpClient | [笔记](notes/ch11-httpclient.md) | [labs/ch11-httpclient](labs/ch11-httpclient) |
+| 12 | 用 pytest 组织接口用例 | [笔记](notes/ch12-pytest-org.md) | [labs/ch12-pytest-org](labs/ch12-pytest-org) |
+| 13 | 业务链路与数据准备 | [笔记](notes/ch13-flows.md) | [labs/ch13-flows](labs/ch13-flows) |
+| 14 | 报告与智能断言 | [笔记](notes/ch14-report-assert.md) | [labs/ch14-report-assert](labs/ch14-report-assert) |
+| 15 | 收口：一个能交给别人的框架 | [笔记](notes/ch15-framework.md) | [labs/ch15-framework](labs/ch15-framework) |
+
+阶段验收：`python -m pytest labs -q` → 184 passed。
+
+第二阶段的实验跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`。
 
 ## 本地开发
 
@@ -33,7 +50,10 @@ site/      VitePress 站点，聚合笔记与实验入口
 .venv\Scripts\python.exe -m pytest labs -q
 
 # 单个实验
-.venv\Scripts\python.exe labs\ch07-testkit\demo.py
+.venv\Scripts\python.exe labs\ch08-http-basics\explore_api.py
+
+# 框架入口（跑用例 + 出 HTML 报告）
+.venv\Scripts\python.exe labs\ch15-framework\run.py --env local --report
 
 # 站点
 cd site
