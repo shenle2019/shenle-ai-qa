@@ -116,7 +116,7 @@ def test_create_then_get(auth):
 
 ## 7. 本章实验
 
-`labs/ch12-pytest-org/`：四个测试文件，覆盖 CRUD、鉴权、参数化边界、状态机，共 14 条。
+`labs/ch12-pytest-org/`：四个测试文件，覆盖 CRUD、鉴权、参数化边界、状态机，共 23 条。
 
 ```powershell
 .venv\Scripts\python.exe -m pytest labs\ch12-pytest-org -q
