@@ -36,7 +36,7 @@ features:
 | 06 | 标准库、文件、JSON 与异常 | [ch06](/chapters/ch06) | `labs/ch06-stdlib` |
 | 07 | 实战：测试数据工具箱 | [ch07](/chapters/ch07) | `labs/ch07-testkit` |
 
-93 条 pytest 用例全绿，七个实验都能单独运行：
+91 条 pytest 用例全绿，七个实验都能单独运行：
 
 ```powershell
 python -m pytest labs -q
