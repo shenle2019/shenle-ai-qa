@@ -177,7 +177,7 @@ with pytest.raises(ValueError):
 - 用 `tmp_path` fixture 造临时目录，别往真实目录写；
 - 断言失败信息要能定位问题。
 
-## 10. 本章实验
+## 10. 本章实操
 
 `labs/ch06-stdlib/`：
 
@@ -194,3 +194,45 @@ python -m pytest labs/ch06-stdlib -q
 2. `json.dumps` 输出 `\u4e2d` 是缺了哪个参数？
 3. `except Exception` 为什么不该滥用？
 4. 同一秒生成两个文件名，只用时间戳会出什么问题？
+
+## 附：自测答案
+
+1. 会用操作系统的默认编码：Windows 上常是 GBK，Linux/macOS 是 UTF-8。同一份代码换台机器就乱码或抛 `UnicodeDecodeError`，所以读写文本一律显式 `encoding="utf-8"`。
+2. 缺 `ensure_ascii=False`。默认会把非 ASCII 转成 `\uXXXX`，人看着像乱码，文件也变大。
+3. `except Exception` 会把「本该暴露的程序 bug」一起吞掉，日志里只剩一句「出错了」，定位不到行号；还会把 `KeyError`、`TypeError` 这类编码错误当成业务异常处理。正确做法是捕获具体异常，兜底层记录完整堆栈后再 `raise`。
+4. 同一秒会生成同名文件，后写的覆盖先写的，测试数据悄悄丢一份。用 `uuid4().hex`、时间戳加序号，或者 `open(..., "x")` 让系统保证「不存在才创建」。
+
+## 学生常问
+
+**Q：`pathlib` 和 `os.path` 该用哪个？**
+
+A：新代码用 `pathlib`：`Path("data") / "users.csv"` 拼路径、`.exists()`、`.read_text()` 都在对象上，跨平台不用管分隔符。维护老代码时遇到 `os.path` 再跟着用。
+
+**Q：日志和 `print` 的区别到底在哪？**
+
+A：`print` 写到标准输出，没有级别、没有时间、没法关；`logging` 有级别、时间、模块名，能按需开关、能写文件、能按大小切分。测试框架里必须用日志，CI 上才有据可查。
+
+**Q：自定义异常有必要吗？**
+
+A：有。`ValidationError`、`DataFileError` 这类名字本身就是信息，调用方可以只捕获它、不影响其他异常；还能带上字段名、原始值，报错时不用再拼字符串。
+
+## 面试题
+
+**Q：`with open(...)` 相比 `try/finally` 好在哪？**
+
+A：`with` 保证退出时一定关闭文件（异常也会关），代码更短；它依赖上下文管理器协议（`__enter__`/`__exit__`），自己写的资源类也能支持 `with`。
+
+**Q：JSON 序列化遇到 `datetime`、`Decimal` 会怎样？怎么处理？**
+
+A：抛 `TypeError: Object of type datetime is not JSON serializable`。两种办法：序列化前手动转成字符串/浮点（推荐，格式可控），或者给 `json.dumps(..., default=str)` 兜底（省事但格式不可控）。
+
+**Q：异常处理的三条铁律？**
+
+A：一，捕获具体异常，不写裸 `except:`；二，要么处理、要么记录后重新抛出，不要静默吞掉；三，兜底层一定要带堆栈（`logger.exception`），否则等于没记录。
+
+## 延伸知识
+
+- `csv` 读出来全是字符串，数字要自己转；写 CSV 时 `newline=""` 能避免 Windows 上多出空行。
+- `datetime.now()` 是本地时间、无时区，跨机器比较会错；要存就用带时区的 `datetime.now(timezone.utc)`。
+- 文件路径别拼接字符串，`Path` 会自动处理分隔符和多余的斜杠。
+- `logging.basicConfig(level=..., format=...)` 只在入口配置一次，模块里用 `logging.getLogger(__name__)`。

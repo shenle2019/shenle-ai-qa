@@ -1,12 +1,12 @@
-# 实验
+# 实操记录
 
-每个实验都是一个能直接运行的 `.py`（第二阶段起需要 `requests`），配一份 pytest。克隆下来就能跑。
+每条实操都是一个能直接运行的 `.py`（第二阶段起需要 `requests`），配一份 pytest。克隆下来就能跑。
 
 > 想不装环境先看效果？打开 [在线运行 playground](/labs/playground)，代码直接在浏览器里跑。
 
 ## 第一阶段 · Python 与工程基础
 
-| 章 | 实验目录 | 源文件 | 覆盖的知识点 | 测试 |
+| 章 | 实操目录 | 源文件 | 覆盖的知识点 | 测试 |
 | --- | --- | --- | --- | --- |
 | 01 | `labs/ch01-basics` | `basics.py` | 类型转换、`is` vs `==`、f-string、运算符优先级 | 10 |
 | 02 | `labs/ch02-control-flow` | `flow.py` | 条件边界、循环、`for...else`、双层跳出、retry | 10 |
@@ -18,7 +18,7 @@
 
 ## 第二阶段 · 接口自动化
 
-| 章 | 实验目录 | 源文件 | 覆盖的知识点 | 测试 |
+| 章 | 实操目录 | 源文件 | 覆盖的知识点 | 测试 |
 | --- | --- | --- | --- | --- |
 | 08 | `labs/ch08-http-basics` | `explore_api.py` + `_shared/mini_api.py` | 契约七要素、状态码分组、鉴权、幂等、multipart | 15 |
 | 09 | `labs/ch09-ai-cases` | `spec.py` / `matrix.py` / `prompt.py` | 7 维覆盖矩阵、提示词结构、生成后五道审 | 10 |

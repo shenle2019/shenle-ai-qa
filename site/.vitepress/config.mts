@@ -11,8 +11,8 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
-      { text: '章节', link: '/chapters/' },
-      { text: '实验', link: '/labs/' },
+      { text: '测试全栈知识库', link: '/chapters/' },
+      { text: '实操记录', link: '/labs/' },
       { text: '在线运行', link: '/labs/playground' },
       { text: 'GitHub', link: 'https://github.com/shenle2019/shenle-ai-qa' }
     ],
@@ -42,13 +42,20 @@ export default defineConfig({
             { text: '14 报告与智能断言', link: '/chapters/ch14' },
             { text: '15 收口：框架成型', link: '/chapters/ch15' }
           ]
+        },
+        {
+          text: '延伸阅读',
+          items: [
+            { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
+            { text: '内容更新规则', link: '/kb/rules' }
+          ]
         }
       ],
       '/labs/': [
         {
-          text: '实验',
+          text: '实操记录',
           items: [
-            { text: '实验总览', link: '/labs/' },
+            { text: '实操总览', link: '/labs/' },
             { text: '在线运行 playground', link: '/labs/playground' }
           ]
         },
@@ -75,6 +82,13 @@ export default defineConfig({
             { text: '13 业务链路', link: '/chapters/ch13' },
             { text: '14 报告与断言', link: '/chapters/ch14' },
             { text: '15 框架收口', link: '/chapters/ch15' }
+          ]
+        },
+        {
+          text: '延伸阅读',
+          items: [
+            { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
+            { text: '内容更新规则', link: '/kb/rules' }
           ]
         }
       ]

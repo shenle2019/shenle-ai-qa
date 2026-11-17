@@ -1,22 +1,24 @@
 # shenle-ai-qa
 
-AI 测试全栈的学习与实践仓库：**笔记**（notes）、**可运行的实验**（labs）、**对外站点**（site）。
+AI 测试全栈的学习与实践仓库：**笔记**（notes）、**可运行的实操**（labs）、**对外站点**（site）。
 
 每一章都按同一个闭环推进：读透材料 → 提炼成笔记 → 写一个能跑的程序 → 跑通测试 → 截图 → 提交部署。
+
+内容怎么扩、问答怎么写、术语怎么统一，全部记在 [CONTENT-RULES.md](CONTENT-RULES.md)，后续更新按它执行。每章末尾都有「自测答案 / 学生常问 / 面试题 / 延伸知识」四段，问题一律带答案。
 
 ## 结构
 
 ```
-notes/     按章整理的学习笔记（自己的话，不是原文摘录）
-labs/      每章的实验代码，独立可跑，带 pytest 测试
-site/      VitePress 站点，聚合笔记与实验入口
+notes/     按章整理的知识库笔记（自己的话，不是原文摘录）
+labs/      每章的实操代码，独立可跑，带 pytest 测试
+site/      VitePress 站点，聚合知识库与实操入口
 ```
 
-## 章节进度
+## 测试全栈知识库 · 进度
 
 ### 第一阶段 · Python 与工程基础
 
-| 章 | 主题 | 笔记 | 实验 |
+| 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 01 | 环境、第一个程序与基础语法 | [笔记](notes/ch01-basics.md) | [labs/ch01-basics](labs/ch01-basics) |
 | 02 | 条件、循环与函数入门 | [笔记](notes/ch02-control-flow.md) | [labs/ch02-control-flow](labs/ch02-control-flow) |
@@ -28,7 +30,7 @@ site/      VitePress 站点，聚合笔记与实验入口
 
 ### 第二阶段 · 接口自动化
 
-| 章 | 主题 | 笔记 | 实验 |
+| 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 08 | 接口与接口测试基础 | [笔记](notes/ch08-http-basics.md) | [labs/ch08-http-basics](labs/ch08-http-basics) |
 | 09 | 用 AI 生成接口用例 | [笔记](notes/ch09-ai-cases.md) | [labs/ch09-ai-cases](labs/ch09-ai-cases) |

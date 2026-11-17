@@ -4,13 +4,13 @@ layout: home
 hero:
   name: AI 测试全栈
   text: 从 Python 到 AI 测试平台
-  tagline: 一章一章往下叠的学习与工程记录：每章都有笔记、能跑的实验、可访问的页面
+  tagline: 一章一章往下叠的学习与工程记录：每章都有笔记、能跑的实操、可访问的页面
   actions:
     - theme: brand
       text: 从第一章开始
       link: /chapters/ch01
     - theme: alt
-      text: 看实验代码
+      text: 看实操代码
       link: /labs/
 
 features:
@@ -21,14 +21,14 @@ features:
   - title: 笔记先于代码
     details: 先把材料读成自己的话（含反例与常见错误），再动手写程序。
   - title: 持续部署
-    details: 提交即部署。站点在 GitHub Pages，实验代码在仓库里，两边一一对应。
+    details: 提交即部署。站点在 GitHub Pages，实操代码在仓库里，两边一一对应。
 ---
 
 ## 现在做到哪了
 
 ### 第一阶段 · Python 与工程基础
 
-| 章 | 主题 | 笔记 | 实验 |
+| 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 01 | 环境、第一个程序与基础语法 | [ch01](/chapters/ch01) | `labs/ch01-basics` |
 | 02 | 条件、循环与函数入门 | [ch02](/chapters/ch02) | `labs/ch02-control-flow` |
@@ -40,7 +40,7 @@ features:
 
 ### 第二阶段 · 接口自动化
 
-| 章 | 主题 | 笔记 | 实验 |
+| 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 08 | 接口与接口测试基础 | [ch08](/chapters/ch08) | `labs/ch08-http-basics` |
 | 09 | 用 AI 生成接口用例 | [ch09](/chapters/ch09) | `labs/ch09-ai-cases` |
@@ -51,7 +51,7 @@ features:
 | 14 | 报告与智能断言 | [ch14](/chapters/ch14) | `labs/ch14-report-assert` |
 | 15 | 收口：一个能交给别人的框架 | [ch15](/chapters/ch15) | `labs/ch15-framework` |
 
-184 条 pytest 用例全绿，十五个实验都能单独运行：
+184 条 pytest 用例全绿，十五个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
@@ -61,8 +61,8 @@ python labs/ch15-framework/run.py --env local --report
 ## 仓库结构
 
 ```
-notes/     提炼后的学习笔记（章节页直接引用这些文件）
-labs/      每章可运行的实验 + 单元测试
+notes/     提炼后的学习笔记（知识库页面直接引用这些文件）
+labs/      每章可运行的实操 + 单元测试
 site/      VitePress 站点（就是你现在看的这个）
 ```
 
