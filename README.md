@@ -41,9 +41,15 @@ site/      VitePress 站点，聚合知识库与实操入口
 | 14 | 报告与智能断言 | [笔记](notes/ch14-report-assert.md) | [labs/ch14-report-assert](labs/ch14-report-assert) |
 | 15 | 收口：一个能交给别人的框架 | [笔记](notes/ch15-framework.md) | [labs/ch15-framework](labs/ch15-framework) |
 
-阶段验收：`python -m pytest labs -q` → 184 passed。
+### 第三阶段 · Web 自动化
 
-第二阶段的实验跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`。
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 16 | 浏览器自动化基础与选择器 | [笔记](notes/ch16-web-basics.md) | [labs/ch16-web-basics](labs/ch16-web-basics) |
+
+阶段验收：`python -m pytest labs -q` → 196 passed。
+
+第二阶段的实操跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`；第三阶段的网页自动化跑在 `labs/_shared/mini_site.py` 起的迷你站上，除 `playwright` 外不依赖外部服务。
 
 ## 本地开发
 

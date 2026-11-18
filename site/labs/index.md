@@ -29,7 +29,13 @@
 | 14 | `labs/ch14-report-assert` | `assertkit.py` + `report.py` | 契约断言、软断言、JUnit→HTML、断言草稿 | 11 |
 | 15 | `labs/ch15-framework` | `fw_config/fw_client/fw_api/run.py` | 多环境配置、上传下载、CSV 批量、CLI 入口 | 7 |
 
-合计 **184 条测试**。
+## 第三阶段 · Web 自动化
+
+| 章 | 实操目录 | 源文件 | 覆盖的知识点 | 测试 |
+| --- | --- | --- | --- | --- |
+| 16 | `labs/ch16-web-basics` | `demo_basics.py` + `_shared/mini_site.py` | 浏览器/上下文/页面三层、四种定位、自动等待、expect 断言、截图留证 | 12 |
+
+合计 **196 条测试**。
 
 ## 怎么跑
 

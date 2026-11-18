@@ -24,3 +24,6 @@ Thumbs.db
 
 # 本地参考资料（只在本机，不入库）
 corpus/
+
+# Playwright 浏览器（约 150 MB，装一次即可，不进 Git）
+.pw-browsers/

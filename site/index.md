@@ -51,11 +51,17 @@ features:
 | 14 | 报告与智能断言 | [ch14](/chapters/ch14) | `labs/ch14-report-assert` |
 | 15 | 收口：一个能交给别人的框架 | [ch15](/chapters/ch15) | `labs/ch15-framework` |
 
-184 条 pytest 用例全绿，十五个实操都能单独运行：
+### 第三阶段 · Web 自动化
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 16 | 浏览器自动化基础与选择器 | [ch16](/chapters/ch16) | `labs/ch16-web-basics` |
+
+196 条 pytest 用例全绿，十六个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
-python labs/ch15-framework/run.py --env local --report
+python labs/ch16-web-basics/demo_basics.py
 ```
 
 ## 仓库结构

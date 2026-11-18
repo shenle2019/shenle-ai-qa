@@ -6,9 +6,10 @@
 
 仓库 `shenle2019/shenle-ai-qa`，monorepo：`notes/`（知识库笔记）+ `labs/`（可运行的实操 + pytest）+ `site/`（VitePress 站点，GitHub Pages 发布）。
 
-- 已完成：第 01–07 章（Python 与工程基础）、第 08–15 章（接口自动化），**184 条 pytest 全绿**。
+- 已完成：第 01–07 章（Python 与工程基础）、第 08–15 章（接口自动化）、第 16 章（Web 自动化起点），**196 条 pytest 全绿**。
 - 线上：https://shenle2019.github.io/shenle-ai-qa/
 - 内容规则：根目录 `CONTENT-RULES.md`（每条都要遵守，站点上也有 `/kb/rules`）。
+- Web 自动化续做顺序：17 PO 模式 → 18 定位集中管理 → 19 前后置与浏览器复用 → 20 数据驱动与多用例 → 21 视觉与可访问性 → 22 AI 生成 Web 用例 → 23 框架收口。
 
 ## 下一阶段要做什么
 

@@ -44,6 +44,12 @@ export default defineConfig({
           ]
         },
         {
+          text: '第三阶段 · Web 自动化',
+          items: [
+            { text: '16 浏览器基础与选择器', link: '/chapters/ch16' }
+          ]
+        },
+        {
           text: '延伸阅读',
           items: [
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
@@ -82,6 +88,12 @@ export default defineConfig({
             { text: '13 业务链路', link: '/chapters/ch13' },
             { text: '14 报告与断言', link: '/chapters/ch14' },
             { text: '15 框架收口', link: '/chapters/ch15' }
+          ]
+        },
+        {
+          text: '第三阶段 · Web 自动化',
+          items: [
+            { text: '16 浏览器基础', link: '/chapters/ch16' }
           ]
         },
         {
