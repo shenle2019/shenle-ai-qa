@@ -32,13 +32,19 @@
 | 章 | 主题 | 笔记 | 实操目录 |
 | --- | --- | --- | --- |
 | 16 | 浏览器自动化基础与选择器 | [ch16](/chapters/ch16) | `labs/ch16-web-basics` |
+| 17 | 页面对象（PO） | [ch17](/chapters/ch17) | `labs/ch17-po` |
+| 18 | 定位集中管理 | [ch18](/chapters/ch18) | `labs/ch18-locators` |
+| 19 | 前后置与浏览器复用 | [ch19](/chapters/ch19) | `labs/ch19-fixtures` |
+| 20 | 数据驱动与多用例 | [ch20](/chapters/ch20) | `labs/ch20-data-driven` |
+| 21 | 视觉回归与可访问性 | [ch21](/chapters/ch21) | `labs/ch21-visual` |
+| 22 | 用 AI 生成 Web 用例 | [ch22](/chapters/ch22) | `labs/ch22-ai-cases` |
+| 23 | 框架收口（CLI） | [ch23](/chapters/ch23) | `labs/ch23-framework` |
 
 阶段验收：`python -m pytest labs -q` 全绿（当前 259 条）。
 
 ## 后续规划
 
-- 第三阶段续：Web 自动化 17–23 章（PO 模式、定位集中管理、浏览器复用、数据驱动、视觉与可访问性、AI 生成用例、框架收口）
-- 第四阶段：APP 终端 UI 自动化
+- 第四阶段：APP 终端 UI 自动化（编号 24 起）
 - 第五阶段：测试平台与 AI 能力（用例生成、失败归因、知识库）
 - 选修：性能测试、Agent 与大模型评估
 

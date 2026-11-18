@@ -34,6 +34,13 @@
 | 章 | 实操目录 | 源文件 | 覆盖的知识点 | 测试 |
 | --- | --- | --- | --- | --- |
 | 16 | `labs/ch16-web-basics` | `demo_basics.py` + `_shared/mini_site.py` | 浏览器/上下文/页面三层、四种定位、自动等待、expect 断言、截图留证 | 12 |
+| 17 | `labs/ch17-po` | `po_pages.py` | 页面对象、动作返回下一页、断言进页面类 | 7 |
+| 18 | `labs/ch18-locators` | `registry.py` + `locators.yaml` | 定位集中管理、按 key 取元素、换 YAML 不换代码 | 7 |
+| 19 | `labs/ch19-fixtures` | `conftest.py` | 一次登录复用、storage_state 落盘、匿名上下文隔离 | 7 |
+| 20 | `labs/ch20-data-driven` | `runner.py` + `cases.yaml` | 用例外部化、动作分发、失败不中断、汇总 | 13 |
+| 21 | `labs/ch21-visual` | `visual.py` + `a11y.py` | 截图像素比对、容差、五类可访问性问题审计 | 9 |
+| 22 | `labs/ch22-ai-cases` | `snapshot/llm/validate/execute` | 快照喂模型、输出校验、真跑生成的步骤 | 10 |
+| 23 | `labs/ch23-framework` | `fw_*.py` + `run.py` | 配置驱动、CLI、Markdown 与 JUnit 双报告 | 10 |
 
 合计 **259 条测试**。
 
