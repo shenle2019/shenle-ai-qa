@@ -1,0 +1,49 @@
+# 数据驱动：用例写成数据，执行逻辑只写一份。
+# action 用 runner.py 里注册的处理器名；params 是入参；expect 是断言清单。
+- id: login-ok
+  title: 正确账号登录后进入待办页
+  action: login
+  params: { username: alice, password: secret }
+  expect: { path: /todos, current_user: alice }
+
+- id: login-bad-password
+  title: 密码错误时留在登录页并提示
+  action: login
+  params: { username: alice, password: wrong }
+  expect: { path: /login, error: 用户名或密码错误 }
+
+- id: add-todo
+  title: 新任务能加到列表末尾
+  action: add_todo
+  params: { title: 数据驱动新增任务, pre_login: true }
+  expect: { contains: 数据驱动新增任务 }
+
+- id: search-hit
+  title: 搜索关键词能过滤出结果
+  action: search
+  params: { query: 测试 }
+  expect: { count: 1 }
+
+- id: search-miss
+  title: 搜索不存在的词显示空态
+  action: search
+  params: { query: 完全不存在的词 }
+  expect: { count: 0, empty_text: 没有匹配结果 }
+
+- id: table-pick-first
+  title: 表格第一行可以勾选
+  action: pick_row
+  params: { index: 0 }
+  expect: { checked: true }
+
+- id: profile-name
+  title: 个人资料显示当前登录用户
+  action: open_profile
+  params: {}
+  expect: { name: alice, role: 测试工程师 }
+
+- id: logout-guard
+  title: 未登录直接访问待办会跳登录页
+  action: open_anonymous
+  params: {}
+  expect: { path: /login }

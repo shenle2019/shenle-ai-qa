@@ -1,0 +1,25 @@
+# 定位器集中管理：改这里一处，所有用例跟着变。
+# by 支持：testid / role / label / text / placeholder / css
+login:
+  username: { by: label, value: 用户名 }
+  password: { by: label, value: 密码 }
+  submit: { by: role, role: button, name: 登录 }
+  error: { by: testid, value: error }
+
+todos:
+  current_user: { by: testid, value: current-user }
+  new_title: { by: label, value: 新任务 }
+  add_button: { by: testid, value: add-submit }
+  item: { by: testid, value: todo-item }
+  start: { by: testid, value: start }
+  done: { by: testid, value: done }
+
+profile:
+  name: { by: testid, value: profile-name }
+  role: { by: testid, value: profile-role }
+  avatar: { by: testid, value: avatar }
+
+table:
+  rows: { by: testid, value: row }
+  cell_title: { by: testid, value: cell-title }
+  pick: { by: testid, value: pick }

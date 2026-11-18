@@ -46,7 +46,14 @@ export default defineConfig({
         {
           text: '第三阶段 · Web 自动化',
           items: [
-            { text: '16 浏览器基础与选择器', link: '/chapters/ch16' }
+            { text: '16 浏览器基础与选择器', link: '/chapters/ch16' },
+            { text: '17 页面对象（PO）', link: '/chapters/ch17' },
+            { text: '18 定位集中管理', link: '/chapters/ch18' },
+            { text: '19 前后置与浏览器复用', link: '/chapters/ch19' },
+            { text: '20 数据驱动与多用例', link: '/chapters/ch20' },
+            { text: '21 视觉回归与可访问性', link: '/chapters/ch21' },
+            { text: '22 用 AI 生成 Web 用例', link: '/chapters/ch22' },
+            { text: '23 框架收口（CLI）', link: '/chapters/ch23' }
           ]
         },
         {
@@ -93,7 +100,14 @@ export default defineConfig({
         {
           text: '第三阶段 · Web 自动化',
           items: [
-            { text: '16 浏览器基础', link: '/chapters/ch16' }
+            { text: '16 浏览器基础', link: '/chapters/ch16' },
+            { text: '17 页面对象', link: '/chapters/ch17' },
+            { text: '18 定位管理', link: '/chapters/ch18' },
+            { text: '19 前后置复用', link: '/chapters/ch19' },
+            { text: '20 数据驱动', link: '/chapters/ch20' },
+            { text: '21 视觉与可访问性', link: '/chapters/ch21' },
+            { text: '22 AI 生成用例', link: '/chapters/ch22' },
+            { text: '23 框架收口', link: '/chapters/ch23' }
           ]
         },
         {

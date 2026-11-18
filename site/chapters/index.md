@@ -33,7 +33,7 @@
 | --- | --- | --- | --- |
 | 16 | 浏览器自动化基础与选择器 | [ch16](/chapters/ch16) | `labs/ch16-web-basics` |
 
-阶段验收：`python -m pytest labs -q` 全绿（当前 196 条）。
+阶段验收：`python -m pytest labs -q` 全绿（当前 259 条）。
 
 ## 后续规划
 

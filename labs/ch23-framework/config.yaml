@@ -1,0 +1,36 @@
+default_env: local
+
+envs:
+  local:
+    base_url: http://127.0.0.1:8000
+    timeout: 5
+  staging:
+    base_url: https://staging.example.com
+    timeout: 10
+
+cases:
+  - id: login-ok
+    title: 正确账号能登录
+    action: login
+    params: { username: alice, password: secret }
+    expect: { path: /todos, user: alice }
+  - id: login-wrong-password
+    title: 密码错误停在登录页
+    action: login
+    params: { username: alice, password: nope }
+    expect: { path: /login, error: 用户名或密码错误 }
+  - id: add-todo
+    title: 新增待办后出现在列表
+    action: add_todo
+    params: { login: true, title: 框架加的一条 }
+    expect: { contains: 框架加的一条 }
+  - id: search-hit
+    title: 搜索能命中
+    action: search
+    params: { login: true, keyword: 测试 }
+    expect: { min_results: 1 }
+  - id: guard-anonymous
+    title: 未登录访问待办会被拦截
+    action: guard
+    params: {}
+    expect: { path: /login }

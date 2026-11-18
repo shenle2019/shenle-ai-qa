@@ -46,8 +46,15 @@ site/      VitePress 站点，聚合知识库与实操入口
 | 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 16 | 浏览器自动化基础与选择器 | [笔记](notes/ch16-web-basics.md) | [labs/ch16-web-basics](labs/ch16-web-basics) |
+| 17 | 页面对象（PO） | [笔记](notes/ch17-po.md) | [labs/ch17-po](labs/ch17-po) |
+| 18 | 定位集中管理 | [笔记](notes/ch18-locators.md) | [labs/ch18-locators](labs/ch18-locators) |
+| 19 | 前后置与浏览器复用 | [笔记](notes/ch19-fixtures.md) | [labs/ch19-fixtures](labs/ch19-fixtures) |
+| 20 | 数据驱动与多用例 | [笔记](notes/ch20-data-driven.md) | [labs/ch20-data-driven](labs/ch20-data-driven) |
+| 21 | 视觉回归与可访问性 | [笔记](notes/ch21-visual.md) | [labs/ch21-visual](labs/ch21-visual) |
+| 22 | 用 AI 生成 Web 用例 | [笔记](notes/ch22-ai-cases.md) | [labs/ch22-ai-cases](labs/ch22-ai-cases) |
+| 23 | 框架收口（CLI） | [笔记](notes/ch23-framework.md) | [labs/ch23-framework](labs/ch23-framework) |
 
-阶段验收：`python -m pytest labs -q` → 196 passed。
+阶段验收：`python -m pytest labs -q` → 259 passed。
 
 第二阶段的实操跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`；第三阶段的网页自动化跑在 `labs/_shared/mini_site.py` 起的迷你站上，除 `playwright` 外不依赖外部服务。
 

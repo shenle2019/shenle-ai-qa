@@ -56,12 +56,19 @@ features:
 | 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 16 | 浏览器自动化基础与选择器 | [ch16](/chapters/ch16) | `labs/ch16-web-basics` |
+| 17 | 页面对象（PO） | [ch17](/chapters/ch17) | `labs/ch17-po` |
+| 18 | 定位集中管理（YAML） | [ch18](/chapters/ch18) | `labs/ch18-locators` |
+| 19 | 前后置与浏览器复用 | [ch19](/chapters/ch19) | `labs/ch19-fixtures` |
+| 20 | 数据驱动与多用例 | [ch20](/chapters/ch20) | `labs/ch20-data-driven` |
+| 21 | 视觉回归与可访问性 | [ch21](/chapters/ch21) | `labs/ch21-visual` |
+| 22 | 用 AI 生成 Web 用例 | [ch22](/chapters/ch22) | `labs/ch22-ai-cases` |
+| 23 | 框架收口（CLI + 报告） | [ch23](/chapters/ch23) | `labs/ch23-framework` |
 
-196 条 pytest 用例全绿，十六个实操都能单独运行：
+259 条 pytest 用例全绿，二十三个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
-python labs/ch16-web-basics/demo_basics.py
+python labs/ch23-framework/run.py --base-url http://127.0.0.1:8000
 ```
 
 ## 仓库结构
@@ -74,4 +81,4 @@ site/      VitePress 站点（就是你现在看的这个）
 
 ## 下一步
 
-第三阶段：Web 与 APP 自动化。把 Playwright 与设备农场接进来，链路从「接口通」推进到「界面对」，再回到测试平台做统一编排。
+第四阶段：APP 终端 UI 自动化。把 Appium 与设备农场接进来，把「接口通 → 界面对」扩到移动端，再回到测试平台做统一编排。
