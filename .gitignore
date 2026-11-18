@@ -27,3 +27,6 @@ corpus/
 
 # Playwright 浏览器（约 150 MB，装一次即可，不进 Git）
 .pw-browsers/
+
+# local preview output
+_site_preview/
