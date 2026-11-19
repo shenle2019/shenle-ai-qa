@@ -40,7 +40,7 @@
 | 22 | 用 AI 生成 Web 用例 | [ch22](/chapters/ch22) | `labs/ch22-ai-cases` |
 | 23 | 框架收口（CLI） | [ch23](/chapters/ch23) | `labs/ch23-framework` |
 
-阶段验收：`python -m pytest labs -q` 全绿（当前 259 条）。
+阶段验收：`python -m pytest labs -q` 全绿（当前 345 条）。
 
 ## 后续规划
 
@@ -49,3 +49,16 @@
 - 选修：性能测试、Agent 与大模型评估
 
 规划会随实际学习进度调整，以站点上的最新内容为准。
+
+### 第四阶段 · APP 终端 UI 自动化
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 24 | ADB 与设备连接 | [ch24](/chapters/ch24) | labs/ch24-adb |
+| 25 | 元素定位与窗口树 | [ch25](/chapters/ch25) | labs/ch25-locators |
+| 26 | 页面对象与页面栈 | [ch26](/chapters/ch26) | labs/ch26-page-object |
+| 27 | 手势与输入 | [ch27](/chapters/ch27) | labs/ch27-gestures |
+| 28 | 数据驱动与多用例 | [ch28](/chapters/ch28) | labs/ch28-data-driven |
+| 29 | 稳定性与失败留证 | [ch29](/chapters/ch29) | labs/ch29-stability |
+| 30 | logcat 与崩溃定位 | [ch30](/chapters/ch30) | labs/ch30-logcat |
+| 31 | 框架收口（APP CLI） | [ch31](/chapters/ch31) | labs/ch31-framework |

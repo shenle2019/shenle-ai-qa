@@ -50,6 +50,45 @@ def page(browser):
     context.close()
 
 
+@pytest.fixture(scope="session")
+def device():
+    """有真机就用真机，没有就跳过——APP 章节的用例都挂在这个夹具上。"""
+    from labs._shared.adb import AdbError, Device
+
+    try:
+        instance = Device.first_online(timeout=8)
+    except AdbError as exc:
+        pytest.skip(f"没有可用的 Android 设备：{exc}")
+    return instance
+
+
+@pytest.fixture(scope="session")
+def backend(device):
+    """APP 章节用的联调后端：本机 8080 + adb reverse，手机访问 127.0.0.1:8080 即本机。"""
+    from labs._shared.login_server import LoginServer
+
+    with LoginServer(8080) as server:
+        device.reverse(8080)
+        yield server
+
+
+APP_PACKAGE = "com.shenjiahang.logindemo"
+APP_ACTIVITY = "com.shenjiahang.logindemo.LoginActivity"
+
+
+@pytest.fixture()
+def login_app(device, backend):
+    """每条用例都从干净的首屏开始：杀进程 → 冷启动 → 等首屏出现。"""
+    from labs._shared.app import App
+
+    device.force_stop(APP_PACKAGE)
+    device.start(APP_PACKAGE, APP_ACTIVITY)
+    app = App(device)
+    app.wait_text("登录联调 Demo", timeout=15)
+    yield app
+    device.force_stop(APP_PACKAGE)
+
+
 @pytest.fixture()
 def logged(page, site):
     page.goto(f"{site}/login")

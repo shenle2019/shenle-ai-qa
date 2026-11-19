@@ -57,6 +57,19 @@ export default defineConfig({
           ]
         },
         {
+          text: '第四阶段 · APP 终端 UI 自动化',
+          items: [
+            { text: '24 ADB 与设备连接', link: '/chapters/ch24' },
+            { text: '25 元素定位与窗口树', link: '/chapters/ch25' },
+            { text: '26 页面对象与页面栈', link: '/chapters/ch26' },
+            { text: '27 手势与输入', link: '/chapters/ch27' },
+            { text: '28 数据驱动与多用例', link: '/chapters/ch28' },
+            { text: '29 稳定性与失败留证', link: '/chapters/ch29' },
+            { text: '30 logcat 与崩溃定位', link: '/chapters/ch30' },
+            { text: '31 框架收口（APP CLI）', link: '/chapters/ch31' },
+          ]
+        },
+        {
           text: '延伸阅读',
           items: [
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
@@ -108,6 +121,19 @@ export default defineConfig({
             { text: '21 视觉与可访问性', link: '/chapters/ch21' },
             { text: '22 AI 生成用例', link: '/chapters/ch22' },
             { text: '23 框架收口', link: '/chapters/ch23' }
+          ]
+        },
+        {
+          text: '第四阶段 · APP 终端 UI 自动化',
+          items: [
+            { text: '24 ADB 与设备连接', link: '/chapters/ch24' },
+            { text: '25 元素定位与窗口树', link: '/chapters/ch25' },
+            { text: '26 页面对象与页面栈', link: '/chapters/ch26' },
+            { text: '27 手势与输入', link: '/chapters/ch27' },
+            { text: '28 数据驱动与多用例', link: '/chapters/ch28' },
+            { text: '29 稳定性与失败留证', link: '/chapters/ch29' },
+            { text: '30 logcat 与崩溃定位', link: '/chapters/ch30' },
+            { text: '31 框架收口（APP CLI）', link: '/chapters/ch31' },
           ]
         },
         {

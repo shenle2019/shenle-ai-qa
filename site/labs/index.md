@@ -42,7 +42,7 @@
 | 22 | `labs/ch22-ai-cases` | `snapshot/llm/validate/execute` | 快照喂模型、输出校验、真跑生成的步骤 | 10 |
 | 23 | `labs/ch23-framework` | `fw_*.py` + `run.py` | 配置驱动、CLI、Markdown 与 JUnit 双报告 | 10 |
 
-合计 **259 条测试**。
+合计 **345 条测试**。
 
 ## 怎么跑
 

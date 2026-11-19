@@ -30,3 +30,8 @@ corpus/
 
 # local preview output
 _site_preview/
+
+# lab run artifacts
+labs/**/out/
+labs/**/reports/
+labs/**/__pycache__/

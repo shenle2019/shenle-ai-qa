@@ -54,7 +54,7 @@ site/      VitePress 站点，聚合知识库与实操入口
 | 22 | 用 AI 生成 Web 用例 | [笔记](notes/ch22-ai-cases.md) | [labs/ch22-ai-cases](labs/ch22-ai-cases) |
 | 23 | 框架收口（CLI） | [笔记](notes/ch23-framework.md) | [labs/ch23-framework](labs/ch23-framework) |
 
-阶段验收：`python -m pytest labs -q` → 259 passed。
+阶段验收：`python -m pytest labs -q` → 345 passed。
 
 第二阶段的实操跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`；第三阶段的网页自动化跑在 `labs/_shared/mini_site.py` 起的迷你站上，除 `playwright` 外不依赖外部服务。
 
@@ -85,3 +85,16 @@ npm run build      # 产物在 site/.vitepress/dist
 - 每章合并前跑一次测试并更新站点。
 
 站点地址：https://shenle2019.github.io/shenle-ai-qa/
+
+### 第四阶段 · APP 终端 UI 自动化
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 24 | ADB 与设备连接 | [ch24](notes/ch24.md) | labs/ch24-adb |
+| 25 | 元素定位与窗口树 | [ch25](notes/ch25.md) | labs/ch25-locators |
+| 26 | 页面对象与页面栈 | [ch26](notes/ch26.md) | labs/ch26-page-object |
+| 27 | 手势与输入 | [ch27](notes/ch27.md) | labs/ch27-gestures |
+| 28 | 数据驱动与多用例 | [ch28](notes/ch28.md) | labs/ch28-data-driven |
+| 29 | 稳定性与失败留证 | [ch29](notes/ch29.md) | labs/ch29-stability |
+| 30 | logcat 与崩溃定位 | [ch30](notes/ch30.md) | labs/ch30-logcat |
+| 31 | 框架收口（APP CLI） | [ch31](notes/ch31.md) | labs/ch31-framework |
