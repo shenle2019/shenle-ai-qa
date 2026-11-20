@@ -5,7 +5,7 @@
 ## 一句话现状
 
 - 仓库：`E:\ailearning\shenle-ai-qa`，远端 `origin = ssh://git@ssh.github.com:443/shenle2019/shenle-ai-qa.git`（**只能走 SSH**，HTTPS 推不上去）。
-- 已完成：第 01–07 章（Python 与工程基础）、第 08–15 章（接口自动化）、第 16–23 章（Web 自动化）、第 24–31 章（APP 终端 UI 自动化），**345 条 pytest 全绿**。
+- 已完成：第 01–07 章（Python 与工程基础）、第 08–15 章（接口自动化）、第 16–23 章（Web 自动化）、第 24–31 章（APP 终端 UI 自动化），**356 条 pytest 全绿（性能阶段进行中）**。
 - 线上：https://shenle2019.github.io/shenle-ai-qa/
 - 内容规则：根目录 `CONTENT-RULES.md`（每条都要遵守，站点上也有 `/kb/rules`）。
 

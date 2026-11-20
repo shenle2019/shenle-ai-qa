@@ -42,7 +42,13 @@
 | 22 | `labs/ch22-ai-cases` | `snapshot/llm/validate/execute` | 快照喂模型、输出校验、真跑生成的步骤 | 10 |
 | 23 | `labs/ch23-framework` | `fw_*.py` + `run.py` | 配置驱动、CLI、Markdown 与 JUnit 双报告 | 10 |
 
-合计 **345 条测试**。
+## 第五阶段 · 性能测试
+
+| 章 | 实操目录 | 源文件 | 覆盖的知识点 | 测试 |
+| --- | --- | --- | --- | --- |
+| 32 | labs/ch32-perf-basics | metrics_demo.py | 分位值、TPS、错误率、Little's Law | 11 |
+
+合计 **356 条测试**（15 条真机用例需连接安卓设备）。
 
 ## 怎么跑
 

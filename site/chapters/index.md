@@ -40,7 +40,7 @@
 | 22 | 用 AI 生成 Web 用例 | [ch22](/chapters/ch22) | `labs/ch22-ai-cases` |
 | 23 | 框架收口（CLI） | [ch23](/chapters/ch23) | `labs/ch23-framework` |
 
-阶段验收：`python -m pytest labs -q` 全绿（当前 345 条）。
+阶段验收：`python -m pytest labs -q` 全绿（当前 356 条）。
 
 ## 后续规划
 
@@ -62,3 +62,9 @@
 | 29 | 稳定性与失败留证 | [ch29](/chapters/ch29) | labs/ch29-stability |
 | 30 | logcat 与崩溃定位 | [ch30](/chapters/ch30) | labs/ch30-logcat |
 | 31 | 框架收口（APP CLI） | [ch31](/chapters/ch31) | labs/ch31-framework |
+
+### 第五阶段 · 性能测试
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 32 | 性能测试基础与指标 | [ch32](/chapters/ch32) | labs/ch32-perf-basics |

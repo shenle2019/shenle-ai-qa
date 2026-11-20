@@ -28,6 +28,40 @@ TOKENS: dict[str, dict[str, Any]] = {}
 IDEMPOTENCY: dict[str, int] = {}
 FILES: dict[str, bytes] = {}
 FLAKY: dict[str, int] = {}
+
+# 性能章节用的「故意慢」端点状态
+SLOW_LOCK = threading.Lock()
+POOL = threading.BoundedSemaphore(5)
+JOBS: dict[str, dict[str, Any]] = {}
+STATS: dict[str, Any] = {"in_flight": 0, "max_in_flight": 0, "requests": 0, "pool_wait": 0}
+_STATS_LOCK = threading.Lock()
+
+
+def _enter() -> None:
+    with _STATS_LOCK:
+        STATS["requests"] += 1
+        STATS["in_flight"] += 1
+        STATS["max_in_flight"] = max(STATS["max_in_flight"], STATS["in_flight"])
+
+
+def _leave() -> None:
+    with _STATS_LOCK:
+        STATS["in_flight"] -= 1
+
+
+def reset_stats() -> None:
+    with _STATS_LOCK:
+        STATS.update({"in_flight": 0, "max_in_flight": 0, "requests": 0, "pool_wait": 0})
+    JOBS.clear()
+
+
+def _work(job_id: str) -> None:
+    """模拟异步消费：每个任务处理 0.3 秒。"""
+    time.sleep(0.3)
+    job = JOBS.get(job_id)
+    if job:
+        job["status"] = "done"
+        job["finished_at"] = time.time()
 _NEXT = {"user": 0, "order": 0}
 
 
@@ -154,6 +188,22 @@ class Handler(BaseHTTPRequestHandler):
             if method == "POST" and path == "/api/login":
                 return self._login()
 
+            if path.startswith("/slow/"):
+                return self._slow(path.split("/")[-1])
+
+            if method == "GET" and path == "/stats":
+                with _STATS_LOCK:
+                    return self._send(200, dict(STATS))
+
+            if method == "POST" and path == "/queue":
+                return self._enqueue()
+
+            if method == "GET" and path == "/queue/status":
+                job = JOBS.get(self._query().get("id", [""])[0])
+                if not job:
+                    return self._send(404, {"error": "not_found"})
+                return self._send(200, dict(job))
+
             if parts[:2] != ["api", "users"] and parts[:2] != ["api", "orders"]:
                 if not (method == "GET" and parts[:2] == ["api", "files"]):
                     return self._send(404, {"error": "not_found", "path": path})
@@ -180,6 +230,45 @@ class Handler(BaseHTTPRequestHandler):
         token = uuid.uuid4().hex
         TOKENS[token] = {"username": name, "expires_at": time.time() + TOKEN_TTL}
         return self._send(200, {"token": token, "expires_in": TOKEN_TTL})
+
+    # ---------- 性能章节用的慢端点 ----------
+
+    def _slow(self, kind: str) -> None:
+        _enter()
+        try:
+            if kind == "db":
+                time.sleep(0.15)
+                return self._send(200, {"kind": "db", "slept_ms": 150})
+            if kind == "cpu":
+                start = time.perf_counter()
+                acc = 0
+                while time.perf_counter() - start < 0.05:
+                    acc = (acc * 31 + 7) % 1_000_003
+                return self._send(200, {"kind": "cpu", "burn_ms": 50, "acc": acc})
+            if kind == "lock":
+                with SLOW_LOCK:
+                    time.sleep(0.2)
+                return self._send(200, {"kind": "lock", "held_ms": 200})
+            if kind == "pool":
+                with _STATS_LOCK:
+                    STATS["pool_wait"] += 1
+                acquired = POOL.acquire(timeout=1.0)
+                if not acquired:
+                    return self._send(503, {"error": "pool_exhausted", "limit": 5})
+                try:
+                    time.sleep(0.25)
+                finally:
+                    POOL.release()
+                return self._send(200, {"kind": "pool", "held_ms": 250, "limit": 5})
+            return self._send(404, {"error": "unknown_slow", "kind": kind})
+        finally:
+            _leave()
+
+    def _enqueue(self) -> None:
+        job_id = uuid.uuid4().hex[:8]
+        JOBS[job_id] = {"id": job_id, "status": "queued", "created_at": time.time()}
+        threading.Thread(target=_work, args=(job_id,), daemon=True).start()
+        return self._send(202, {"id": job_id, "status": "queued"})
 
     def _users(self, method: str, rest: list[str]) -> None:
         if method == "GET" and not rest:

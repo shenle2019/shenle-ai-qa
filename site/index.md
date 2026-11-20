@@ -77,7 +77,13 @@ features:
 | 30 | logcat 与崩溃定位 | ch30 | labs/ch30-logcat |
 | 31 | 框架收口（APP CLI） | ch31 | labs/ch31-framework |
 
-345 条 pytest 用例全绿，三十一个实操都能单独运行：
+### 第五阶段 · 性能测试
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 32 | 性能测试基础与指标 | ch32 | labs/ch32-perf-basics |
+
+356 条 pytest 用例（15 条真机用例在未接手机时自动跳过），三十二个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q

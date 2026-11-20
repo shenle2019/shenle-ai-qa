@@ -70,6 +70,12 @@ export default defineConfig({
           ]
         },
         {
+          text: '第五阶段 · 性能测试',
+          items: [
+            { text: '32 性能测试基础与指标', link: '/chapters/ch32' }
+          ]
+        },
+        {
           text: '延伸阅读',
           items: [
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
@@ -134,6 +140,12 @@ export default defineConfig({
             { text: '29 稳定性与失败留证', link: '/chapters/ch29' },
             { text: '30 logcat 与崩溃定位', link: '/chapters/ch30' },
             { text: '31 框架收口（APP CLI）', link: '/chapters/ch31' },
+          ]
+        },
+        {
+          text: '第五阶段 · 性能测试',
+          items: [
+            { text: '32 性能测试基础与指标', link: '/chapters/ch32' }
           ]
         },
         {

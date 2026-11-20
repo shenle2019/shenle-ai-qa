@@ -54,7 +54,7 @@ site/      VitePress 站点，聚合知识库与实操入口
 | 22 | 用 AI 生成 Web 用例 | [笔记](notes/ch22-ai-cases.md) | [labs/ch22-ai-cases](labs/ch22-ai-cases) |
 | 23 | 框架收口（CLI） | [笔记](notes/ch23-framework.md) | [labs/ch23-framework](labs/ch23-framework) |
 
-阶段验收：`python -m pytest labs -q` → 345 passed。
+阶段验收：`python -m pytest labs -q` → 356 passed。
 
 第二阶段的实操跑在同一个内存态被测服务上（`labs/_shared/mini_api.py`），只依赖 `requests`；第三阶段的网页自动化跑在 `labs/_shared/mini_site.py` 起的迷你站上，除 `playwright` 外不依赖外部服务。
 
@@ -98,3 +98,9 @@ npm run build      # 产物在 site/.vitepress/dist
 | 29 | 稳定性与失败留证 | [ch29](notes/ch29.md) | labs/ch29-stability |
 | 30 | logcat 与崩溃定位 | [ch30](notes/ch30.md) | labs/ch30-logcat |
 | 31 | 框架收口（APP CLI） | [ch31](notes/ch31.md) | labs/ch31-framework |
+
+### 第五阶段 · 性能测试
+
+| 章 | 主题 | 笔记 | 实操 |
+| --- | --- | --- | --- |
+| 32 | 性能测试基础与指标 | [ch32](notes/ch32-perf-basics.md) | labs/ch32-perf-basics |

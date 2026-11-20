@@ -71,7 +71,19 @@ def test_cli_returns_2_without_device(monkeypatch) -> None:
 
 
 @pytest.mark.device
-def test_cli_runs_against_real_device(tmp_path) -> None:
+@pytest.fixture(scope="module")
+def real_device():
+    """CLI 类用例必须有真机才跑；没插手机就跳过，不影响离线单测。"""
+    from labs._shared.adb import AdbError, Device
+
+    try:
+        return Device.first_online(timeout=1)
+    except AdbError:
+        pytest.skip("没有连接安卓设备")
+
+
+@pytest.mark.device
+def test_cli_runs_against_real_device(tmp_path, real_device) -> None:
     report_path = tmp_path / "report.md"
     code = main(["--config", str(CONFIG), "--report", str(report_path)])
     assert code == 0
@@ -81,7 +93,7 @@ def test_cli_runs_against_real_device(tmp_path) -> None:
 
 
 @pytest.mark.device
-def test_cli_only_filter(tmp_path) -> None:
+def test_cli_only_filter(tmp_path, real_device) -> None:
     """--only 只跑命中的用例，报告里就只有一条。"""
     report_path = tmp_path / "one.md"
     code = main(["--config", str(CONFIG), "--only", "login-correct", "--report", str(report_path)])
