@@ -81,6 +81,8 @@ export default defineConfig({
             { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
             { text: '39 性能平台收口', link: '/chapters/ch39' },
             { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
+            { text: '41 项目配置与环境上下文', link: '/chapters/ch41' },
+            { text: '42 接口资产与一致性校验', link: '/chapters/ch42' },
           ]
         },
         {
@@ -162,6 +164,8 @@ export default defineConfig({
             { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
             { text: '39 性能平台收口', link: '/chapters/ch39' },
             { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
+            { text: '41 项目配置与环境上下文', link: '/chapters/ch41' },
+            { text: '42 接口资产与一致性校验', link: '/chapters/ch42' },
           ]
         },
         {
