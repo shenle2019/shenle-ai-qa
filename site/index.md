@@ -83,7 +83,7 @@ features:
 | --- | --- | --- | --- |
 | 32 | 性能测试基础与指标 | ch32 | labs/ch32-perf-basics |
 
-417 条 pytest 用例（15 条真机用例在未接手机时自动跳过），三十九个实操都能单独运行：
+469 条 pytest 用例（15 条真机用例在未接手机时自动跳过），四十五个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
@@ -101,3 +101,6 @@ site/      VitePress 站点（就是你现在看的这个）
 ## 下一步
 
 第四阶段：APP 终端 UI 自动化。把 Appium 与设备农场接进来，把「接口通 → 界面对」扩到移动端，再回到测试平台做统一编排。
+| ch43 | 用例与关键字执行器 | `labs/ch43-executor` |
+| ch44 | 测试计划与异步执行 | `labs/ch44-plans` |
+| ch45 | 平台收口：报告、门槛与部署 | `labs/ch45-report` |

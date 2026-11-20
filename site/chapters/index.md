@@ -75,3 +75,6 @@
 | 37 | 全链路压测与数据隔离 | `labs/ch37-chain` |
 | 38 | AI 辅助性能分析 | `labs/ch38-ai` |
 | 39 | 性能平台收口 | `labs/ch39-perf-platform` |
+| ch43 | 用例与关键字执行器 | `labs/ch43-executor` |
+| ch44 | 测试计划与异步执行 | `labs/ch44-plans` |
+| ch45 | 平台收口：报告、门槛与部署 | `labs/ch45-report` |

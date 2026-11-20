@@ -83,6 +83,9 @@ export default defineConfig({
             { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
             { text: '41 项目配置与环境上下文', link: '/chapters/ch41' },
             { text: '42 接口资产与一致性校验', link: '/chapters/ch42' },
+            { text: '43 用例与关键字执行器', link: '/chapters/ch43' },
+            { text: '44 测试计划与异步执行', link: '/chapters/ch44' },
+            { text: '45 平台收口', link: '/chapters/ch45' },
           ]
         },
         {
@@ -166,6 +169,9 @@ export default defineConfig({
             { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
             { text: '41 项目配置与环境上下文', link: '/chapters/ch41' },
             { text: '42 接口资产与一致性校验', link: '/chapters/ch42' },
+            { text: '43 用例与关键字执行器', link: '/chapters/ch43' },
+            { text: '44 测试计划与异步执行', link: '/chapters/ch44' },
+            { text: '45 平台收口', link: '/chapters/ch45' },
           ]
         },
         {

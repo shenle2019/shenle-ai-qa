@@ -48,7 +48,7 @@
 | --- | --- | --- | --- | --- |
 | 32 | labs/ch32-perf-basics | metrics_demo.py | 分位值、TPS、错误率、Little's Law | 11 |
 
-合计 **417 条测试**（15 条真机用例需连接安卓设备）。
+合计 **469 条测试**（15 条真机用例需连接安卓设备）。
 
 ## 怎么跑
 
@@ -100,3 +100,6 @@ class Counter:
 | 37 | `labs/ch37-chain` | 打标与隔离 | 8 |
 | 38 | `labs/ch38-ai` | 异常/聚类/提示词 | 8 |
 | 39 | `labs/ch39-perf-platform` | 配置/门槛/报告 | 9 |
+| 43 | `labs/ch43-executor` | 关键字与执行链 | 8 |
+| 44 | `labs/ch44-plans` | 队列/重试/状态 | 8 |
+| 45 | `labs/ch45-report` | 报告与门槛 | 8 |
