@@ -48,7 +48,7 @@
 | --- | --- | --- | --- | --- |
 | 32 | labs/ch32-perf-basics | metrics_demo.py | 分位值、TPS、错误率、Little's Law | 11 |
 
-合计 **356 条测试**（15 条真机用例需连接安卓设备）。
+合计 **417 条测试**（15 条真机用例需连接安卓设备）。
 
 ## 怎么跑
 
@@ -93,3 +93,10 @@ class Counter:
 - 需要密钥的实验从环境变量读，缺省走 mock。
 - 输出目录（`_out/`、`data/`、`report.xml`/`report.html`）不入库。
 - 每个 `def` 都能单独被测试调用，不在模块顶层做副作用。
+| 33 | `labs/ch33-scenarios` | 场景与拐点 | 10 |
+| 34 | `labs/ch34-scripts` | 步骤/数据/思考时间 | 10 |
+| 35 | `labs/ch35-analyze` | 平台期与归因 | 8 |
+| 36 | `labs/ch36-middleware` | 日志/池/队列 | 8 |
+| 37 | `labs/ch37-chain` | 打标与隔离 | 8 |
+| 38 | `labs/ch38-ai` | 异常/聚类/提示词 | 8 |
+| 39 | `labs/ch39-perf-platform` | 配置/门槛/报告 | 9 |

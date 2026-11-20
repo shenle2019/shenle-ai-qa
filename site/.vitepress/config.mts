@@ -72,7 +72,14 @@ export default defineConfig({
         {
           text: '第五阶段 · 性能测试',
           items: [
-            { text: '32 性能测试基础与指标', link: '/chapters/ch32' }
+            { text: '32 性能测试基础与指标', link: '/chapters/ch32' },
+            { text: '33 场景设计：基准与负载', link: '/chapters/ch33' },
+            { text: '34 压测脚本与参数化', link: '/chapters/ch34' },
+            { text: '35 结果分析与瓶颈定位', link: '/chapters/ch35' },
+            { text: '36 中间件性能要点', link: '/chapters/ch36' },
+            { text: '37 全链路压测与隔离', link: '/chapters/ch37' },
+            { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
+            { text: '39 性能平台收口', link: '/chapters/ch39' },
           ]
         },
         {
@@ -145,7 +152,14 @@ export default defineConfig({
         {
           text: '第五阶段 · 性能测试',
           items: [
-            { text: '32 性能测试基础与指标', link: '/chapters/ch32' }
+            { text: '32 性能测试基础与指标', link: '/chapters/ch32' },
+            { text: '33 场景设计：基准与负载', link: '/chapters/ch33' },
+            { text: '34 压测脚本与参数化', link: '/chapters/ch34' },
+            { text: '35 结果分析与瓶颈定位', link: '/chapters/ch35' },
+            { text: '36 中间件性能要点', link: '/chapters/ch36' },
+            { text: '37 全链路压测与隔离', link: '/chapters/ch37' },
+            { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
+            { text: '39 性能平台收口', link: '/chapters/ch39' },
           ]
         },
         {

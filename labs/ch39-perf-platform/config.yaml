@@ -1,0 +1,20 @@
+name: 性能平台示例
+default_env: local
+envs:
+  local:
+    base_url: http://127.0.0.1:8010
+    note: 本机自压自测
+  staging:
+    base_url: https://staging.example.com
+    note: 预发
+scenarios:
+  - name: 健康检查
+    levels: [2, 4]
+    duration_s: 0.5
+    p95_limit_ms: 200
+    error_limit: 0.01
+  - name: 列表查询
+    levels: [4]
+    duration_s: 0.5
+    p95_limit_ms: 300
+    error_limit: 0.0

@@ -68,3 +68,10 @@
 | 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 32 | 性能测试基础与指标 | [ch32](/chapters/ch32) | labs/ch32-perf-basics |
+| 33 | 场景设计：基准、负载、压力、稳定性 | `labs/ch33-scenarios` |
+| 34 | 压测脚本与参数化 | `labs/ch34-scripts` |
+| 35 | 结果分析与瓶颈定位 | `labs/ch35-analyze` |
+| 36 | 中间件性能要点 | `labs/ch36-middleware` |
+| 37 | 全链路压测与数据隔离 | `labs/ch37-chain` |
+| 38 | AI 辅助性能分析 | `labs/ch38-ai` |
+| 39 | 性能平台收口 | `labs/ch39-perf-platform` |

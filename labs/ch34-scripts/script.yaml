@@ -1,0 +1,14 @@
+# 第 34 章用到的压测脚本（步骤权重 + 思考时间）
+name: 登录下单混合场景
+users: 2
+loops: 3
+steps:
+  - name: 登录
+    weight: 1
+    think_s: 0
+  - name: 查列表
+    weight: 3
+    think_s: 0.01
+  - name: 下单
+    weight: 1
+    think_s: 0

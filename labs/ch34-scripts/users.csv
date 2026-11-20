@@ -1,0 +1,4 @@
+user,password,sku
+alice,secret,SKU-001
+bob,secret,SKU-002
+carol,wrong,SKU-003
