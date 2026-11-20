@@ -26,7 +26,7 @@
 
 ## 4. 本章实操
 
-`labs/ch45-report/`：`report.py`（`Outcome` / `Report` / `gate` / `to_markdown` / `to_junit`）、`test_report.py`（8 条）。
+`labs/ch45-report/`：`platform_report.py`（`Outcome` / `Report` / `gate` / `to_markdown` / `to_junit`）、`test_report.py`（8 条）。
 
 ```bash
 python -m pytest labs/ch45-report -q
