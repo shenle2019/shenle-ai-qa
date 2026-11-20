@@ -80,6 +80,7 @@ export default defineConfig({
             { text: '37 全链路压测与隔离', link: '/chapters/ch37' },
             { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
             { text: '39 性能平台收口', link: '/chapters/ch39' },
+            { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
           ]
         },
         {
@@ -160,6 +161,7 @@ export default defineConfig({
             { text: '37 全链路压测与隔离', link: '/chapters/ch37' },
             { text: '38 AI 辅助性能分析', link: '/chapters/ch38' },
             { text: '39 性能平台收口', link: '/chapters/ch39' },
+            { text: '40 平台架构与最小可用', link: '/chapters/ch40' },
           ]
         },
         {
