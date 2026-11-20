@@ -7,8 +7,8 @@
 | 层 | 内容 |
 | --- | --- |
 | default_env | 不指定 --env 时用哪个 |
-| envs.<name>.base_url | 每个环境一个地址，必填 |
-| envs.<name>.variables | 变量表，支持 ${VAR} 展开 |
+| `envs.<name>.base_url` | 每个环境一个地址，必填 |
+| `envs.<name>.variables` | 变量表，支持 `${VAR}` 展开 |
 | settings | 超时、重试这类全局参数 |
 
 ## 2. 三条铁律
