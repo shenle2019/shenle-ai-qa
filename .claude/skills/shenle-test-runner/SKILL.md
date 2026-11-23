@@ -1,6 +1,6 @@
 ---
 name: shenle-test-runner
-description: AIQE 测试计划执行规约。告诉 agent 拿到一份 plan（如 plan-web-20260921-224910-登录并修改用户昵称（接口版））后，如何按 plan → flow → task → case/function 的层级逐条执行，处理 4 种任务类型（dynamic-function / api / web / app）的资源查找，以及变量解析优先级（任务输出 > 环境变量 > 用例默认值）。
+description: "按计划批量执行用例、汇总结果并产出报告时时使用。支持 runner, 执行, 结果汇总, 报告, 退出码 相关操作；Use when the task involves runner / 执行 / 结果汇总 / 报告 / 退出码."
 ---
 
 # shenle-test-runner（AIQE 测试计划执行规约）
@@ -112,47 +112,8 @@ description: AIQE 测试计划执行规约。告诉 agent 拿到一份 plan（�
 
 ## 端到端例子（示例项目-读书屋）
 
-**输入**：
-- plan: `AI-自动化测试计划/plan-web-20260921-224910-登录并修改用户昵称（接口版）/meta.yaml`
-- plan.environmentKey = `读书屋-测试`
-- plan.flows[0] = `{sourceFlowId: f7d8a3b2-..., sourceFlowFile: f7d8a3b2-...yaml}`
-
-**执行轨迹**：
-
-```
-[INIT] 加载 env_var.yaml → {api_project_url: http://novel.hctestedu.com, test_username: 15096268001, test_password: 123456}
-
-[flow 1/1] 打开 AI-自动化测试编排/f7d8a3b2-...yaml
-  case_flow: "登录并修改用户昵称"
-    task 1/3: 生成用户昵称
-      type=dynamic-function, source_id=generate_nickname
-      → 读 AI-动态函数管理/通用工具/generate_nickname.py
-      → META.outputs=[{key:new_nickname, name:新昵称}]
-      → execute() → {new_nickname: "user_142357_8832"}
-      写入变量池：{新昵称: "user_142357_8832"}
-
-    task 2/3: 正常登录
-      type=api, source_id=a1b2c3d4e5f647899aabbccddeeff001
-      → 读 AI-自动化测试用例/api/user/正常登录.yaml
-      → case.input_datas 默认：{正确账号: '15096268001', 正确密码: '123456'}
-      → 但 task.input_datas 覆盖了：
-           正确账号 = {{test_username}}   → '15096268001'
-           正确密码 = {{test_password}}   → '123456'
-      → 渲染 request：
-           url  = {{api_project_url}}/user/login = 'http://novel.hctestedu.com/user/login'
-           body.username = {{正确账号}} = '15096268001'
-           body.password = {{正确密码}} = '123456'
-      → 发 POST，校验 expected
-      → 从响应抽 output_datas：$.data.token → 写入 {登录Token: "<jwt>"}
-
-    task 3/3: 正常更新用户昵称
-      type=api, source_id=c3d4e5f64789aabbccddeeff001ab12
-      → 读 AI-自动化测试用例/api/user/正常更新用户昵称.yaml
-      → task.input_datas：
-           登录Token = {{登录Token}}        ← 从 task 2 的输出拿
-           新昵称    = {{新昵称}}           ← 从 task 1 的输出拿
-      → 渲染 + 发请求 + 校验
-```
+**MANDATORY — 先读整个文件**：`references/detail.md`（44 行，覆盖这一节的完整细节）。
+**不要加载** 其他 references 文件。
 
 ## 失败行为
 - 任一 task 失败（HTTP 非预期 / 断言失败 / 函数抛异常 / 变量未绑定）：
@@ -198,3 +159,54 @@ flows:
 - 生成动态函数的 skill：[shenle-dynamic-function-generator](../../shenle-dynamic-function-generator/skill/shenle-dynamic-function-generator/SKILL.md)
 - 跑接口的底层工具：[shenle-api-record](../../shenle-api-record/skill/shenle-api-record/SKILL.md)（录制源数据）
 - 跑 web/app 用例的底层工具：[shenle-web-cli](../../shenle-web-cli/skill/shenle-web-cli/SKILL.md)、[shenle-android-cli](../../shenle-android-cli/skill/shenle-android-cli/SKILL.md)
+
+## 边界与反例
+
+### 不要做（每条都给原因）
+
+- **NEVER** 不要在失败后继续跑依赖它的后续用例——级联失败会把 1 个真问题放大成 20 条红，掩盖根因
+- **NEVER** 不要把环境错误算作用例失败——混淆两者会让通过率失去意义，也让 CI 无法区分该修谁
+- **NEVER** 不要用退出码 0 表示“跑完了”——CI 只看退出码，失败必须非 0
+
+### 失败与兜底
+
+| 现象 | 处理 |
+| --- | --- |
+| 用例全红 | 先看环境连通性与鉴权，不要逐条排查用例 |
+| 结果缺失 | 检查报告目录是否被 `.gitignore` 忽略、是否写到了临时目录 |
+| 个别用例偶发失败 | 标记 flaky 并单独重试，不要在主干里加长等待 |
+
+### 何时不该用这个 skill
+
+- 只需要读文档或写笔记：走知识库，不要调执行类命令。
+- 需要改被测系统的业务数据：先确认数据隔离，再考虑用录制/回放。
+
+## 执行顺序（顺序错了会白跑）
+
+1. 先校验环境，再跑用例。
+2. 先跑冒烟集，再跑全量。
+3. 先分类失败，再定位根因。
+4. 先出报告，再看退出码。
+
+### 再加一条红线
+
+- **NEVER** 不要在没有失败留证时重跑——重跑通过会掩盖真问题，也丢掉现场
+
+### 兜底原则
+
+任何一步失败，先留证（截图、响应体、日志），再重试；没有证据的重跑只会把问题变成偶发。
+
+## 一页速查
+
+| 想做什么 | 怎么做 |
+| --- | --- |
+| 跑全量 | 按 config 里的 cases 全部执行 |
+| 只跑冒烟 | `--only smoke` 先过一遍主路径 |
+| 看失败 | 先看分类（环境/数据/断言），再看单条 |
+| 出报告 | Markdown 给人看，JUnit 给 CI 看 |
+
+示例：先看真实帮助，再抄参数，别凭记忆写子命令。
+
+```bash
+shenle-test-runner --help
+```

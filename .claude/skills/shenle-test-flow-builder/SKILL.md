@@ -1,7 +1,7 @@
 ---
 name: shenle-test-flow-builder
-description: 对话式引导构建完整的自动化测试流程。触发场景：用户要求编排测试流程、生成完整测试链路、创建自动化测试 flow。手工用例优先转换为自动化用例 YAML，动态函数委托已有 Skill 生成，最终串联为 case_flow 编排文件。支持接口、Web UI、性能等全部测试类型，智能复用已有资源。
 enabled: true
+description: "把若干接口或页面步骤编排成一条可重复执行的测试流程时时使用。支持 flow, step, yaml, 编排, 断言, 变量传递 相关操作；Use when the task involves flow / step / yaml / 编排 / 断言 / 变量传递.。触发词：cli / record / runner / adapter / skill。"
 ---
 重点：请使用中文沟通！！
 
@@ -83,217 +83,13 @@ AI 收到请求后提取三个关键信号：
 
 ## 📊 两层体系：源材料 vs 自动化产物
 
-> ⚠️ **关键概念**：手工用例和自动化用例是两种完全不同的东西！
-
-### 源材料层（只读，绝不修改）
-
-AI 从这里理解业务、提取测试场景。
-
-```
-{工作空间}/
-├── AI-WEB功能测试/
-│   ├── AI-测试点分析/{模块}/{功能名}.md      ← Web 测试点分析
-│   └── AI-测试用例/{模块}/*.md               ← Web 手工用例（Markdown，人读）
-│
-├── AI-接口API测试/
-│   ├── AI-接口管理/{批次}/*.md               ← 接口文档（含请求/响应详情）
-│   ├── AI-测试用例/{批次}/*.md               ← 接口手工用例（Markdown，人读）
-│   └── AI-信息采集/{批次}/*.json             ← 录制数据（JSON）
-│
-├── AI-知识库/
-│   ├── WEB自动化执行知识库/                   ← Web 自动化规则
-│   ├── 接口用例相关知识库/                    ← 接口测试规则
-│   └── OA系统操作基本规则说明/                ← 业务规则
-│
-└── AI-环境变量/
-    └── {环境名}/
-        ├── env_var.yaml                      ← 环境变量
-        └── meta.yaml                         ← 环境元信息
-```
-
-### 自动化产物层（本 Skill 写入）
-
-格式固定，可被 `shenle-test-runner` 直接消费执行。
-
-```
-{工作空间}/
-├── AI-动态函数管理/
-│   └── {类型}/{function_code}.py             ← 动态函数（Python）
-│                                              ← 第一行含 # AIQE_DYNAMIC_FUNCTION_META {...}
-│
-├── AI-自动化测试用例/
-│   ├── api/{module}/{uuid}.yaml              ← 接口自动化用例（runner 已支持）
-│   ├── web/{module}/{uuid}.yaml              ← WEB UI 自动化用例（runner 已支持）
-│   ├── app/{module}/{uuid}.yaml              ← APP UI 自动化用例（runner 已支持）
-│   ├── pc/{module}/{uuid}.yaml               ← PC 客户端自动化用例（runner 待扩展）
-│   ├── mini-program/{module}/{uuid}.yaml     ← 小程序自动化用例（runner 待扩展）
-│   └── performance/{module}/{uuid}.yaml      ← 性能测试用例（runner 待扩展）
-│
-└── AI-自动化测试编排/
-    └── {uuid}.yaml                           ← 编排文件（核心产物）
-                                              ← 含 case_flows → tasks 完整链路
-```
-
-### 手工用例 vs 自动化用例
-
-| | 手工测试用例 | 自动化测试用例 |
-|------|-------------|----------------|
-| **格式** | Markdown | YAML |
-| **内容** | 测试步骤 + 预期结果（自然语言） | input_datas + output_datas + source_id（结构化） |
-| **存放** | `AI-WEB功能测试/AI-测试用例/`、`AI-接口API测试/AI-测试用例/` | `AI-自动化测试用例/{api/web/app/pc/mini-program/performance}/` |
-| **读者** | 人 | 机器（shenle-test-runner） |
-| **本 Skill 角色** | **源材料，只读** | **产物，写入** |
-
----
+**MANDATORY — 先读整个文件**：`references/detail-3.md`（65 行，覆盖「📊 两层体系：源材料 vs 自动化产物」）。
+**不要加载** 其他 references 文件。
 
 ## 🔄 核心流程（6 步）
 
-### Step 1：意图识别 + 模式判断
-
-- 提取：业务场景 / 测试类型 / 测试点
-- 判断：智能生成 / 向导 / 自由组合
-- 缺信息 → 逐条追问（每次一条）
-
-### Step 2：精读源材料（只读不写）
-
-按测试类型精准定位，只读相关目录，不遍历整个工程。
-
-| 测试类型 | 优先精读哪些源 |
-|----------|---------------|
-| 接口 | `AI-接口API测试/AI-接口管理/`（接口文档）→ `AI-接口API测试/AI-测试用例/`（手工用例）→ `AI-知识库/接口用例相关知识库/` |
-| Web UI | `AI-WEB功能测试/AI-测试点分析/` → `AI-WEB功能测试/AI-测试用例/` → `AI-知识库/WEB自动化执行知识库/` |
-| 多类型混合 | 按上述规则分别读取 |
-| 性能 | `AI-性能测试/` + 接口文档 |
-
-精读策略：
-- 用户说具体功能（如"登录"）→ AI 在对应目录下 `Grep` 搜索"login/登录"关键字
-- 用户给具体文档路径 → 用 `Read` 直接读该文件
-- 源材料**只读不写、不做任何修改**
-
-### Step 3：精准扫描已有自动化资源
-
-**核心原则：绝不主动全量遍历。** 只在用户指明测试类型和关键字后才扫描，限定在对应目录。
-
-```
-用户输入："用户登录的 Web UI 测试"
-
-AI 提取：类型=Web UI、关键字=登录/login
-
-扫描范围（用 Grep）：
-
-  源材料（找可转换的手工用例）：
-  ✅ AI-WEB功能测试/测试用例/**/*.md        → Grep "登录/login"
-  ✅ AI-WEB功能测试/测试点分析/**/*.md       → Grep "登录/login"
-
-  已有自动化资源（找可复用的）：
-  ✅ AI-自动化测试用例/web/**/*.yaml          → Grep name 匹配"登录"
-  ✅ AI-动态函数管理/**/*.py                 → Grep 元数据行，匹配"登录/用户"
-  ✅ AI-自动化测试编排/*.yaml                 → Grep name
-
-  不做：
-  ❌ AI-自动化测试用例/api/                  → 不扫（类型不匹配）
-  ❌ AI-自动化测试用例/performance/          → 不扫
-```
-
-扫描结果以清晰格式呈现，标注哪些可**复用**、AI **建议新建**什么。
-
-### Step 4：生成预览（关键确认点）
-
-扫描完成后，输出**完整链路预览**，明确标注 📄转换、♻️复用 和 🔨新建：
-
-```
-📋 编排预览：「用户登录完整流程」
-
-┌──────────────────────────────────────────────────────┐
-│  case_flow: 用户登录完整流程                           │
-│  tags: [冒烟, 主流程]                                  │
-│                                                      │
-│  [Task 1] 获取用户登录信息                            │
-│    类型: dynamic-function                             │
-│    来源: ♻️ 复用 → get_login_info                      │
-│    输出: username, password                           │
-│                                                      │
-│  [Task 2] 正常登录                                   │
-│    类型: web                                          │
-│    来源: 📄 转换 → 登录表单-正常登录                    │
-│    手工用例: AI-WEB功能测试/测试用例/首页/会员登录_*.md │
-│    输入: username, password (← Task 1)                │
-│                                                      │
-│  [Task 3] 密码错误登录                                │
-│    类型: web                                          │
-│    来源: 📄 转换 → 登录表单-密码错误                    │
-│    输入: username (← Task 1), wrong_password           │
-│                                                      │
-│  [Task 4] Token 过期访问 ⚠️ 需新建                    │
-│    类型: api                                          │
-│    来源: 🔨 新建（手工用例无对应条目，需确认）          │
-│    输入: expired_token                                │
-│                                                      │
-│  📄 将转换: 2 个手工用例 → 自动化用例 YAML            │
-│  🔨 将新建: 1 个纯自动化用例（待确认）                 │
-│  ♻️ 将复用: 1 个动态函数                              │
-│  🧩 将生成: 1 个编排文件                              │
-└──────────────────────────────────────────────────────┘
-
-是否确认生成？（回复"确认"或"调整 XXX"）
-```
-
-**必须等待用户确认后才写入文件！**
-
-### Step 5：依次写入文件
-
-确认后，严格按依赖顺序执行：
-
-```
-① 新建动态函数（如果有）
-   → 调用 Skill("shenle-dynamic-function-generator")
-   → 拿到 function_code 后继续
-
-② 自动化用例 YAML（转换优先，新建兜底）
-   → 有手工用例 → 转换格式写入 YAML，source_id 沿用原 UUID
-   → 无手工用例 → ⚠️ 确认后新建（告知用户不一致风险）
-   → 写入: AI-自动化测试用例/{类型}/{module}/{uuid}.yaml
-
-   > **📁 {类型} 取值集合**：`api` / `web` / `app` / `pc` / `mini-program` / `performance`
-   >
-   > ⚠️ **runner 兼容性说明**：当前 `shenle-test-runner` 仅实现 `api` / `web` / `dynamic-function` 三种 type 的执行路径。`app` / `pc` / `mini-program` / `performance` 是**约定先行的命名**，实际执行需要在 runner 代码（`plan_loader.py` 的 `CaseType` 枚举 + `prompt_builder.py` 路由）中扩展能力。在 runner 端未完成扩展前，新类型的编排 task 加载时会抛 `PlanLoadError: task.type 不支持`。本 Skill 当前只为这些新类型生成 YAML 用例文件，不保证编排能直接被 runner 执行。
-
-③ 编排文件 .yaml（核心产物）
-   → AI-自动化测试编排/{uuid}.yaml
-   → 含 name / priority / tags / case_flows → tasks
-   → 每个 task 引用前两步产物的 source_id
-
-④ YAML 格式验证（⚠️ 必须执行，不可跳过）
-   → 所有 .yaml 文件写入后，用 Python yaml.safe_load() 逐文件验证
-   → 验证通过才继续，失败则定位修复后重新验证
-   → 特别注意：含 {{ }} 占位符的步骤值必须加单引号包裹，否则 YAML 会把 { 解析为 flow mapping
-   → 验证命令（从工作空间根目录执行）：
-     python -c "
-     import yaml
-     files = ['待验证文件1.yaml', '待验证文件2.yaml', ...]
-     for f in files:
-         with open(f, 'r', encoding='utf-8') as fh:
-             yaml.safe_load(fh)
-         print(f'✅ {f}')
-     print('全部 YAML 加载成功')
-     "
-
-⑤ 汇总报告
-   → 列出所有转换/复用/新建的文件路径
-   → 明确标注：转换了几个手工用例、新建了几个纯自动化用例
-   → 附带 YAML 验证结果（全部通过 / 哪些失败已修复）
-   → 提示："要执行这个 flow 吗？"
-```
-
-### Step 6：可选执行
-
-询问用户是否立即执行。如果是，调用：
-
-```bash
-shenle-test-runner run <root_dir> <plan_id>
-```
-
----
+**MANDATORY — 先读整个文件**：`references/detail.md`（149 行，覆盖「🔄 核心流程（6 步）」的完整细节）。
+**不要加载** 其他 references 文件，本任务只需要这一份。
 
 ## 🔧 产物一：动态函数 — 委托已有 Skill
 
@@ -359,219 +155,14 @@ shenle-dynamic-function-generator 会按自己的交互流程（跳过/快速补
 **手工用例 MD**：
 ```markdown
 ## 登录表单-正常登录
-### 用例信息
-| 用例编号 | 244d5b6d8bc64535b9ef1ec72974e88c |
-| 用例名称 | 登录表单-正常登录 |
-### 测试步骤
-1. "手机号码"输入框 输入 {{ 已注册手机号 }}
-2. "密码"密码框 输入 {{ 正确登录密码 }}
-3. 点击"登录"按钮
-### 预期结果
-- 登录接口返回成功
-- 浏览器跳转至首页
-- 顶部导航显示已登录态用户名
-```
 
-**转换为自动化用例 YAML**（以项目实际格式为准）：
-```yaml
-case_id: "244d5b6d8bc64535b9ef1ec72974e88c"
-case_type: web
-case_priority: P0
-case_title: 登录表单-正常登录
-case_precondition: 未登录态，登录表单区可见，已注册且账号状态正常的用户
-case_content:
-  steps:
-  - 打开网址 http://novel.hctestedu.com/user/login.html
-  # ⚠️ 含 {{ }} 占位符的步骤必须加单引号包裹，否则 YAML 将 { 解析为 flow mapping 导致加载失败
-  - '"手机号码"输入框 输入 "{{已注册手机号}}"'
-  - '"密码"密码框 输入 "{{正确登录密码}}"'
-  - 点击"登录"按钮
-  expected:
-  - 登录接口返回成功
-  - 浏览器跳转至首页
-  - 顶部导航显示已登录态用户名
-updated_at: '2026-07-10 15:36:00'
-```
-
-> ⚠️ **YAML 花括号陷阱**：`{{ }}` 中的 `{` 会被 YAML 解析为 flow mapping 起始符。含 `{{变量}}` 占位符的步骤值，**必须加单引号包裹**（如 `- '"输入 {{变量}}"'`）。否则 `python yaml.safe_load()` 会报 `expected <block end>, but found '<scalar>'`。
-
-### 何时需要新建（须用户确认）
-
-只有以下情况才**新建**自动化用例 YAML，且**必须先和用户确认**：
-
-1. 手工用例 MD 中不存在对应的测试场景
-2. 手工用例存在但内容不足以提取自动化参数
-
-**确认话术**：
-> "⚠️「密码错误登录」这个测试场景在手工用例中没有找到对应的条目。我需要新建一个纯自动化用例来覆盖它。但这会导致自动化用例和手工用例不一致。要继续吗？（建议同步在手工用例中也补上这个场景）"
-
-### 理想状态目标
-
-```
-手工测试用例                         自动化测试用例
-    │                                    │
-    ├─ 登录-正常登录 ────────转换──────→ 登录-正常登录.yaml
-    ├─ 登录-空手机号 ────────转换──────→ 登录-空手机号.yaml
-    ├─ 登录-密码错误 ────────转换──────→ 登录-密码错误.yaml
-    └─ 登录-Token过期 ──────转换──────→ 登录-Token过期.yaml
-                                            │
-                                    多个自动化用例组合
-                                            │
-                                            ▼
-                                    case_flow: 用户登录完整流程
-```
-
-> 多条手工测试用例转换后，组合成一个自动化 `case_flow`，这才是最理想的状态。如果出现大量需要新建自动化用例的情况，说明手工测试用例的生成规则可能存在问题，应当优先完善手工侧。
-
----
+**MANDATORY — 先读整个文件**：`references/detail-2.md`（67 行，覆盖「登录表单-正常登录」）。
+**不要加载** 其他 references 文件。
 
 ## 🧩 产物三：编排文件生成规范
 
-### YAML 结构
-
-```yaml
-name: "流程名称"
-priority: "low | medium | high"
-tags:
-  - "标签1"
-  - "标签2"
-case_flows:
-  - id: "uuid"
-    title: "流程标题"
-    priority: "medium"
-    tags: ["冒烟", "主流程"]
-    tasks:
-      - title: "任务名称"
-        type: "dynamic-function | api | web | app | pc | mini-program | performance"
-        source_id: "function_code 或 case_uuid"
-        input_datas:
-          - name: "参数显示名"
-            value: "参数值"     # ⚠️ 引用变量必须用 {{变量名}}（详见下方规范）
-        output_datas:
-          - name: "输出显示名"   # ⚠️ 下游引用的是这里的 name，不是 value
-            value: "输出字段名"
-```
-
-### 🔁 变量引用规范（Jinja2 语法 — ⭐核心规则）
-
-> ⛔ **铁律**：编排文件 `input_datas[].value` 凡是**需要引用变量**的（环境变量、上游 task 输出），**必须**用 `{{变量名}}` Jinja2 语法。**严禁**写死成字面量。runner 阶段（`shenle-test-runner`）会用 `jinja2.Template(...).render(context)` 渲染，未用占位符的值就直接当字面量用，写死就再也换不了环境/换不了数据源。
-
-> 📚 渲染机制实现参考：`shenle-test-runner/src/shenle_test_runner/executors/base.py` 的 `render_inputs()`（约 155-194 行）+ `context.py` 的 `ContextManager` + `batch.py:extract_flows()`（约 305-315 行，把 `env_var.yaml` 初始化进 `context.json`）。
-
-#### 1. `{{变量名}}` 能引用哪些数据？
-
-渲染上下文来自 flow 目录下的 `context.json`，其内容 = **环境变量初始值** + **之前所有 task 累积的 output_datas**：
-
-| 数据来源 | 在 context.json 里的 key | 引用方式 |
-|----------|------------------------|----------|
-| **环境变量**（`AI-环境变量/{env}/env_var.yaml` 的每个 key） | 顶级 key，如 `api_project_url`、`web_project_url`、`TEST_PHONE_NUMBER` | `{{api_project_url}}`、`{{TEST_PHONE_NUMBER}}` |
-| **上游 dynamic-function 的输出** | 上游 task 的 `output_datas[].name`（**中文显示名**） | `{{手机号}}`、`{{登录密码}}` |
-| **上游 api/web 的输出**（AI 提取的字段） | 上游 task 的 `output_datas[].name`（**中文显示名**） | `{{用户ID}}`、`{{Token}}` |
-
-#### 2. ⭐ 引用键名 = `output_datas[].name`，**不是** `.value`
-
-runner 的实际写入规则（见 `shenle-test-runner/src/shenle_test_runner/executors/base.py:render_inputs` + `dynamic_function.py:90-95`）：
-
-- dynamic-function：`ctx.update(output_values)` 的 key = 函数返回值 dict 里与 `output_datas[].value` 同名的字段对应的 **output_datas[].name**。
-- api：AI 提取后 `ctx.update({o.name: o.value for o in outputs if o.value is not None})` —— **直接用 name 当 key**。
-
-**举例**（来自工作区真实编排 `8b6030cb-cdc1-47cf-b9dd-96e9726dfddc.yaml`）：
-
-```yaml
-# Task 1: dynamic-function 输出 name=value 两列
-- title: 获取登录账号信息
-  type: dynamic-function
-  source_id: get_login_credentials
-  output_datas:
-    - name: 手机号        # ← 这个 name 才是 context.json 里的 key
-      value: phone_number # ← 函数返回值里叫 phone_number 的字段
-    - name: 登录密码
-      value: password
-
-# Task 2: web 用例输入 value 引用 name（不是 value）
-- title: 正常登录
-  type: web
-  source_id: 244d5b6d8bc64535b9ef1ec72974e88c
-  input_datas:
-    - name: 手机号
-      value: '{{手机号}}'        # ✅ 引用 Task 1 的 name
-    - name: 登录密码
-      value: '{{登录密码}}'      # ✅ 引用 Task 1 的 name
-```
-
-**反例（必须避免）**：
-
-```yaml
-# ❌ 错误：直接写死字面量，跨环境不可移植
-input_datas:
-  - name: 手机号
-    value: '13800138001'
-
-# ❌ 错误：环境变量已存在但没用 {{}} 引用
-input_datas:
-  - name: URL
-    value: http://novel.hctestedu.com     # 应改为 '{{api_project_url}}'
-
-# ❌ 错误：引用错键名（用 value 而非 name）
-input_datas:
-  - name: 手机号
-    value: '{{phone_number}}'             # 应改为 '{{手机号}}'（因为 name=手机号）
-```
-
-#### 3. `{{变量名}}` 用在哪些字段？
-
-| 字段 | 支持 jinja2 | 说明 |
-|------|------------|------|
-| 编排 task `input_datas[].value` | ✅ **必须** | runner 渲染后注入函数/用例入参 |
-| 自动化用例 `case_content.request.url` | ✅ | api/web 用例 body/url 里的 `{{}}` 也会被 runner 二次渲染 |
-| 自动化用例 `case_content.request.urlParams[].value` | ✅ | 同上 |
-| 自动化用例 `case_content.steps[].*`（web） | ✅ | web 执行器渲染 |
-| 自动化用例 `case_precondition` | ✅ | 自然语言里引用变量，便于阅读 |
-| 环境变量文件 `env_var.yaml` 的 key | ❌ | key 是固定的，不用 `{{}}` 包裹 |
-| 编排 task `output_datas[].name` | ❌ | name 是键名定义，不是值 |
-
-> 渲染优先级（runner 内部）：环境变量 → 渲染 task `input_datas[].value` → 合并进 local_context → 渲染 `case_content.request` → 发起请求 / 驱动浏览器。
-
-#### 4. YAML 写入时的引号规则（花括号陷阱）
-
-含 `{{变量名}}` 的字符串值，**必须用单引号包裹**，否则 YAML 会把 `{` 解析为 flow mapping 起始符，导致 `yaml.safe_load()` 报错 `expected <block end>, but found '<scalar>'`：
-
-```yaml
-input_datas:
-  - name: URL
-    value: '{{api_project_url}}'    # ✅ 单引号
-  - name: 小说名称
-    value: '{{小说名称}}'            # ✅ 单引号
-  - name: 备注
-    value: 用户名={{手机号}}&密码={{登录密码}}   # ✅ 整串加单引号
-```
-
-> 💡 即便是纯中文/纯变量、不会与 YAML 语法冲突的简单值，也**统一加单引号**，省去排查时间。
-
-#### 5. 引用前的快速核对清单
-
-写完编排准备落盘前，自检：
-
-- [ ] 凡是**会因环境/账号/数据源变化**的值，都用了 `{{变量名}}`？（账号、密码、URL、token、user_id、手机号、邮箱…）
-- [ ] 引用的 `{{变量名}}` 在环境变量文件或上游 task 的 `output_datas[].name` 里**真实存在**？（不一致 = 渲染后是空串或报错）
-- [ ] 引用的键名是 **`output_datas[].name`**，不是 `value`？
-- [ ] 含 `{{}}` 的 value 字符串**加了单引号**？
-- [ ] 写完后跑过 `python -c "import yaml; yaml.safe_load(open('xxx.yaml'))"` 验证？
-
-### 数据流转规则
-
-编排的核心价值是**串联 tasks 之间的数据流转**：
-
-- 上游 task 的 `output_datas[].name` → **就是 context.json 里新增的 key**，供下游 `{{变量名}}` 引用
-- 下游 task 的 `input_datas[].value` → 必须写成 `{{上游 output_datas 的 name}}`（参见上方"🔁 变量引用规范"）
-- dynamic-function 类型 task 的输出由函数返回值决定（返回值 dict 的 key 与 `output_datas[].value` 对应）
-- api/web 类型 task 的输出由用例的 `output_datas[].value`（JSONPath 或自然语言）经 AI 提取后写入 context.json
-
-> 📖 已有编排参考：
-> - [登录到首页再到个人中心](../../AI-自动化测试编排/8b6030cb-cdc1-47cf-b9dd-96e9726dfddc.yaml)（✅ 正确引用示例）
-> - [公开课演示流程](D:/work/course/test/ai_test/AIQE/apps/shenle-test-runner/examples/AI-自动化测试编排/30e12d4e1be5438ea155139403729699.yaml)（✅ 正确引用示例）
-
----
+**MANDATORY — 先读整个文件**：`references/detail-1.md`（148 行，覆盖「🧩 产物三：编排文件生成规范」）。
+**不要加载** 其他 references 文件。
 
 ## 🔄 回退与修改
 
@@ -636,3 +227,39 @@ input_datas:
 | 11 | **函数和用例支持独立生成**。用户可以只要某一步，不一定要走完整流程 |
 | 12 | **YAML 写入后必须 Python 验证**。每个 .yaml 文件写入后，必须用 `python -c "import yaml; yaml.safe_load(open(...))"` 验证能正常加载。特别注意：`{{ }}` 花括号会被 YAML 解析为 flow mapping 语法，含占位符的步骤值必须加单引号包裹（如 `- '"输入 {{变量}}"'`），否则 yaml.safe_load 报错 |
 | 13 | **⛔ input_datas / case_content 引用变量必须用 `{{变量名}}` Jinja2 语法**。凡是可能因环境/账号/数据源变化的值（URL、账号、密码、token、user_id、手机号…），都**禁止**写死成字面量。runner 渲染上下文 = `context.json` = 环境变量初始值 + 上游 task `output_datas[].name` 累积。**引用键名是 `output_datas[].name`（中文显示名）**，不是 `value`。详见"🧩 产物三 → 🔁 变量引用规范"章节 |
+
+## 边界与反例
+
+### 不要做（每条都给原因）
+
+- **NEVER** 不要把断言写进步骤实现里——断言和动作耦合后，失败只说“步骤挂了”，说不出是接口错了还是期望错了
+- **NEVER** 不要在流程里硬编码环境地址——换环境要改流程文件，历史记录也无法对比
+- **NEVER** 不要省略上一步的取值声明——下游拿不到变量就会打出 `/users/` 这种 404，看起来像服务端问题
+
+### 失败与兜底
+
+| 现象 | 处理 |
+| --- | --- |
+| 变量取不到 | 先跑单步，确认上一步的 extract 路径在真实响应里存在 |
+| 流程中途失败 | 按失败步骤编号定位，不要从第一条重跑——先看该步的请求与响应 |
+| 结果不稳定 | 把随机数据换成带 seed 的生成器，并给查询加显式排序 |
+
+### 何时不该用这个 skill
+
+- 只需要读文档或写笔记：走知识库，不要调执行类命令。
+- 需要改被测系统的业务数据：先确认数据隔离，再考虑用录制/回放。
+
+## 执行顺序（顺序错了会白跑）
+
+1. 先定步骤边界，再定变量。
+2. 先写单步可跑，再串流程。
+3. 先定断言位置，再补前置数据。
+4. 先跑通一次，再参数化。
+
+### 再加一条红线
+
+- **NEVER** 不要在流程里放 `sleep` 当同步——固定睡眠会同时造成慢机偶发失败与快机无谓等待
+
+### 兜底原则
+
+任何一步失败，先留证（截图、响应体、日志），再重试；没有证据的重跑只会把问题变成偶发。

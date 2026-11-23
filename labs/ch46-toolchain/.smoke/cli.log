@@ -1,5 +1,5 @@
 $ shenle-web-cli start --headless --port 9223
-[shenle] 浏览器已启动 （无头模式）：CDP 端口 9223，pid 9220
+[shenle] 浏览器已启动 （无头模式）：CDP 端口 9223，pid 17440
 [shenle] 数据目录：E:\ailearning\shenle-ai-qa\user_data\9223
 (exit 0)
 
@@ -12,21 +12,21 @@ $ shenle-web-cli screenshot E:\ailearning\shenle-ai-qa\labs\ch46-toolchain\.smok
 (exit 0)
 
 $ shenle-web-cli click 页面上的登录按钮
-[OK] click "页面上的登录按钮": (87, 160)
+[OK] click "页面上的登录按钮": (88, 161)
 (exit 0)
 
 $ shenle-web-cli get 页面底部那行状态文字
 ## 布局
-位于页面左下角，单行文本，靠左对齐，字体较小，与上方“登录”按钮垂直间距适中。
+位于页面左下方，紧接在“登录”按钮下方，为单行左对齐文本，字号较小，与上方内容有明显垂直间距。
 
 ## 图标
 无
 
 ## 文字
-已点击 2026-11-23T03:10:53.831Z
+已点击 2026-11-23T03:30:08.561Z
 
 ## 介绍
-该区域为操作时间戳状态提示，用于记录并显示用户最近一次点击事件的具体UTC时间，辅助调试或审计。
+该区域是操作时间戳状态提示，用于记录并显示用户最近一次点击（如登录）的精确时间，便于调试或审计。
 [OK] get "页面底部那行状态文字"
 (exit 0)
 

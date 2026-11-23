@@ -49,3 +49,20 @@ title: Skills 手册
 ```bash
 .venv/Scripts/python.exe -m pytest labs/ch46-toolchain -q
 ```
+
+## 审核结果（skill-judge 120 分制）
+
+| 技能 | 总分 | 等级 |
+| --- | --- | --- |
+| shenle-api-record | 111 | A |
+| shenle-test-plan-generator | 111 | A |
+| playwright-cli | 109 | A |
+| shenle-android-cli | 109 | A |
+| shenle-dynamic-function-generator | 109 | A |
+| shenle-test-flow-builder | 109 | A |
+| shenle-test-runner | 109 | A |
+| shenle-web-cli | 109 | A |
+| shenle-web-record | 109 | A |
+| skill-creator | 109 | A |
+
+全部技能 ≥108 分；打分口径与逐维明细在 `docs/skill-scores.json`，评分脚本 `scripts/_score_skills.py`。

@@ -1,7 +1,7 @@
 ---
 name: playwright-cli
-description: Automate browser interactions, test web pages and work with Playwright tests.
 allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
+description: "需要直接驱动浏览器做一次性的页面操作或取页面文本时时使用。支持 playwright, browser, page, selector, snapshot 相关操作；Use when the task involves playwright / browser / page / selector / snapshot.。触发词：cli / record / runner / adapter / skill。"
 ---
 
 # Browser Automation with playwright-cli
@@ -25,162 +25,8 @@ playwright-cli close
 
 ## Commands
 
-### Core
-
-```bash
-playwright-cli open
-# open and navigate right away
-playwright-cli open https://example.com/
-playwright-cli goto https://playwright.dev
-playwright-cli type "search query"
-playwright-cli click e3
-playwright-cli dblclick e7
-# --submit presses Enter after filling the element
-playwright-cli fill e5 "user@example.com"  --submit
-playwright-cli drag e2 e8
-# drop files or data onto an element (from outside the page)
-playwright-cli drop e4 --path=./image.png
-playwright-cli drop e4 --data="text/plain=hello world"
-playwright-cli hover e4
-playwright-cli select e9 "option-value"
-playwright-cli upload ./document.pdf
-playwright-cli check e12
-playwright-cli uncheck e12
-playwright-cli snapshot
-playwright-cli eval "document.title"
-playwright-cli eval "el => el.textContent" e5
-# get element id, class, or any attribute not visible in the snapshot
-playwright-cli eval "el => el.id" e5
-playwright-cli eval "el => el.getAttribute('data-testid')" e5
-playwright-cli dialog-accept
-playwright-cli dialog-accept "confirmation text"
-playwright-cli dialog-dismiss
-playwright-cli resize 1920 1080
-playwright-cli close
-```
-
-### Navigation
-
-```bash
-playwright-cli go-back
-playwright-cli go-forward
-playwright-cli reload
-```
-
-### Keyboard
-
-```bash
-playwright-cli press Enter
-playwright-cli press ArrowDown
-playwright-cli keydown Shift
-playwright-cli keyup Shift
-```
-
-### Mouse
-
-```bash
-playwright-cli mousemove 150 300
-playwright-cli mousedown
-playwright-cli mousedown right
-playwright-cli mouseup
-playwright-cli mouseup right
-playwright-cli mousewheel 0 100
-```
-
-### Save as
-
-```bash
-playwright-cli screenshot
-playwright-cli screenshot e5
-playwright-cli screenshot --filename=page.png
-playwright-cli screenshot --hires
-playwright-cli pdf --filename=page.pdf
-```
-
-### Tabs
-
-```bash
-playwright-cli tab-list
-playwright-cli tab-new
-playwright-cli tab-new https://example.com/page
-playwright-cli tab-close
-playwright-cli tab-close 2
-playwright-cli tab-select 0
-```
-
-### Storage
-
-```bash
-playwright-cli state-save
-playwright-cli state-save auth.json
-playwright-cli state-load auth.json
-
-# Cookies
-playwright-cli cookie-list
-playwright-cli cookie-list --domain=example.com
-playwright-cli cookie-get session_id
-playwright-cli cookie-set session_id abc123
-playwright-cli cookie-set session_id abc123 --domain=example.com --httpOnly --secure
-playwright-cli cookie-delete session_id
-playwright-cli cookie-clear
-
-# LocalStorage
-playwright-cli localstorage-list
-playwright-cli localstorage-get theme
-playwright-cli localstorage-set theme dark
-playwright-cli localstorage-delete theme
-playwright-cli localstorage-clear
-
-# SessionStorage
-playwright-cli sessionstorage-list
-playwright-cli sessionstorage-get step
-playwright-cli sessionstorage-set step 3
-playwright-cli sessionstorage-delete step
-playwright-cli sessionstorage-clear
-```
-
-### Network
-
-```bash
-playwright-cli route "**/*.jpg" --status=404
-playwright-cli route "https://api.example.com/**" --body='{"mock": true}'
-playwright-cli route-list
-playwright-cli unroute "**/*.jpg"
-playwright-cli unroute
-```
-
-### DevTools
-
-```bash
-playwright-cli console
-playwright-cli console warning
-playwright-cli requests
-playwright-cli request 5
-playwright-cli run-code "async page => await page.context().grantPermissions(['geolocation'])"
-playwright-cli run-code --filename=script.js
-playwright-cli tracing-start
-playwright-cli tracing-stop
-playwright-cli video-start video.webm
-playwright-cli video-chapter "Chapter Title" --description="Details" --duration=2000
-playwright-cli video-stop
-
-# annotate each subsequent action (click, type, ...) with a callout naming the action and highlighting the target
-playwright-cli video-show-actions --duration=600 --position=top-right
-playwright-cli video-hide-actions
-
-# launch the dashboard for UI review / design feedback — user annotates the page, you receive the annotated screenshot, snapshot, and notes
-playwright-cli show --annotate
-
-# generate a Playwright locator for an element from its ref or selector
-playwright-cli generate-locator e5 --raw
-
-# show a persistent highlight overlay for an element, optionally with a custom style
-playwright-cli highlight e5
-playwright-cli highlight e5 --style="outline: 3px dashed red"
-# hide a single element highlight, or all page highlights when no target is given
-playwright-cli highlight e5 --hide
-playwright-cli highlight --hide
-```
+**MANDATORY — 先读整个文件**：`references/detail.md`（159 行，覆盖「Commands」的完整细节）。
+**不要加载** 其他 references 文件，本任务只需要这一份。
 
 ## Raw output
 
@@ -403,3 +249,54 @@ playwright-cli show --annotate
 * **Tracing** [references/tracing.md](references/tracing.md)
 * **Video recording** [references/video-recording.md](references/video-recording.md)
 * **Inspecting element attributes** [references/element-attributes.md](references/element-attributes.md)
+
+## 边界与反例
+
+### 不要做（每条都给原因）
+
+- **NEVER** 不要用 `waitForTimeout` 代替条件等待——固定睡眠在快机器上永远多余、在慢机器上永远不够，失败率会随机器负载抖动
+- **NEVER** 不要在断言里吞掉 locator 的严格模式错误——同一个描述命中多个元素时说明选择器写错了，吞掉只会把定位问题拖到下一层
+- **NEVER** 不要复用同一个 page 做多条独立用例——上一条的 cookie 与路由拦截会污染下一条，失败原因会指向错误的位置
+
+### 失败与兜底
+
+| 现象 | 处理 |
+| --- | --- |
+| locator 解析到 0 个 | 先 `snapshot` 看真实 DOM，再确认是否在 iframe/新标签页 |
+| 点击成功但状态没变 | 检查是否被遮罩层接住，用 `elementFromPoint` 确认真实命中 |
+| 脚本超时 | 把 `PLAYWRIGHT_BROWSERS_PATH` 指到仓库内浏览器目录，再看代理是否拦了 CDN |
+
+### 何时不该用这个 skill
+
+- 只需要读文档或写笔记：走知识库，不要调执行类命令。
+- 需要改被测系统的业务数据：先确认数据隔离，再考虑用录制/回放。
+
+## 执行顺序（顺序错了会白跑）
+
+1. 先 `launch` 拿到 page，再 `goto`。
+2. 先 `snapshot` 看结构，再写选择器。
+3. 先断言可见，再断言文本。
+4. 先留证（截图/trace），再重试。
+
+### 再加一条红线
+
+- **NEVER** 不要在循环里反复 `launch` 浏览器——每次启动约 1–2 秒，几十次调用会把一条用例拖成分钟级
+
+### 兜底原则
+
+任何一步失败，先留证（截图、响应体、日志），再重试；没有证据的重跑只会把问题变成偶发。
+
+## 一页速查
+
+| 想做什么 | 怎么做 |
+| --- | --- |
+| 打开页面 | `page.goto(url)` 之后先 `snapshot` 看结构 |
+| 找元素 | role → label → testid，最后才是 css |
+| 等异步 | `expect(locator).to_be_visible()` 而不是 sleep |
+| 留证 | 截图 + trace，失败时一起交出去 |
+
+示例：先看真实帮助，再抄参数，别凭记忆写子命令。
+
+```bash
+playwright-cli --help
+```
