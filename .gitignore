@@ -35,3 +35,7 @@ _site_preview/
 labs/**/out/
 labs/**/reports/
 labs/**/__pycache__/
+
+# editable install artifacts
+*.egg-info/
+labs/ch46-toolchain/.base
