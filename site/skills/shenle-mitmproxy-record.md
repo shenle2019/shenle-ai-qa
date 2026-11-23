@@ -4,7 +4,7 @@ title: shenle-mitmproxy-record
 
 # shenle-mitmproxy-record
 
-> Use when recording HTTP/HTTPS traffic from clients that don't expose a CDP socket — desktop apps, mobile H5 with manual proxy setup, native apps, or any case where Playwright-based recorders (shenle-…
+> 用 mitmproxy 代理录制 HTTP/HTTPS 流量，产出可归档的请求清单与接口资产；适用于抓包、复现请求、补接口文档
 
 - 正文 195 行，随包 references 0 个
 - [下载这个技能（zip，含 SKILL.md）](/skills/shenle-mitmproxy-record.zip)
