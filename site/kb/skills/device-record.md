@@ -20,12 +20,12 @@ title: shenle-device-record
 
 ```bash
 shenle-device-record record
-shenle-device-record serve --port 8811
+shenle-device-record serve
 ```
 
 ## 产物与判读
 
-截图 PNG + 层级 XML + 元信息 JSON
+截图 PNG + 层级 XML + 元信息 JSON（按用户要求本轮不做真机验证）
 
 ## 常见失败模式
 

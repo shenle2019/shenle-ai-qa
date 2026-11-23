@@ -22,7 +22,7 @@ DATA = [
         "web-record", "录制采集", "shenle-web-record",
         "打开网页，人工点 SNAP 抓当前视口与元素结构，按批次落盘。",
         ["按批次组织快照：一批一个目录，便于回放和比对", "同时保存截图与元素结构（可点区域、文本、层级）", "支持交互式多步操作，每步都能单独快照"],
-        ["shenle-web-record record https://example.com -o ./snapshots", "浏览器打开后逐屏点 SNAP，完成后关闭窗口"],
+        ["shenle-web-record record https://example.com", "浏览器打开后逐屏点 SNAP，完成后关闭窗口"],
         "`snapshots/<batch>/` 下每步一份截图 + 一份结构文件",
         "元素定位重复、视口过小导致目标被裁掉",
     ),
@@ -30,8 +30,8 @@ DATA = [
         "device-record", "录制采集", "shenle-device-record",
         "连安卓设备，抓当前屏幕与界面层级，落盘成结构化快照。",
         ["`record` 单次抓取，`serve` 起本地服务供多次调用", "截图 + `uiautomator` 层级一起存，定位信息不丢", "支持指定设备序列号，多机时可分流"],
-        ["shenle-device-record record", "shenle-device-record serve --port 8811"],
-        "截图 PNG + 层级 XML + 元信息 JSON",
+        ["shenle-device-record record", "shenle-device-record serve"],
+        "截图 PNG + 层级 XML + 元信息 JSON（按用户要求本轮不做真机验证）",
         "设备未授权 / 屏幕锁定时层级抓不全",
     ),
     (
@@ -44,18 +44,18 @@ DATA = [
     ),
     (
         "web-cli", "执行与定位", "shenle-web-cli",
-        "给网页截图，让视觉模型找元素，直接点击、输入、断言。",
-        ["`--port` 复用已开浏览器会话，`--headless` 适合流水线", "元素不依赖固定选择器，靠视觉 + 语义定位", "内置截图、滚动、页面描述、断言等常用动作"],
-        ["shenle-web-cli open https://example.com", "shenle-web-cli click --text \"登录\"", "shenle-web-cli screenshot -o out.png"],
-        "操作日志 + 截图；断言失败时给出视觉差异说明",
-        "需要视觉模型 key；页面渲染慢时首次定位会超时",
+        "给网页截图，让视觉模型找元素，直接点击、输入、读回页面内容。",
+        ["子命令：`start / navigate / screenshot / click / input / get / scroll / url / title / close`", "`start --headless --port N` 起后台浏览器并把端口写进 state.json，后续命令自动复用", "`click \"描述\"` / `input \"描述\" \"文本\"` 收自然语言，不写选择器"],
+        ["shenle-web-cli start --headless --port 9223", "shenle-web-cli navigate http://127.0.0.1:8733/index.html", "shenle-web-cli screenshot out/shot.png", "shenle-web-cli click \"页面上的登录按钮\"", "shenle-web-cli get \"页面底部那行状态文字\"", "shenle-web-cli close"],
+        "命令回显（点击返回坐标、截图返回尺寸、`get` 按布局/图标/文字/介绍四节输出）+ 截图文件",
+        "需要视觉模型 key；9222 被占用时换 `--port`；未 `start` 就调用其它命令会报「未连接到当前设备」",
     ),
     (
         "android-cli", "执行与定位", "shenle-android-cli",
         "连安卓设备，截图后视觉定位并执行点击、输入、滑动、按键。",
         ["`-s SERIAL` 指定设备，`--debug` 打印定位过程", "`--input-method` 可选 clipboard / adbkeyboard 解决中文输入", "支持滑动、按键、区域内容读取"],
-        ["shenle-android-cli -s <serial> screenshot", "shenle-android-cli -s <serial> tap --text \"登录\"", "shenle-android-cli -s <serial> input --text \"hello\""],
-        "每步截图 + 动作结果，失败时保留现场",
+        ["shenle-android-cli devices", "shenle-android-cli -s <serial> screenshot", "shenle-android-cli -s <serial> click \"登录按钮\""],
+        "每步截图 + 动作结果，失败时保留现场（按用户要求本轮不做真机验证）",
         "需要视觉模型 key；输入法联想会让读回文本与输入不一致",
     ),
     (
@@ -277,8 +277,11 @@ def main() -> None:
     KB.mkdir(parents=True, exist_ok=True)
     LABS.mkdir(parents=True, exist_ok=True)
     probes: dict[str, str] = {}
+    e2e = ROOT / "labs" / "ch46-toolchain" / ".smoke" / "cli.log"
     for slug, *_ in DATA:
         probes[slug] = run_probe(slug)
+        if slug == "web-cli" and e2e.exists():
+            probes[slug] = e2e.read_text(encoding="utf-8").strip()
 
     for slug, group, name, desc, feats, usage, output, fail in DATA:
         (KB / f"{slug}.md").write_text(

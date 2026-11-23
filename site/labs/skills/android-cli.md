@@ -14,7 +14,7 @@ title: shenle-android-cli 单跑记录
 ## 本次调用
 
 ```bash
-shenle-android-cli -s <serial> screenshot
+shenle-android-cli devices
 ```
 
 ## 真实输出
@@ -26,7 +26,7 @@ shenle-android-cli 0.1.0
 ## 判读
 
 - 退出正常、能看到命令自身的用法/版本，说明**注册与依赖这一层通了**。
-- 产物形态：每步截图 + 动作结果，失败时保留现场
+- 产物形态：每步截图 + 动作结果，失败时保留现场（按用户要求本轮不做真机验证）
 - 需要人工或外部条件（点 SNAP、真机、视觉模型 key）的步骤，标注为「未能自动验证」，不写成功。
 
 ## 复现

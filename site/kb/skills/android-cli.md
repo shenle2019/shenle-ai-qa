@@ -23,14 +23,14 @@ title: shenle-android-cli
 ## 怎么用
 
 ```bash
+shenle-android-cli devices
 shenle-android-cli -s <serial> screenshot
-shenle-android-cli -s <serial> tap --text "登录"
-shenle-android-cli -s <serial> input --text "hello"
+shenle-android-cli -s <serial> click "登录按钮"
 ```
 
 ## 产物与判读
 
-每步截图 + 动作结果，失败时保留现场
+每步截图 + 动作结果，失败时保留现场（按用户要求本轮不做真机验证）
 
 ## 常见失败模式
 

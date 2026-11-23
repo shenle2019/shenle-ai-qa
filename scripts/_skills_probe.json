@@ -2,7 +2,7 @@
  "web-record": "shenle-web-record 0.1.0",
  "device-record": "shenle-device-record 0.1.0",
  "api-record": "shenle-api-record 0.1.0",
- "web-cli": "shenle-web-cli 0.1.0",
+ "web-cli": "$ shenle-web-cli start --headless --port 9223\n[shenle] 浏览器已启动 （无头模式）：CDP 端口 9223，pid 9220\n[shenle] 数据目录：E:\\ailearning\\shenle-ai-qa\\user_data\\9223\n(exit 0)\n\n$ shenle-web-cli navigate http://127.0.0.1:8733/index.html\n[OK] navigate: http://127.0.0.1:8733/index.html → title=\"cli 冒烟\"\n(exit 0)\n\n$ shenle-web-cli screenshot E:\\ailearning\\shenle-ai-qa\\labs\\ch46-toolchain\\.smoke\\shot.png\n[OK] screenshot: E:\\ailearning\\shenle-ai-qa\\labs\\ch46-toolchain\\.smoke\\shot.png (1280x720) [png]\n(exit 0)\n\n$ shenle-web-cli click 页面上的登录按钮\n[OK] click \"页面上的登录按钮\": (87, 160)\n(exit 0)\n\n$ shenle-web-cli get 页面底部那行状态文字\n## 布局\n位于页面左下角，单行文本，靠左对齐，字体较小，与上方“登录”按钮垂直间距适中。\n\n## 图标\n无\n\n## 文字\n已点击 2026-11-23T03:10:53.831Z\n\n## 介绍\n该区域为操作时间戳状态提示，用于记录并显示用户最近一次点击事件的具体UTC时间，辅助调试或审计。\n[OK] get \"页面底部那行状态文字\"\n(exit 0)\n\n$ shenle-web-cli title --format json\n{\"url\": \"http://127.0.0.1:8733/index.html\", \"title\": \"cli 冒烟\"}\n(exit 0)\n\n$ shenle-web-cli close\n[shenle] 浏览器已关闭（端口 9223）\n(exit 0)",
  "android-cli": "shenle-android-cli 0.1.0",
  "api-cli": "shenle-api-cli 0.2.0",
  "test-flow-builder": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 638 行 / 12 个二级标题",

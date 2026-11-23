@@ -18,7 +18,7 @@ title: Skills 手册
 
 | 技能 | 做什么 | 手册 | 单跑记录 |
 | --- | --- | --- | --- |
-| `shenle-web-cli` | 给网页截图，让视觉模型找元素，直接点击、输入、断言。 | [手册](/kb/skills/web-cli) | [记录](/labs/skills/web-cli) |
+| `shenle-web-cli` | 给网页截图，让视觉模型找元素，直接点击、输入、读回页面内容。 | [手册](/kb/skills/web-cli) | [记录](/labs/skills/web-cli) |
 | `shenle-android-cli` | 连安卓设备，截图后视觉定位并执行点击、输入、滑动、按键。 | [手册](/kb/skills/android-cli) | [记录](/labs/skills/android-cli) |
 | `shenle-api-cli` | 命令行发接口请求、抽字段、断言，替代 curl 给 AI 用。 | [手册](/kb/skills/api-cli) | [记录](/labs/skills/api-cli) |
 

@@ -23,7 +23,7 @@ title: shenle-web-record
 ## 怎么用
 
 ```bash
-shenle-web-record record https://example.com -o ./snapshots
+shenle-web-record record https://example.com
 浏览器打开后逐屏点 SNAP，完成后关闭窗口
 ```
 

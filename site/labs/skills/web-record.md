@@ -14,7 +14,7 @@ title: shenle-web-record 单跑记录
 ## 本次调用
 
 ```bash
-shenle-web-record record https://example.com -o ./snapshots
+shenle-web-record record https://example.com
 ```
 
 ## 真实输出

@@ -8,7 +8,7 @@ title: shenle-web-cli
 
 ## 它是什么
 
-给网页截图，让视觉模型找元素，直接点击、输入、断言。
+给网页截图，让视觉模型找元素，直接点击、输入、读回页面内容。
 
 技能自带的触发描述：
 
@@ -16,25 +16,28 @@ title: shenle-web-cli
 
 ## 核心功能
 
-- `--port` 复用已开浏览器会话，`--headless` 适合流水线
-- 元素不依赖固定选择器，靠视觉 + 语义定位
-- 内置截图、滚动、页面描述、断言等常用动作
+- 子命令：`start / navigate / screenshot / click / input / get / scroll / url / title / close`
+- `start --headless --port N` 起后台浏览器并把端口写进 state.json，后续命令自动复用
+- `click "描述"` / `input "描述" "文本"` 收自然语言，不写选择器
 
 ## 怎么用
 
 ```bash
-shenle-web-cli open https://example.com
-shenle-web-cli click --text "登录"
-shenle-web-cli screenshot -o out.png
+shenle-web-cli start --headless --port 9223
+shenle-web-cli navigate http://127.0.0.1:8733/index.html
+shenle-web-cli screenshot out/shot.png
+shenle-web-cli click "页面上的登录按钮"
+shenle-web-cli get "页面底部那行状态文字"
+shenle-web-cli close
 ```
 
 ## 产物与判读
 
-操作日志 + 截图；断言失败时给出视觉差异说明
+命令回显（点击返回坐标、截图返回尺寸、`get` 按布局/图标/文字/介绍四节输出）+ 截图文件
 
 ## 常见失败模式
 
-需要视觉模型 key；页面渲染慢时首次定位会超时
+需要视觉模型 key；9222 被占用时换 `--port`；未 `start` 就调用其它命令会报「未连接到当前设备」
 
 ## 相关
 
