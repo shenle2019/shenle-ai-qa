@@ -6,8 +6,9 @@ title: shenle-dynamic-function-generator
 
 > 需要为测试平台动态生成可复用函数（数据处理、断言、适配器）时时使用。支持 generator, 动态函数, 代码生成, 适配器, 校验 相关操作；Use when the task involves generator / 动态函数 / 代码生成 / 适配器 / 校验.。触发词：cli / record / runner / adapter / skill。
 
-- 正文 293 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-dynamic-function-generator.zip)
+正文 293 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-dynamic-function-generator.zip)　·　看说明与评分：[Skills 手册 · dynamic-function-generator](/kb/skills/dynamic-function-generator)
 
 ---
 

@@ -6,8 +6,9 @@ title: shenle-api-record
 
 > 需要抓取接口请求并沉淀成可执行的接口资产或用例时时使用。支持 api-record, 抓包, 代理, 证书, 请求模板 相关操作；Use when the task involves api-record / 抓包 / 代理 / 证书 / 请求模板.
 
-- 正文 118 行，随包 references 1 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-api-record.zip)
+正文 118 行，随包 references 1 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-api-record.zip)　·　看说明与评分：[Skills 手册 · api-record](/kb/skills/api-record)
 
 ---
 

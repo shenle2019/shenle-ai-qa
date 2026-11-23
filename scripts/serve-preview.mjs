@@ -23,7 +23,16 @@ createServer(async (req, res) => {
   try {
     const url = decodeURIComponent((req.url ?? '/').split('?')[0])
     let file = join(root, normalize(url))
-    const info = await stat(file).catch(() => null)
+    let info = await stat(file).catch(() => null)
+    // cleanUrls：/chapters/ch01 要落到 chapters/ch01.html
+    if (!info && !extname(file)) {
+      const asHtml = `${file}.html`
+      const htmlInfo = await stat(asHtml).catch(() => null)
+      if (htmlInfo) {
+        file = asHtml
+        info = htmlInfo
+      }
+    }
     if (!info || info.isDirectory()) {
       file = join(file, 'index.html')
     }
@@ -31,8 +40,15 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': TYPES[extname(file)] ?? 'application/octet-stream' })
     res.end(body)
   } catch {
-    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
-    res.end('404')
+    // GitHub Pages 对未知路径会回 404.html，这里照着做，避免预览与线上不一致
+    try {
+      const body = await readFile(join(root, '404.html'))
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' })
+      res.end(body)
+    } catch {
+      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' })
+      res.end('404')
+    }
   }
 }).listen(port, '127.0.0.1', () => {
   console.log(`serving ${root} at http://127.0.0.1:${port}/`)

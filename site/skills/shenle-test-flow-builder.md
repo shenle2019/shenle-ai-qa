@@ -6,8 +6,9 @@ title: shenle-test-flow-builder
 
 > 把若干接口或页面步骤编排成一条可重复执行的测试流程时时使用。支持 flow, step, yaml, 编排, 断言, 变量传递 相关操作；Use when the task involves flow / step / yaml / 编排 / 断言 / 变量传递.。触发词：cli / record / runner / adapter / skill。
 
-- 正文 265 行，随包 references 4 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-test-flow-builder.zip)
+正文 265 行，随包 references 4 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-test-flow-builder.zip)　·　看说明与评分：[Skills 手册 · test-flow-builder](/kb/skills/test-flow-builder)
 
 ---
 

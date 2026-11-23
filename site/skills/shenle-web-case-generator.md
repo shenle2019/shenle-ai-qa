@@ -6,8 +6,9 @@ title: shenle-web-case-generator
 
 > 使用场景：把 Web 测试点分析文档（.md）转成可执行的功能测试用例，每批一个独立新文件。当用户说「生成 Web 用例」「把测试点写成用例」时触发。
 
-- 正文 260 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-web-case-generator.zip)
+正文 260 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-web-case-generator.zip)　·　看说明与评分：[Skills 手册 · shenle-web-case-generator](/kb/skills/shenle-web-case-generator)
 
 ---
 

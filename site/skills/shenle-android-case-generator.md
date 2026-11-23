@@ -6,8 +6,9 @@ title: shenle-android-case-generator
 
 > 使用场景：把安卓测试点分析文档（.md）转成 App 功能测试用例，每批一个独立新文件。当用户说「生成 App 用例」「移动端测试点转用例」时触发。
 
-- 正文 298 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-android-case-generator.zip)
+正文 298 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-android-case-generator.zip)　·　看说明与评分：[Skills 手册 · shenle-android-case-generator](/kb/skills/shenle-android-case-generator)
 
 ---
 

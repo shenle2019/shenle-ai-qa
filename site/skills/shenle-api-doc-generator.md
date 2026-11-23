@@ -6,8 +6,9 @@ title: shenle-api-doc-generator
 
 > 使用场景：把抓包产物（raw JSON / HAR / 清单 .json）整理成标准化接口文档 .md，并给出用例骨架。当用户说「补接口文档」「把抓包整理成文档」时触发。
 
-- 正文 253 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-api-doc-generator.zip)
+正文 253 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-api-doc-generator.zip)　·　看说明与评分：[Skills 手册 · shenle-api-doc-generator](/kb/skills/shenle-api-doc-generator)
 
 ---
 

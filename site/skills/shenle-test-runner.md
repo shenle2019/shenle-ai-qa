@@ -6,8 +6,9 @@ title: shenle-test-runner
 
 > 按计划批量执行用例、汇总结果并产出报告时时使用。支持 runner, 执行, 结果汇总, 报告, 退出码 相关操作；Use when the task involves runner / 执行 / 结果汇总 / 报告 / 退出码.
 
-- 正文 212 行，随包 references 1 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-test-runner.zip)
+正文 212 行，随包 references 1 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-test-runner.zip)　·　看说明与评分：[Skills 手册 · test-runner](/kb/skills/test-runner)
 
 ---
 

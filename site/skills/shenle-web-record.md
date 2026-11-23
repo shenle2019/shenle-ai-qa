@@ -6,8 +6,9 @@ title: shenle-web-record
 
 > 需要在真实浏览器里录制操作步骤并导出可回放的脚本时时使用。支持 record, 录制, SNAP, 回放, 步骤 相关操作；Use when the task involves record / 录制 / SNAP / 回放 / 步骤.
 
-- 正文 186 行，随包 references 0 个
-- [下载这个技能（zip，含 SKILL.md）](/skills/shenle-web-record.zip)
+正文 186 行，随包 references 0 个。
+
+读完想直接用：[下载 zip（SKILL.md）](/skills/shenle-web-record.zip)　·　看说明与评分：[Skills 手册 · web-record](/kb/skills/web-record)
 
 ---
 

@@ -6,8 +6,9 @@ title: shenle-web-testpoint
 
 > 使用场景：读 Web 需求文档或页面快照，产出测试点分析文档（.md，含功能点 / 状态迁移 / 边界 / 异常）。当用户说「分析测试点」「出测试点文档」时触发。
 
-- 正文 243 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-web-testpoint.zip)
+正文 243 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-web-testpoint.zip)　·　看说明与评分：[Skills 手册 · shenle-web-testpoint](/kb/skills/shenle-web-testpoint)
 
 ---
 

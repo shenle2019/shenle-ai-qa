@@ -6,8 +6,9 @@ title: shenle-android-cli
 
 > 需要在安卓真机或模拟器上完成点击、输入、截图与界面断言时时使用。支持 android, adb, uiautomator, 真机, 设备 相关操作；Use when the task involves android / adb / uiautomator / 真机 / 设备.。触发词：cli / record / runner / adapter / skill。
 
-- 正文 301 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-android-cli.zip)
+正文 301 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-android-cli.zip)　·　看说明与评分：[Skills 手册 · android-cli](/kb/skills/android-cli)
 
 ---
 

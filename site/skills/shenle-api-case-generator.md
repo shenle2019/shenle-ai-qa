@@ -6,8 +6,9 @@ title: shenle-api-case-generator
 
 > 使用场景：把接口文档（.md）变成可执行的 API 测试用例（正常 / 边界 / 异常），每个接口一个独立文件，文件名带 YYYYMMDDHHMMSS 时间戳。当用户说「生成接口测试用例」「补 XXX 接口的用例」时触发。
 
-- 正文 220 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-api-case-generator.zip)
+正文 220 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-api-case-generator.zip)　·　看说明与评分：[Skills 手册 · shenle-api-case-generator](/kb/skills/shenle-api-case-generator)
 
 ---
 
