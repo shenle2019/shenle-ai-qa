@@ -107,13 +107,13 @@ def main() -> None:
         "",
         f"平台在用的 {len(rows)} 个技能，全部可直接读全文、也可下载原始文件（zip 内含 `SKILL.md` 与 references）。",
         "",
-        "| 技能 | 一句话说明 | 正文 | references | 预览 | 下载 |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| 技能 | 一句话说明 | 正文 | references | 打开 |",
+        "| --- | --- | --- | --- | --- |",
     ]
     for name, lines, ref_count, desc in rows:
         table.append(
-            f"| `{name}` | {esc(desc)} | {lines} 行 | {ref_count} | [预览](/skills/{name}) | "
-            f"[zip](/skills/{name}.zip) |"
+            f"| `{name}` | {esc(desc)} | {lines} 行 | {ref_count} | "
+            f"[预览](/skills/{name}) · [zip](/skills/{name}.zip) |"
         )
     table += [
         "",
