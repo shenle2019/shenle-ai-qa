@@ -39,3 +39,8 @@ labs/**/__pycache__/
 # editable install artifacts
 *.egg-info/
 labs/ch46-toolchain/.base
+
+# browser profile written by shenle-web-cli
+user_data/
+# run artefacts
+labs/ch46-toolchain/.smoke/shot.png
