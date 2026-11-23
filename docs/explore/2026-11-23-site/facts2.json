@@ -1,0 +1,64 @@
+{
+  "404_text": "Skip to content | shenle · AI 测试全栈 | Main Navigation | 首页 | 测试全栈知识库 | 实操记录 | 在线运行 | Skills 库 | GitHub |  | 404 |  | PAGE NOT FOUND | But if you don't change your direction, and if you keep looking, you may end up where y",
+  "404_links": [
+    "Skip to content",
+    "shenle · AI 测试全栈",
+    "首页",
+    "测试全栈知识库",
+    "实操记录",
+    "在线运行",
+    "Skills 库",
+    "GitHub"
+  ],
+  "no_slash": {
+    "title": "shenle-web-cli | shenle · AI 测试全栈",
+    "h1": "shenle-web-cli\n​",
+    "words": 7510
+  },
+  "with_slash": {
+    "title": "shenle-web-cli | shenle · AI 测试全栈",
+    "h1": "",
+    "words": 110
+  },
+  "search_ui": {
+    "DocSearch": 0,
+    "VPNavBarSearch": 1,
+    "inputs": 0,
+    "search_buttons": 0
+  },
+  "switches": [
+    {
+      "cls": "VPSwitch VPSwitchAppearance",
+      "label": "Switch to dark theme",
+      "parent": "VPNavBarAppearance appearance"
+    },
+    {
+      "cls": "VPSwitch VPSwitchAppearance",
+      "label": "Switch to dark theme",
+      "parent": "appearance-action"
+    }
+  ],
+  "last_updated": "最后更新: 11/20/26, 6:13 PM",
+  "playground_before_len": 111,
+  "playground_after": [
+    "for value in [\"42\", \"3.14\"]:",
+    "    try:",
+    "        print(value, \"->\", parse_int(value))",
+    "    except ValueError as err:",
+    "        print(\"失败:\", err, \"| 原因:\", repr(err.__cause__))",
+    "点「运行」看输出。首次会下载一次运行时，之后秒开。"
+  ],
+  "hamburger": 1,
+  "mobile_menu_open": true,
+  "home_ctas": [
+    {
+      "t": "从第一章开始",
+      "h": "/shenle-ai-qa/chapters/ch01"
+    },
+    {
+      "t": "看实操代码",
+      "h": "/shenle-ai-qa/labs/"
+    }
+  ],
+  "chapters_index_text": "测试全栈知识库 | ​ |  | 按学习顺序排列。每一章都对应笔记一份、labs/ 目录一个、可访问页面一个。 |  | 第一阶段 · Python 与工程基础 | ​ | 章\t主题\t笔记\t实操目录 | 01\t环境、第一个程序与基础语法\tch01\tlabs/ch01-basics | 02\t条件、循环与函数入门\tch02\tlabs/ch02-control-flow | 03\t列表、元组、字典与推导式\tch03\tlabs/ch03-collections | 04\t函数进阶与内存模型\tch04\tlabs/ch04-functions | 05\t面向对象与装饰器\tch05\tlabs/ch05-oop | 06\t标准库、文件、JSON 与异常\tch06\tlabs/ch06-stdlib | 07\t实战：测试数据工具箱\tch07\tlabs/ch07-testkit | 第二阶段 · 接口自动化 | ​ | 章\t主题\t笔记\t实操目录 | 08\t接口与接口测试基础\tch"
+}
