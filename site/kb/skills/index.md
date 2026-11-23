@@ -65,25 +65,25 @@ title: Skills 手册
 
 ## 审核结果（skill-judge 120 分制）
 
-| 技能 | 总分 | 等级 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| shenle-api-record | 111 | A | 17 | 15 | 13 | 15 | 14 | 12 | 10 | 15 |
-| shenle-test-plan-generator | 111 | A | 17 | 15 | 13 | 15 | 14 | 12 | 10 | 15 |
-| playwright-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-android-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-android-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-android-testpoint | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-api-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-api-doc-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-dynamic-function-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-mitmproxy-record | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-test-flow-builder | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-test-runner | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-web-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-web-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-web-record | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| shenle-web-testpoint | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| skill-creator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
-| zentao-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| 技能 | 总分 | 等级 | 逐维明细 |
+| --- | --- | --- | --- |
+| shenle-api-record | 111 | A | [手册](/kb/skills/api-record) |
+| shenle-test-plan-generator | 111 | A | [手册](/kb/skills/test-plan-generator) |
+| playwright-cli | 109 | A | [手册](/kb/skills/playwright-cli) |
+| shenle-android-case-generator | 109 | A | [手册](/kb/skills/shenle-android-case-generator) |
+| shenle-android-cli | 109 | A | [手册](/kb/skills/android-cli) |
+| shenle-android-testpoint | 109 | A | [手册](/kb/skills/shenle-android-testpoint) |
+| shenle-api-case-generator | 109 | A | [手册](/kb/skills/shenle-api-case-generator) |
+| shenle-api-doc-generator | 109 | A | [手册](/kb/skills/shenle-api-doc-generator) |
+| shenle-dynamic-function-generator | 109 | A | [手册](/kb/skills/dynamic-function-generator) |
+| shenle-mitmproxy-record | 109 | A | [手册](/kb/skills/shenle-mitmproxy-record) |
+| shenle-test-flow-builder | 109 | A | [手册](/kb/skills/test-flow-builder) |
+| shenle-test-runner | 109 | A | [手册](/kb/skills/test-runner) |
+| shenle-web-case-generator | 109 | A | [手册](/kb/skills/shenle-web-case-generator) |
+| shenle-web-cli | 109 | A | [手册](/kb/skills/web-cli) |
+| shenle-web-record | 109 | A | [手册](/kb/skills/web-record) |
+| shenle-web-testpoint | 109 | A | [手册](/kb/skills/shenle-web-testpoint) |
+| skill-creator | 109 | A | [手册](/kb/skills/skill-creator) |
+| zentao-cli | 109 | A | [手册](/kb/skills/zentao-cli) |
 
-全部 18 个技能 ≥108 分（最低 109）；逐维明细在 docs/skill-scores.json，评分脚本 scripts/_score_skills.py，口径见 docs/skill-scores.md。
+全部 18 个技能 ≥108 分（最低 109）；逐维打分明细在各自手册页的「评分」段，原始数据 docs/skill-scores.json，脚本 scripts/_score_skills.py。
