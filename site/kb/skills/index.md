@@ -26,14 +26,14 @@ title: Skills 手册
 
 | 技能 | 做什么 | 手册 | 全文 |
 | --- | --- | --- | --- |
-| `shenle-web-testpoint` | 读 Web 需求或页面快照，产出测试点分析文档（功能点/状态/边界）。 | [手册](/kb/skills/shenle-web-testpoint) | [全文](/skills/shenle-web-testpoint) |
-| `shenle-android-testpoint` | 读安卓界面层级，产出移动端测试点分析文档。 | [手册](/kb/skills/shenle-android-testpoint) | [全文](/skills/shenle-android-testpoint) |
-| `shenle-web-case-generator` | 把 Web 测试点文档转成可执行的 Web 功能测试用例（每批一个文件）。 | [手册](/kb/skills/shenle-web-case-generator) | [全文](/skills/shenle-web-case-generator) |
-| `shenle-android-case-generator` | 把移动端测试点文档转成 App 测试用例。 | [手册](/kb/skills/shenle-android-case-generator) | [全文](/skills/shenle-android-case-generator) |
-| `shenle-api-case-generator` | 按接口契约生成接口用例（正常/边界/异常）。 | [手册](/kb/skills/shenle-api-case-generator) | [全文](/skills/shenle-api-case-generator) |
-| `shenle-api-doc-generator` | 从抓包产物生成接口文档与用例骨架。 | [手册](/kb/skills/shenle-api-doc-generator) | [全文](/skills/shenle-api-doc-generator) |
-| `shenle-mitmproxy-record` | mitmproxy 代理录制流量，产出可归档的请求清单。 | [手册](/kb/skills/shenle-mitmproxy-record) | [全文](/skills/shenle-mitmproxy-record) |
-| `zentao-cli` | 命令行对接禅道：建单、查单、回写结果。 | [手册](/kb/skills/zentao-cli) | [全文](/skills/zentao-cli) |
+| `shenle-web-testpoint` | 读 Web 需求或页面快照，产出测试点分析文档（功能点/状态/边界）。 | [手册](/kb/skills/shenle-web-testpoint) | [全文](/skills/shenle-web-testpoint) | **109** |
+| `shenle-android-testpoint` | 读安卓界面层级，产出移动端测试点分析文档。 | [手册](/kb/skills/shenle-android-testpoint) | [全文](/skills/shenle-android-testpoint) | **109** |
+| `shenle-web-case-generator` | 把 Web 测试点文档转成可执行的 Web 功能测试用例（每批一个文件）。 | [手册](/kb/skills/shenle-web-case-generator) | [全文](/skills/shenle-web-case-generator) | **109** |
+| `shenle-android-case-generator` | 把移动端测试点文档转成 App 测试用例。 | [手册](/kb/skills/shenle-android-case-generator) | [全文](/skills/shenle-android-case-generator) | **109** |
+| `shenle-api-case-generator` | 按接口契约生成接口用例（正常/边界/异常）。 | [手册](/kb/skills/shenle-api-case-generator) | [全文](/skills/shenle-api-case-generator) | **109** |
+| `shenle-api-doc-generator` | 从抓包产物生成接口文档与用例骨架。 | [手册](/kb/skills/shenle-api-doc-generator) | [全文](/skills/shenle-api-doc-generator) | **109** |
+| `shenle-mitmproxy-record` | mitmproxy 代理录制流量，产出可归档的请求清单。 | [手册](/kb/skills/shenle-mitmproxy-record) | [全文](/skills/shenle-mitmproxy-record) | **109** |
+| `zentao-cli` | 命令行对接禅道：建单、查单、回写结果。 | [手册](/kb/skills/zentao-cli) | [全文](/skills/zentao-cli) | **109** |
 
 ## 编排与计划
 
@@ -65,17 +65,25 @@ title: Skills 手册
 
 ## 审核结果（skill-judge 120 分制）
 
-| 技能 | 总分 | 等级 |
-| --- | --- | --- |
-| shenle-api-record | 111 | A |
-| shenle-test-plan-generator | 111 | A |
-| playwright-cli | 109 | A |
-| shenle-android-cli | 109 | A |
-| shenle-dynamic-function-generator | 109 | A |
-| shenle-test-flow-builder | 109 | A |
-| shenle-test-runner | 109 | A |
-| shenle-web-cli | 109 | A |
-| shenle-web-record | 109 | A |
-| skill-creator | 109 | A |
+| 技能 | 总分 | 等级 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| shenle-api-record | 111 | A | 17 | 15 | 13 | 15 | 14 | 12 | 10 | 15 |
+| shenle-test-plan-generator | 111 | A | 17 | 15 | 13 | 15 | 14 | 12 | 10 | 15 |
+| playwright-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-android-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-android-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-android-testpoint | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-api-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-api-doc-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-dynamic-function-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-mitmproxy-record | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-test-flow-builder | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-test-runner | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-web-case-generator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-web-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-web-record | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| shenle-web-testpoint | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| skill-creator | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
+| zentao-cli | 109 | A | 17 | 15 | 13 | 15 | 12 | 12 | 10 | 15 |
 
-全部技能 ≥108 分；打分口径与逐维明细在 `docs/skill-scores.json`，评分脚本 `scripts/_score_skills.py`。
+全部 18 个技能 ≥108 分（最低 109）；逐维明细在 docs/skill-scores.json，评分脚本 scripts/_score_skills.py，口径见 docs/skill-scores.md。

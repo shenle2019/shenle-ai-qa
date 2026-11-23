@@ -15,6 +15,21 @@
     "dir": "playwright-cli"
   },
   {
+    "name": "shenle-android-case-generator",
+    "lines": 295,
+    "desc_len": 74,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-android-case-generator"
+  },
+  {
     "name": "shenle-android-cli",
     "lines": 297,
     "desc_len": 184,
@@ -30,6 +45,51 @@
     "dir": "shenle-android-cli"
   },
   {
+    "name": "shenle-android-testpoint",
+    "lines": 256,
+    "desc_len": 79,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-android-testpoint"
+  },
+  {
+    "name": "shenle-api-case-generator",
+    "lines": 217,
+    "desc_len": 111,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-api-case-generator"
+  },
+  {
+    "name": "shenle-api-doc-generator",
+    "lines": 250,
+    "desc_len": 85,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-api-doc-generator"
+  },
+  {
     "name": "shenle-dynamic-function-generator",
     "lines": 289,
     "desc_len": 180,
@@ -43,6 +103,21 @@
     "D8": 15,
     "total": 109,
     "dir": "shenle-dynamic-function-generator"
+  },
+  {
+    "name": "shenle-mitmproxy-record",
+    "lines": 249,
+    "desc_len": 93,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-mitmproxy-record"
   },
   {
     "name": "shenle-test-flow-builder",
@@ -75,6 +150,21 @@
     "dir": "shenle-test-runner"
   },
   {
+    "name": "shenle-web-case-generator",
+    "lines": 257,
+    "desc_len": 75,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-web-case-generator"
+  },
+  {
     "name": "shenle-web-cli",
     "lines": 258,
     "desc_len": 154,
@@ -105,6 +195,21 @@
     "dir": "shenle-web-record"
   },
   {
+    "name": "shenle-web-testpoint",
+    "lines": 240,
+    "desc_len": 81,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-web-testpoint"
+  },
+  {
     "name": "skill-creator",
     "lines": 256,
     "desc_len": 198,
@@ -118,6 +223,21 @@
     "D8": 15,
     "total": 109,
     "dir": "skill-creator"
+  },
+  {
+    "name": "zentao-cli",
+    "lines": 258,
+    "desc_len": 112,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "zentao-cli"
   },
   {
     "name": "shenle-api-record",
