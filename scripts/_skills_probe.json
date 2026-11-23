@@ -1,0 +1,15 @@
+{
+ "web-record": "shenle-web-record 0.1.0",
+ "device-record": "shenle-device-record 0.1.0",
+ "api-record": "shenle-api-record 0.1.0",
+ "web-cli": "shenle-web-cli 0.1.0",
+ "android-cli": "shenle-android-cli 0.1.0",
+ "api-cli": "shenle-api-cli 0.2.0",
+ "test-flow-builder": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 638 行 / 12 个二级标题",
+ "test-plan-generator": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 473 行 / 6 个二级标题",
+ "test-runner": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 200 行 / 10 个二级标题",
+ "report-generate-html": "usage: shenle-report-generate-html [-h] --project-dir PROJECT_DIR --plan-id\nPLAN_ID [--timestamp TIMESTAMP] [--latest]\n[--output OUTPUT]\n把 allure-results/ 渲染成单文件静态 HTML 报告。",
+ "dynamic-function-generator": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 634 行 / 11 个二级标题",
+ "playwright-cli": "该技能由 Agent 按 SKILL.md 驱动，无独立命令；文档自检 -> SKILL.md: 405 行 / 14 个二级标题",
+ "skill-creator": "SKILL.md not found"
+}

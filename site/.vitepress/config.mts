@@ -97,12 +97,18 @@ export default defineConfig({
         {
           text: '延伸阅读',
           items: [
+            { text: 'Skills 手册（13 个技能）', link: '/kb/skills/' },
+            { text: 'Skills 单跑记录', link: '/labs/skills/' },
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
             { text: '内容更新规则', link: '/kb/rules' }
           ]
         }
       ],
       '/labs/': [
+        {
+          text: 'Skills 单跑记录',
+          link: '/labs/skills/',
+        },
         {
           text: '实操记录',
           items: [
@@ -189,6 +195,8 @@ export default defineConfig({
         {
           text: '延伸阅读',
           items: [
+            { text: 'Skills 手册（13 个技能）', link: '/kb/skills/' },
+            { text: 'Skills 单跑记录', link: '/labs/skills/' },
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
             { text: '内容更新规则', link: '/kb/rules' }
           ]
