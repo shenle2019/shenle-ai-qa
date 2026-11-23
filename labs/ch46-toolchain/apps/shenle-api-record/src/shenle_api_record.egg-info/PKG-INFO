@@ -1,0 +1,74 @@
+Metadata-Version: 2.4
+Name: shenle-api-record
+Version: 0.1.0
+Summary: 华测接口录制工具 - 通过 mitmproxy 系统代理录制浏览器/APP/手机H5/桌面应用的 HTTP/HTTPS 流量
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: mitmproxy>=9.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+
+# shenle-api-record
+
+华测接口录制工具 — 基于 mitmproxy 系统代理录制浏览器 / 手机 H5 / APP / 桌面应用
+的 HTTP/HTTPS 流量，输出 `raw{NN}.json` 批次文件供后续 AI 分析 / 接口文档 / 测试用例生成。
+
+## 适用场景
+
+- **本机浏览器**（Chrome / Edge / Firefox）抓 XHR / Fetch → 系统代理到 127.0.0.1:8080
+- **手机 H5 / APP** 接口录制（手机 Wi-Fi 设置代理到电脑 IP）
+- **桌面应用**（Electron / Qt / .NET / Java Swing）接口录制
+- **非浏览器 HTTP 客户端**（CLI 工具、SDK、爬虫）抓包分析
+- 需要 **HTTPS 透明解密**（mitmproxy CA 自动安装到系统信任库）
+
+## 不适用
+
+- 只想看 DOM/截图 → 用 `shenle-web-record`（Playwright CDP，自带截图）
+- 只想跑 Web 自动化用例 → 用 `shenle-web-cli`
+- PC 桌面画面采集 → 用 `shenle-pc-record`
+
+## 安装
+
+```bash
+# 清华源 + 华测私有源（项目惯例）
+pip install shenle-api-record \
+    -i https://pypi.tuna.tsinghua.edu.cn/simple/ \
+    --extra-index-url http://pypi.hctestedu.com/repository/test/simple/ \
+    --trusted-host pypi.hctestedu.com
+
+# 开发模式（项目根目录下）
+pip install -e .[dev]
+```
+
+## 使用
+
+```bash
+# 主流程：启动录制（默认打开 mitmweb Web UI + 浏览器）
+shenle-api-record record
+
+# 桌面应用/APP：不打开引导浏览器
+shenle-api-record record --no-browser
+
+# 自定义端口
+shenle-api-record record --port 8888 --web-port 8889
+
+# 仅安装 CA 证书
+shenle-api-record install-ca
+
+# 环境检查
+shenle-api-record check
+
+# 停止后台录制
+shenle-api-record stop
+
+# 帮助
+shenle-api-record --help
+```
+
+## 工作原理
+
+- mitmproxy 作为**中间人代理**：客户端 ↔ mitmproxy ↔ 真实服务器
+- HTTPS 通过 mitmproxy 的 CA 伪造证书实现透明解密
+- mitmweb 内置 Web UI（端口 8081）提供实时查看
+- 关闭 Web UI 标签页 = 自动停止录制（默认行为）
+- 输出 `raw{NN}.json` 批次目录，可直接用 `inspect` 子命令或 `scripts/inspect_recording.py` 取摘要

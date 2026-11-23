@@ -52,6 +52,7 @@
 | 43 | 用例与关键字执行器 | `labs/ch43-*` |
 | 44 | 测试计划与异步执行 | `labs/ch44-*` |
 | 45 | 平台收口 | `labs/ch45-*` |
+| 46 | AI 测试 Skills 与工具链 | [ch46](/chapters/ch46) | `labs/ch46-toolchain` |
 
 ## 后续规划
 

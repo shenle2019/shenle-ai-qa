@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shenle-api-cli"
+version = "0.2.0"
+description = "命令行驱动的接口调用工具（requests），替代 curl 给 AI 跑接口任务。0.2 新增 `call` 子命令（send+extract 一步到位），避免 Windows cmd.exe / bash 跨平台 shell 兼容问题"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "shenle" }]
+dependencies = [
+    "requests>=2.28",
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+shenle-api-cli = "shenle_api_cli.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

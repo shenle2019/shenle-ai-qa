@@ -1,0 +1,40 @@
+[
+  {
+    "request": {
+      "id": "2403360576336",
+      "method": "POST",
+      "url": "https://mnq-service.ldmnq.com/mnq/launcher-popover-for-gamecenter",
+      "headers": {
+        "clientversion": "500041",
+        "platform": "GAME_CENTER",
+        "mnqversion": "0900016800-64",
+        "deviceid": "010139020461335,Redmi,23113RKC6C,6-961ceb5ae86614d761c53dc585d18568",
+        "appid": "58",
+        "gns": "3",
+        "content-type": "application/json; charset=UTF-8",
+        "content-length": "49",
+        "accept-encoding": "gzip",
+        "user-agent": "okhttp/4.12.0"
+      },
+      "body": "{\"deviceId\":\"6-961ceb5ae86614d761c53dc585d18568\"}",
+      "timestamp": 1789959960.398413
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "server": "ESA",
+        "content-type": "application/json;charset=UTF-8",
+        "set-cookie": "acw_tc=af0c631d17899599603271557e1c8afd44b5437f746aa73ef519a6425d;path=/;HttpOnly;Max-Age=3600, cdn_sec_tc=af0c631d17899599603271557e1c8afd44b5437f746aa73ef519a6425d;path=/;HttpOnly;Max-Age=3600",
+        "content-encoding": "gzip",
+        "date": "Mon, 21 Sep 2026 03:06:00 GMT",
+        "vary": "Accept-Encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+        "via": "ens-cache44.l2eo166-17[4,0,DP], ens-cache9.cn8238[26,0,DP], ens-cache9.cn8238[26,0]",
+        "x-site-cache-status": "DYNAMIC",
+        "timing-allow-origin": "*",
+        "eagleid": "af0c631d17899599603271557e"
+      },
+      "body": "{\"code\":200,\"msg\":\"操作成功\"}",
+      "timestamp": 1789959960.4384375
+    }
+  }
+]

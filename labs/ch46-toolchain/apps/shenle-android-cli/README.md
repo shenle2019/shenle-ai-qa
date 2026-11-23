@@ -1,0 +1,309 @@
+# shenle-android-cli
+
+命令行驱动的安卓 UI 自动化工具（adb shell input）。后续供 AI 按自然语言指令调用。
+
+## 安装
+
+从本目录直接装到当前 Python 环境：
+
+```bash
+pip install -e .
+```
+
+装好后全局可敲 `shenle-android-cli`。
+
+## 前置条件
+
+- `adb` 在 PATH 里（Android SDK platform-tools 自带）
+- 至少一台安卓设备 / 模拟器已连接（USB 调试已打开并授权）
+
+## AI 配置（click / input 需要）
+
+click / input 依赖视觉模型。配置两个等价方式任选其一：
+
+**A. 当前目录的 `.env`**
+
+```bash
+cd /path/to/your/project
+cat > .env <<'EOF'
+ANDROID_AI_API_KEY=sk-你的key
+ANDROID_AI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+ANDROID_AI_MODEL=qwen-vl-plus
+EOF
+```
+
+**B. 真实环境变量**
+
+```bash
+export ANDROID_AI_API_KEY=sk-xxx
+export ANDROID_AI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+export ANDROID_AI_MODEL=qwen-vl-plus
+```
+
+> 配置前缀是 `ANDROID_AI_*`（跟 web-cli's `WEB_AUTOMATION_AI_*` 区分），跟
+> `demo/shenle-android-cli/demo_2.py` 一致。
+> 任何一个变量缺失，click / input 会立刻报清晰错误并退出，**不会**重试。
+
+## 子命令
+
+| 命令 | 作用 |
+| --- | --- |
+| `shenle-android-cli devices` | 列出 adb 看得到的所有设备（按状态分组） |
+| `shenle-android-cli start [-s SERIAL]` | 选定目标设备，校验后打印选中信息 |
+| `shenle-android-cli launch <pkg> [activity]` | 启动 App（activity 可选，没给则用 monkey 找 launcher） |
+| `shenle-android-cli close` | 按 Home 键回到桌面（App 进程保留） |
+| `shenle-android-cli stop <pkg>` | am force-stop —— 杀进程（**冷启动测试用**） |
+| `shenle-android-cli screenshot <path>` | 截当前屏幕到文件（PNG/JPEG） |
+| `shenle-android-cli click <描述>` | AI 视觉定位 + tap |
+| `shenle-android-cli input <描述> <文本>` | AI 视觉定位 + tap + 输入文本（中文 / emoji 走剪贴板） |
+| `shenle-android-cli batch <ops...>` | 一次截图 + 一次 AI 批量识别 + 顺序执行多个 op |
+| `shenle-android-cli longpress <描述> [--duration 1500]` | AI 定位 + 长按 |
+| `shenle-android-cli swipe <dir> [-c N] [--region 描述] [--distance 0.5]` | 按方向滑动（整屏 / 区域内） |
+| `shenle-android-cli swipe-to x1 y1 x2 y2 [--duration 300]` | 显式坐标滑动（精确定位） |
+| `shenle-android-cli zoom x y --scale 2.0` | 双指放大（线程并行模拟） |
+| `shenle-android-cli pinch x y --scale 0.5` | 双指缩小（同 zoom 实现） |
+| `shenle-android-cli keyevent <code|alias>` | 按键（30+ 别名 + 数字键码） |
+| `shenle-android-cli recents` | 最近任务（KEYCODE_APP_SWITCH） |
+| `shenle-android-cli notifications` | 下拉通知栏 |
+| `shenle-android-cli current-app [--format json]` | 当前前台 App（默认 text） |
+| `shenle-android-cli get <区域描述>` | AI 视觉描述页面区域（4 节） |
+| `shenle-android-cli shell <cmd...>` | adb shell 透传 |
+| `shenle-android-cli dump-ui <file>` | uiautomator dump → pull 到本地 XML |
+| `shenle-android-cli appinfo <pkg>` | dumpsys package（stdout 走 dumpsys，[OK] 走 stderr 方便 pipe） |
+
+辅助：
+
+- `shenle-android-cli --version`：输出版本号
+- `shenle-android-cli --help`：列出所有子命令和参数
+- `-s / --serial`：指定设备序列号（任何命令都可用）
+- `--debug`：调试模式，输出 bbox 换算过程 + 各阶段耗时（毫秒）；遇到内部异常时打印完整堆栈；click/input/swipe --region 会保存 AI 红框标注图到 cwd
+- `click` / `input` / `swipe` / `swipe-to` 额外支持 `--screenshot POST_PATH`：操作完成后额外保存一张**操作后**截图（不带框）
+
+## AI 红框标注图（`--debug` 时启用）
+
+跟 `demo/shenle-android-cli/demo_2.py` 的 `ai_marked.png` 一致：
+**只在 `--debug` 模式下**才把 AI 用过的那张截图上画红框 + 标签
+（`click: <描述>` / `input: <描述>`），保存到当前目录的
+`shenle-debug-<cmd>-<timestamp>.png`，路径直接打在 `[OK]` 行末尾：
+
+```
+# 不带 --debug：干干净净一行
+$ shenle-android-cli click "搜索按钮"
+[OK] click "搜索按钮": (720, 230); shot=469ms ai=812ms total=1281ms
+
+# 带 --debug：多一张标注图 + 路径
+$ shenle-android-cli --debug click "搜索按钮"
+[OK] click "搜索按钮": (720, 230); shot=469ms ai=812ms total=1281ms; ai框=shenle-debug-click-1700000000000.png
+```
+
+点开 `ai框` 那张图能看到 AI 把元素框在了哪个位置——调试 AI 误识别时
+直接看图就行。**默认不开 `--debug` 不生成**，避免每次跑都污染 cwd。
+
+## 设备选择规则（Phase 1）
+
+每条需要设备的命令（start / launch / close / screenshot / click / input）会
+独立跑一次 `adb devices -l`，按下面的规则选定目标：
+
+1. 用户显式传了 `-s SERIAL`：精确匹配；状态非 device 时给出友好提示
+2. 用户没传：取列表里第一台 `state == "device"` 的设备
+
+> Phase 1 **不持久化** "当前选中的设备"。多设备场景下，要么每条命令都显式 `-s`，
+> 要么按 adb 列出顺序排好设备（要让目标设备排第一）。后续阶段会引入
+> session 持久化（类似 shenle-web-cli 的 state.json）。
+
+## 中文输入说明（重要）
+
+`adb shell input text` 对非 ASCII（中文 / emoji）会丢字符或乱码。
+本工具对 **非 ASCII 文本** 强制走 Android 10+ 的标准剪贴板方案：
+
+```
+adb shell cmd clipboard set-primary-clip --user 0 <文本>   # 写入
+adb shell cmd clipboard get-primary-clip --user 0          # 读回校验
+adb shell input keyevent 279                              # 触发粘贴
+```
+
+如果设备 / ROM 不支持 `cmd clipboard`（vivo / ColorOS / HyperOS 等定制
+ROM 常见、部分模拟器镜像也没有），**不会**回退到 `input text`——会直接
+报错并提示装 [ADBKeyboard](https://github.com/senzhk/ADBKeyBoard) 兜底：
+
+```
+[FAIL] input: 剪贴板方案不可用（set-primary-clip 失败：No shell command implementation.）。
+        常见于 vivo/ColorOS/HyperOS 等定制 ROM。请改用 ADBKeyboard：装好 APK →
+        切到 ADBKeyboard 输入法 → 用 `adb shell am broadcast -a ADB_INPUT_TEXT
+        --es msg '...'` 输入。
+```
+
+> "看似成功但内容乱码" 比 "明确失败" 更危险（用例静默通过），所以宁可报错也不兜底。
+
+## 错误输出约定
+
+- 基础设施类（`devices` / `start` / `close`）出错 →  stderr 打印 `[shenle] <msg>`
+- 原子操作类（`launch` / `screenshot` / `click` / `input` / `swipe` / `swipe-to` / `keyevent` / `recents` / `notifications` / `current-app` / `get`）出错 → stdout 打印 `[FAIL] <cmd>: <msg>`
+- 退出码：`0` 成功；`1` 业务错误（参数 / 设备 / 包名 / 剪贴板 / AI 配置）；`2` 内部错误（`--debug` 看堆栈）或 argparse usage 错误
+- 默认不打印 Python 堆栈，避免刷屏
+- **`get` 命令的特殊约定**：状态行 `[OK] get "..."` 走 stderr，4 节描述内容走 stdout——方便脚本 `$(shenle-android-cli get "...")` 直接 capture 正文
+
+## 验证（Phase 1+2+3）
+
+### 滑动 / 按键 / 状态
+
+```bash
+# 滑动四个方向
+shenle-android-cli swipe up        # 整屏向上
+shenle-android-cli swipe down      # 整屏向下
+shenle-android-cli swipe left -c 3 # 连续左滑 3 次
+shenle-android-cli swipe right --distance 0.8  # 滑 80% 屏幕
+
+# 区域内滑动（需要 AI 配置）
+shenle-android-cli --debug swipe up --region "列表区域"
+# [OK] swipe: up; (cx,cy)→(cx,cy); ×1; region="列表区域"; swipe=...ms; ai框=...
+
+# 显式坐标
+shenle-android-cli swipe-to 100 200 800 1000 --duration 200
+
+# 按键（别名 / 数字键码 / 十六进制）
+shenle-android-cli keyevent back           # → code=4
+shenle-android-cli keyevent home           # → code=3
+shenle-android-cli keyevent recents        # → code=187
+shenle-android-cli keyevent 187            # 数字键码也行
+shenle-android-cli keyevent 0x20           # 0x 前缀的十六进制
+shenle-android-cli keyevent volume_up      # → code=24
+shenle-android-cli keyevent nosuchkey      # → 友好报错
+
+# 专用快捷命令
+shenle-android-cli recents                 # 最近任务
+shenle-android-cli notifications           # 下拉通知栏
+
+# 当前前台 App
+shenle-android-cli current-app             # → com.example/.MainActivity
+shenle-android-cli current-app --format json
+# → {"package": "com.example", "activity": ".MainActivity"}
+```
+
+### `get` 区域描述（stdout/stderr 分流）
+
+```bash
+$ shenle-android-cli get "顶部导航栏" > content.txt 2> status.txt
+$ cat status.txt
+[OK] get "顶部导航栏"
+$ cat content.txt
+## 布局
+顶栏从左到右：标题、搜索图标。
+## 图标
+放大镜图标（右上角）。
+## 文字
+首页
+## 介绍
+页面顶部一级导航，包含页面标题和搜索入口。
+```
+
+## 验证（Phase 1+2）
+
+跑下面这一串，能把 Phase 2 的核心能力全部过一遍：
+
+```bash
+# 0. 准备：起一个 App（用任何装好的都行，下面用 Settings）
+shenle-android-cli launch com.android.settings
+
+# 1. 截屏（不依赖 AI）
+shenle-android-cli screenshot /tmp/test.png
+
+# 2. 看截图 → 选个能点的元素描述
+#    例：Settings 首页顶部有一个搜索按钮（描述：「搜索按钮」或「放大镜」）
+
+# 3. 先配 .env（不然 click/input 立刻报 AI 配置缺失）
+cat > /tmp/shenle-test/.env <<'EOF'
+ANDROID_AI_API_KEY=sk-xxx
+ANDROID_AI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+ANDROID_AI_MODEL=qwen-vl-plus
+EOF
+cd /tmp/shenle-test
+
+# 4. AI 视觉点击
+shenle-android-cli --debug click "搜索按钮" --screenshot /tmp/test-after.png
+# 预期：
+#   [DEBUG] bbox_1000=[...] scale=(...,...) bbox_px=[...] center=(...,...)
+#   [OK] click "搜索按钮": (..., ...); shot=...ms ai=...ms total=...ms;
+#        ai框=shenle-debug-click-...png; post=/tmp/test-after.png
+#   打开 ai框 那张图能直接看到 AI 框选的位置
+
+# 5. 切回桌面，再来一次 launch 然后 input 中文
+shenle-android-cli close
+shenle-android-cli launch com.android.settings
+shenle-android-cli input "搜索框" "你好世界" --debug
+# 预期：[OK] input "搜索框" "你好世界": (..., ...); shot=...ms ai=...ms type=...ms total=...ms
+```
+
+**错误路径验证（不需要真 AI）**
+
+```bash
+# 缺配置 → 清晰报错，不重试
+cd /tmp/shenle-test && rm -f .env  # 确保没 .env
+shenle-android-cli click "登录按钮"
+# 预期：[FAIL] click: AI 配置缺失：ANDROID_AI_API_KEY、ANDROID_AI_BASE_URL、ANDROID_AI_MODEL。...
+
+# 配置了但服务不可达
+ANDROID_AI_API_KEY=fake ANDROID_AI_BASE_URL=http://127.0.0.1:9 ANDROID_AI_MODEL=x \
+  shenle-android-cli click "登录按钮"
+# 预期：[FAIL] click: AI 服务不可达（http://127.0.0.1:9）：...
+```
+
+## 文件结构
+
+```
+apps/shenle-android-cli/
+├── pyproject.toml
+├── README.md
+└── src/shenle_android_cli/
+    ├── __init__.py       # __version__
+    ├── errors.py         # CliError 体系
+    ├── adb.py            # run_adb / run_adb_relaxed / run_adb_bytes / find_adb
+    ├── devices.py        # parse_adb_devices / list_devices / pick_device
+    ├── ai.py             # ANDROID_AI_* 配置 + urllib 视觉调用 + bbox / batch / describe
+    ├── screen.py         # screencap → PIL / 落盘 / 临时 JPEG
+    ├── input_text.py     # 中文剪贴板 + ASCII input text
+    ├── keyevent.py       # 50+ 按键别名表 + 数字键码解析
+    ├── swipe.py          # 整屏 / 区域滑动坐标计算
+    ├── app_state.py      # dumpsys 解析当前前台 App
+    ├── commands.py       # 22 个子命令实现
+    └── cli.py            # argparse + main()
+```
+
+## 性能对比（serial vs batch）
+
+模拟 300ms AI 延迟 + 真实 screencap，3 次 click 操作：
+
+```
+串行（3 条独立 click）：4.33s
+  - 每次都走一遍：screencap (~800ms) + AI (~330ms) + tap
+  - 3 × (screencap + AI) = 3.4s
+
+batch（1 条 batch click×3）：2.42s
+  - 1 × screencap (~800ms) + 1 × AI (~330ms) + 3 × tap (~900ms)
+  - 节省了 2 次 screencap + 2 次 AI
+
+batch 比 serial 快 1.91s（44%）
+```
+
+**batch 的省时点**：
+- 同一页面只截一次图
+- 多个 click/longpress 元素描述一次发给 AI 批量识别（节省 N-1 次 AI 调用）
+- 中文 input 仍然走剪贴板（不会因为批量而乱码）
+
+## 冷启动 vs 热启动
+
+```
+$ shenle-android-cli stop com.android.settings       # am force-stop，杀进程
+[OK] stop: com.android.settings 已强制停止（am force-stop）
+
+$ shenle-android-cli launch com.android.settings    # 冷启动
+[OK] launch: com.android.settings ... → Events injected: 1
+
+$ shenle-android-cli close                           # Home 键，保留进程
+[shenle] 已回到桌面（device=emulator-5554）
+
+$ shenle-android-cli shell dumpsys activity processes | grep com.android.settings
+*APP* UID 1000 ProcessRecord{... com.android.settings/1000}    # 进程还在
+```
+
+`stop` = 杀进程（冷启动测试）；`close` = Home 键（热切换，进程保留）。

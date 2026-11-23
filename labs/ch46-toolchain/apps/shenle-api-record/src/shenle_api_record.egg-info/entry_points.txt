@@ -1,0 +1,2 @@
+[console_scripts]
+shenle-api-record = shenle_api_record.cli:main

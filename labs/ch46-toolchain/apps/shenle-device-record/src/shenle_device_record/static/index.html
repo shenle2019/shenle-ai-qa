@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>shenle-device-record</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+         background: #1a1a1a; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; }
+  #status-bar { padding: 8px 16px; background: #2a2a2a; border-bottom: 1px solid #444;
+                font-size: 13px; display: flex; gap: 16px; flex-wrap: wrap; }
+  #status-bar .pill { padding: 2px 8px; border-radius: 4px; background: #3a3a3a; }
+  #status-bar .pill.error { background: #6e2a2a; }
+  #status-bar .pill.ok { background: #2a6e2a; }
+  main { display: flex; flex: 1; overflow: hidden; }
+  #left { flex: 1; padding: 16px; display: flex; align-items: center; justify-content: center;
+          background: #0e0e0e; position: relative; }
+  #frame-box { position: relative; max-width: 100%; max-height: 100%;
+               background: #000; border: 1px solid #444; }
+  #live-img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  #capture-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55);
+                     color: #fff; display: none; align-items: center; justify-content: center;
+                     font-size: 22px; font-weight: bold; }
+  #capture-overlay.show { display: flex; }
+  #right { width: 360px; padding: 16px; background: #2a2a2a; border-left: 1px solid #444;
+           overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+  #right h2 { margin: 0 0 4px 0; font-size: 14px; color: #888; font-weight: normal;
+             text-transform: uppercase; letter-spacing: 1px; }
+  #right label { display: block; font-size: 12px; color: #aaa; margin-bottom: 4px; }
+  #right input[type=text], #right textarea { width: 100%; box-sizing: border-box;
+                                            background: #1a1a1a; color: #e0e0e0;
+                                            border: 1px solid #444; padding: 6px 8px;
+                                            border-radius: 3px; font-size: 13px;
+                                            font-family: inherit; }
+  #right textarea { min-height: 60px; resize: vertical; }
+  #capture-btn { padding: 14px 16px; font-size: 16px; font-weight: bold;
+                 background: #2e6ed4; color: #fff; border: none; border-radius: 4px;
+                 cursor: pointer; }
+  #capture-btn:disabled { background: #555; cursor: not-allowed; }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > * { flex: 1; }
+  #fps-display { text-align: center; font-variant-numeric: tabular-nums; flex: 1; }
+  #fps-dec, #fps-inc { flex: 0 0 36px; padding: 6px; background: #3a3a3a; color: #e0e0e0;
+                       border: none; border-radius: 3px; cursor: pointer; font-size: 16px; }
+  #fps-dec:disabled, #fps-inc:disabled { opacity: 0.4; cursor: not-allowed; }
+  #last-path { font-size: 11px; color: #888; word-break: break-all; }
+  #toast { position: fixed; top: 16px; right: 16px; padding: 10px 14px; border-radius: 4px;
+          background: #6e2a2a; color: #fff; display: none; z-index: 100; max-width: 320px; }
+  #toast.show { display: block; }
+  #toast.ok { background: #2a6e2a; }
+</style>
+</head>
+<body>
+<div id="status-bar">
+  <span class="pill" id="ws-status">WebSocket: 连接中...</span>
+  <span class="pill" id="mode-display">模式: 实时</span>
+  <span class="pill" id="fps-pill">fps: 1.0</span>
+  <span class="pill" id="capture-pill">已采: 0</span>
+  <span class="pill" id="fail-pill">连续失败: 0</span>
+</div>
+
+<main>
+  <section id="left">
+    <div id="frame-box" style="width:360px;height:640px;">
+      <img id="live-img" alt="">
+      <div id="capture-overlay">📸 采集中</div>
+    </div>
+  </section>
+
+  <aside id="right">
+    <h2>采集信息</h2>
+    <div>
+      <label for="module-input">模块（用 - 或 / 拆多级）</label>
+      <input id="module-input" type="text" placeholder="例如 个人中心-登录">
+    </div>
+    <div>
+      <label for="func-input">功能点</label>
+      <input id="func-input" type="text" placeholder="例如 登录功能">
+    </div>
+    <div>
+      <label for="desc-input">描述</label>
+      <textarea id="desc-input" placeholder="业务说明"></textarea>
+    </div>
+    <div class="row" style="margin-top: 4px;">
+      <label style="margin: 0; flex: 1;"><input id="ai-checkbox" type="checkbox"> AI 分析（勾选也仅本阶段 UI 占位）</label>
+    </div>
+
+    <button id="capture-btn">截图采集</button>
+
+    <h2 style="margin-top: 8px;">实时控制</h2>
+    <div class="row">
+      <label style="margin: 0; flex: 1;"><input id="mode-realtime" type="radio" name="mode" value="realtime" checked> 实时</label>
+      <label style="margin: 0; flex: 1;"><input id="mode-ondemand" type="radio" name="mode" value="on_demand"> 按需</label>
+    </div>
+    <div class="row">
+      <button id="fps-dec">-</button>
+      <div id="fps-display">1.0 fps</div>
+      <button id="fps-inc">+</button>
+    </div>
+
+    <h2 style="margin-top: 8px;">最近</h2>
+    <div>已采数量：<span id="capture-count">0</span></div>
+    <div id="last-path">—</div>
+  </aside>
+</main>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- DOM refs ----
+  const wsStatusPill = document.getElementById("ws-status");
+  const modeDisplay = document.getElementById("mode-display");
+  const fpsPill = document.getElementById("fps-pill");
+  const capturePill = document.getElementById("capture-count");
+  const failPill = document.getElementById("fail-pill");
+  const frameBox = document.getElementById("frame-box");
+  const liveImg = document.getElementById("live-img");
+  const overlay = document.getElementById("capture-overlay");
+  const moduleInput = document.getElementById("module-input");
+  const funcInput = document.getElementById("func-input");
+  const descInput = document.getElementById("desc-input");
+  const aiCheckbox = document.getElementById("ai-checkbox");
+  const captureBtn = document.getElementById("capture-btn");
+  const modeRealtime = document.getElementById("mode-realtime");
+  const modeOndemand = document.getElementById("mode-ondemand");
+  const fpsDisplay = document.getElementById("fps-display");
+  const fpsDec = document.getElementById("fps-dec");
+  const fpsInc = document.getElementById("fps-inc");
+  const lastPath = document.getElementById("last-path");
+  const toast = document.getElementById("toast");
+
+  // ---- 状态 ----
+  let ws = null;
+  let currentFps = 1.0;
+  let currentMode = "realtime";
+  let captureCount = 0;
+  let consecutiveFails = 0;
+  let lastSeq = 0;
+  let pongOk = true;
+
+  function uuid() {
+    return "cap-" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+  }
+
+  function showToast(text, isOk) {
+    toast.textContent = text;
+    toast.className = "show" + (isOk ? " ok" : "");
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function () { toast.className = ""; }, 3000);
+  }
+
+  function setWsStatus(text, ok) {
+    wsStatusPill.textContent = "WebSocket: " + text;
+    wsStatusPill.className = "pill " + (ok ? "ok" : "error");
+  }
+
+  function setMode(mode, reason) {
+    currentMode = mode;
+    if (mode === "realtime") modeRealtime.checked = true;
+    else modeOndemand.checked = true;
+    modeDisplay.textContent = "模式: " + (mode === "realtime" ? "实时" : "按需");
+    if (reason) console.log("mode changed:", reason);
+  }
+
+  function setFps(fps) {
+    currentFps = fps;
+    fpsDisplay.textContent = fps.toFixed(1) + " fps";
+    fpsPill.textContent = "fps: " + fps.toFixed(1);
+    fpsDec.disabled = fps <= 0.5;
+    fpsInc.disabled = fps >= 10.0;
+  }
+
+  function send(obj) {
+    if (!ws || ws.readyState !== 1) return;
+    ws.send(JSON.stringify(obj));
+  }
+
+  // ---- WebSocket ----
+  function connect() {
+    const proto = location.protocol === "https:" ? "wss:" : "ws:";
+    ws = new WebSocket(proto + "//" + location.host + "/ws");
+
+    ws.onopen = function () {
+      setWsStatus("已连接", true);
+    };
+    ws.onclose = function () {
+      setWsStatus("已断开", false);
+      // 不主动重连：服务会随浏览器关掉一起退
+    };
+    ws.onerror = function () {
+      setWsStatus("出错", false);
+    };
+    ws.onmessage = function (ev) {
+      let msg;
+      try { msg = JSON.parse(ev.data); } catch (e) { return; }
+      if (!msg || typeof msg !== "object") return;
+      handleMessage(msg);
+    };
+
+    // 客户端心跳：每 5s 发 ping
+    setInterval(function () {
+      if (ws && ws.readyState === 1) ws.send(JSON.stringify({ type: "ping" }));
+    }, 5000);
+  }
+
+  function handleMessage(msg) {
+    const t = msg.type;
+    if (t === "hello") {
+      // 暂时没用 screen_width/height（占位 0）
+      setFps(msg.frame_rate || 1.0);
+    } else if (t === "frame") {
+      const seq = msg.seq || 0;
+      if (seq <= lastSeq) return; // 乱序 / 重复，丢弃
+      lastSeq = seq;
+      liveImg.src = "data:" + msg.mime + ";base64," + msg.data;
+      consecutiveFails = 0;
+      failPill.textContent = "连续失败: 0";
+    } else if (t === "mode_changed") {
+      setMode(msg.to, msg.reason);
+      if (msg.to === "on_demand") {
+        showToast("已自动切换到按需模式（连续失败 " + consecutiveFails + " 次）", false);
+      }
+    } else if (t === "captured") {
+      captureBtn.disabled = false;
+      overlay.classList.remove("show");
+      if (msg.ok) {
+        captureCount += 1;
+        capturePill.textContent = "已采: " + captureCount;
+        const relPath = msg.img_path.replace(/.*AI-信息采集[\\\/]/, "AI-信息采集/");
+        lastPath.textContent = relPath || msg.img_path;
+        showToast("采集成功 seq=" + msg.seq, true);
+      } else {
+        showToast("采集失败：" + (msg.error || "未知错误"), false);
+      }
+    } else if (t === "error") {
+      consecutiveFails += 1;
+      failPill.textContent = "连续失败: " + consecutiveFails;
+      showToast(msg.message || "推流出错", false);
+    } else if (t === "shutdown") {
+      showToast("服务即将关闭：" + (msg.reason || ""), false);
+      setWsStatus("关闭中", false);
+      try { ws.close(); } catch (e) {}
+    }
+  }
+
+  // ---- UI 事件 ----
+  captureBtn.addEventListener("click", function () {
+    captureBtn.disabled = true;
+    overlay.classList.add("show");
+    setTimeout(function () { overlay.classList.remove("show"); }, 800);
+    send({
+      type: "capture",
+      capture_id: uuid(),
+      module: moduleInput.value || "",
+      func: funcInput.value || "",
+      desc: descInput.value || "",
+      ai_analyze: aiCheckbox.checked,
+    });
+  });
+
+  modeRealtime.addEventListener("change", function () {
+    if (modeRealtime.checked) send({ type: "set_mode", mode: "realtime" });
+  });
+  modeOndemand.addEventListener("change", function () {
+    if (modeOndemand.checked) send({ type: "set_mode", mode: "on_demand" });
+  });
+
+  fpsDec.addEventListener("click", function () {
+    setFps(Math.max(0.5, +(currentFps - 0.5).toFixed(1)));
+    send({ type: "set_frame_rate", fps: currentFps });
+  });
+  fpsInc.addEventListener("click", function () {
+    setFps(Math.min(10.0, +(currentFps + 0.5).toFixed(1)));
+    send({ type: "set_frame_rate", fps: currentFps });
+  });
+
+  // pong 响应：服务端回 pong 即刷新
+  // （后端实际对所有 inbound ping 都回 pong；这里 onmessage 已统一处理）
+  window.addEventListener("beforeunload", function () {
+    if (ws) try { ws.close(); } catch (e) {}
+  });
+
+  connect();
+})();
+</script>
+</body>
+</html>

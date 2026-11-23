@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "id": "2403417885584",
+      "method": "GET",
+      "url": "https://res.ldmnq.com/store/launcherUpdate.json",
+      "headers": {
+        "clientversion": "500041",
+        "platform": "GAME_CENTER",
+        "mnqversion": "0900016800-64",
+        "deviceid": "010139020461335,Redmi,23113RKC6C,6-961ceb5ae86614d761c53dc585d18568",
+        "appid": "58",
+        "gns": "3",
+        "content-type": "application/json;charset=UTF-8",
+        "accept-encoding": "gzip",
+        "user-agent": "okhttp/4.12.0"
+      },
+      "body": null,
+      "timestamp": 1789959963.0722287
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "date": "Mon, 21 Sep 2026 03:06:03 GMT",
+        "content-type": "application/json",
+        "server": "openresty",
+        "x-reserved": "amazon, aws and amazon web services are trademarks or registered trademarks of Amazon Technologies, Inc",
+        "x-amz-request-id": "0000019FF9026053B94A1B14CB369361",
+        "etag": "W/\"810b8dcbe7e1669b36baf8c12049cb99-1\"",
+        "last-modified": "Thu, 13 Aug 2026 02:44:54 GMT",
+        "x-amz-id-2": "36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "x-ccdn-expires": "2214121",
+        "via": "CHN-HNchangsha-SSPM1-CACHE56[3],CHN-HNchangsha-SSPM1-CACHE20[0,TCP_HIT,0],CHN-HNchangsha-GLOBAL1-CACHE86[33],CHN-HNchangsha-GLOBAL1-CACHE20[0,TCP_HIT,23]",
+        "x-hcs-proxy-type": "1",
+        "x-ccdn-cachettl": "2592000",
+        "x-ccdn-req-id-46b1": "720fe7b93105e8cd2f783dad59f60867",
+        "nginx-hit": "1",
+        "age": "390513",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT",
+        "content-encoding": "gzip"
+      },
+      "body": "{\r\n  \"mode\": 1,   \r\n  \"launcherVersion\": 9012,\r\n  \"randomNum\": -1, \r\n  \"maxRandomNum\": -1,\r\n  \"url\": \"https://res.ldmnq.com/store/launcher_update.apk\",\r\n  \"mnqDownloadPath\": \"/sdcard/Android/data/com.android.flysilkworm/files\",\r\n  \"mnqCopyPath\" : \"/data/ota_cache/common\",\r\n  \"maxMnqVersion\": -1,\r\n  \"minMnqVersion\": 900018800,\r\n  \"apkName\" : \"launcher_update\"\r\n}",
+      "timestamp": 1789959963.0850143
+    }
+  }
+]

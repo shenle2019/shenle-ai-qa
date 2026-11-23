@@ -1,0 +1,2 @@
+[console_scripts]
+shenle-android-cli = shenle_android_cli.cli:main

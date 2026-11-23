@@ -1,0 +1,2 @@
+[console_scripts]
+shenle-device-record = shenle_device_record.cli:main

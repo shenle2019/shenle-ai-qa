@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shenle-android-cli"
+version = "0.1.0"
+description = "命令行驱动的安卓 UI 自动化工具（adb shell input），后续供 AI 自然语言调用"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "shenle" }]
+# Phase 2 起加了 Pillow（截图 + AI 标注）+ python-dotenv（读 .env）。
+# AI 调用走标准库 urllib，不拉 openai SDK——和 shenle-web-cli 保持一致。
+dependencies = [
+    "Pillow>=10.0",
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+shenle-android-cli = "shenle_android_cli.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,2 @@
+[console_scripts]
+shenle-web-record = shenle_web_record.cli:main

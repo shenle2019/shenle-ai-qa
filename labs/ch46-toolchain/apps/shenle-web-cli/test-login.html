@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>测试登录</title>
+<style>
+  body { padding: 40px; font-family: -apple-system, sans-serif; background: #f5f5f5; }
+  h1 { color: #333; }
+  .form-row { margin: 12px 0; }
+  label { display: inline-block; width: 80px; }
+  input { padding: 6px 10px; font-size: 14px; width: 200px; }
+  button {
+    padding: 8px 20px; font-size: 14px; cursor: pointer;
+    background: #2563eb; color: white; border: none; border-radius: 4px;
+  }
+  button:hover { background: #1d4ed8; }
+  #result { margin-top: 20px; padding: 10px; background: #e0f2fe; min-height: 20px; }
+</style>
+</head>
+<body>
+  <h1>测试登录页</h1>
+  <form id="loginForm">
+    <div class="form-row">
+      <label for="username">用户名：</label>
+      <input id="username" name="username" type="text" placeholder="请输入用户名">
+    </div>
+    <div class="form-row">
+      <label for="password">密码：</label>
+      <input id="password" name="password" type="password" placeholder="请输入密码">
+    </div>
+    <div class="form-row">
+      <button type="submit" id="loginBtn">登录</button>
+      <button type="button" id="cancelBtn" style="background:#6b7280;margin-left:8px;">取消</button>
+    </div>
+  </form>
+  <div id="result"></div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var u = document.getElementById('username').value;
+  var p = document.getElementById('password').value;
+  if (!u || !p) {
+    alert('用户名和密码不能为空');
+    return;
+  }
+  document.getElementById('result').innerText =
+    '登录成功！用户=' + u + '，密码长度=' + p.length;
+});
+
+document.getElementById('cancelBtn').addEventListener('click', function() {
+  if (confirm('确定要取消登录吗？')) {
+    document.getElementById('result').innerText = '已取消';
+  }
+});
+</script>
+</body>
+</html>

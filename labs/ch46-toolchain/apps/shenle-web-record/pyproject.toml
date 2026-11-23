@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shenle-web-record"
+version = "0.1.0"
+description = "A simple web page recording CLI tool: screenshot + DOM to JSON"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Shenle" }]
+dependencies = [
+    "playwright>=1.40.0",
+    "psutil>=5.9.0",
+]
+
+[project.scripts]
+shenle-web-record = "shenle_web_record.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+shenle_web_record = ["assets/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

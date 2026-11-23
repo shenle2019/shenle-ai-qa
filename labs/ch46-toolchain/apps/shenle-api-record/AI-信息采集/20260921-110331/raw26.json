@@ -1,0 +1,36 @@
+[
+  {
+    "request": {
+      "id": "2403417999632",
+      "method": "GET",
+      "url": "http://novel.hctestedu.com/friendLink/listIndexLink",
+      "headers": {
+        "host": "novel.hctestedu.com",
+        "proxy-connection": "keep-alive",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 Edg/147.0.0.0",
+        "accept": "application/json, text/javascript, */*; q=0.01",
+        "x-requested-with": "XMLHttpRequest",
+        "referer": "http://novel.hctestedu.com/",
+        "accept-encoding": "gzip, deflate",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "cookie": "sensorsdata2015jssdkcross=%7B%22%24device_id%22%3A%22199f1afc5b4127e-02499886d28ba48-4c657b58-1821369-199f1afc5b512ac%22%7D; apt.uid=AP-YFGMCGUNNIFB-2-1785314685510-72661324.0.2.6b933aba-006b-4c12-b4b5-a0ddc2adfcf4; userClientMarkKey=cb3bd3e513cf4bbbaf80fc6b013d1a34; Hm_lvt_ecc8b50a3122e6d5e09be7a9e5383e07=1789788626,1789794899,1789820999,1789913367; HMACCOUNT=405322D59241196F; Hm_lpvt_ecc8b50a3122e6d5e09be7a9e5383e07=1789959208; Authorization=eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE3OTA1NjQ3NjYsInN1YiI6IntcImlkXCI6MTc5MTA1NjM4NjYzOTg3MjAwMCxcInVzZXJuYW1lXCI6XCIxNTA5NjI2ODAwMVwiLFwibmlja05hbWVcIjpcImhhbWkxMjNcIn0iLCJjcmVhdGVkIjoxNzg5OTU5OTY2MzMwfQ.TjWtMibtVk6LXVQaC_vTMWSb28pziyhj2NBwMSRHTVUVj3s8WdQXi0Dola81id1ETMt54T6i6lB871zASgn1Dg"
+      },
+      "body": null,
+      "timestamp": 1789959966.605519
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "server": "nginx",
+        "date": "Mon, 21 Sep 2026 03:06:06 GMT",
+        "content-type": "application/json;charset=UTF-8",
+        "transfer-encoding": "chunked",
+        "connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "content-encoding": "gzip"
+      },
+      "body": "{\"code\":\"200\",\"msg\":\"SUCCESS\",\"data\":[{\"id\":null,\"linkName\":\"百度\",\"linkUrl\":\"http://www.baidu.com\",\"sort\":null,\"isOpen\":null,\"createUserId\":null,\"createTime\":null,\"updateUserId\":null,\"updateTime\":null}]}",
+      "timestamp": 1789959966.7043486
+    }
+  }
+]

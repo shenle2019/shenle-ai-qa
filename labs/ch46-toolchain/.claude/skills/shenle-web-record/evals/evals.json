@@ -1,0 +1,23 @@
+{
+  "skill_name": "shenle-web-record",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我录制一下后台登录页",
+      "expected_output": "用户没给 URL，技能应主动询问 URL",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "把 https://admin.example.com/login 这个页面截一下，模块叫后台管理-登录模块",
+      "expected_output": "技能应依次执行：环境检查 → 启动录制 → 实时反馈进度 → 返回批次号",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我想抓一下 example.com 首页的截图",
+      "expected_output": "技能应确认 URL、运行环境检查、启动录制、返回批次号与 AI-信息采集/<批次号>/ 目录",
+      "files": []
+    }
+  ]
+}

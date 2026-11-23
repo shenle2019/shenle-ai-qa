@@ -1,0 +1,512 @@
+[10:53:12.378] Loading script C:\Users\95431\.shenle-api-record\addon_entry.py
+[10:53:12.406] HTTP(S) proxy listening at *:8080.
+[10:53:12.408] Web server listening at http://127.0.0.1:8081/
+[10:53:12.408] [shenle-api-record] addon running
+[10:53:13.534] 400 GET /updates (127.0.0.1) 2.06ms
+[10:53:40.478][127.0.0.1:64253] client connect
+[10:53:40.538][127.0.0.1:64253] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:40.687][127.0.0.1:64253] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:40.688][127.0.0.1:64253] client disconnect
+[10:53:40.689][127.0.0.1:64253] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:41.677][127.0.0.1:49671] client connect
+[10:53:41.719][127.0.0.1:49671] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:41.800][127.0.0.1:49671] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:41.801][127.0.0.1:49671] client disconnect
+[10:53:41.801][127.0.0.1:51394] client connect
+[10:53:41.801][127.0.0.1:49671] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:41.845][127.0.0.1:51394] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:41.944][127.0.0.1:51394] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:41.945][127.0.0.1:51394] client disconnect
+[10:53:41.945][127.0.0.1:51394] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:42.687][127.0.0.1:60863] client connect
+[10:53:42.724][127.0.0.1:60863] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:42.814][127.0.0.1:60863] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:42.815][127.0.0.1:60863] client disconnect
+[10:53:42.816][127.0.0.1:60863] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:43.481][127.0.0.1:64445] client connect
+[10:53:43.482][127.0.0.1:56505] client connect
+[10:53:43.537][127.0.0.1:64445] server connect novel.hctestedu.com:80 (101.201.254.190:80)
+[10:53:43.634][127.0.0.1:59476] client connect
+[10:53:43.646][127.0.0.1:58546] client connect
+[10:53:43.660][127.0.0.1:52834] client connect
+[10:53:43.667][127.0.0.1:59476] server connect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:43.679][127.0.0.1:58546] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:43.696][127.0.0.1:52834] server connect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:43.748][127.0.0.1:59476] Client TLS handshake failed. The client does not trust the proxy's certificate for hm.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:43.749][127.0.0.1:58546] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:43.750][127.0.0.1:59476] client disconnect
+[10:53:43.750][127.0.0.1:59476] server disconnect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:43.750][127.0.0.1:58546] client disconnect
+[10:53:43.752][127.0.0.1:58546] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:43.774][127.0.0.1:52834] Client TLS handshake failed. The client does not trust the proxy's certificate for hm.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:43.774][127.0.0.1:52834] client disconnect
+[10:53:43.776][127.0.0.1:52834] server disconnect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:44.255][127.0.0.1:62342] client connect
+[10:53:44.295][127.0.0.1:62342] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:44.384][127.0.0.1:62342] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:44.385][127.0.0.1:62342] client disconnect
+[10:53:44.385][127.0.0.1:57857] client connect
+[10:53:44.385][127.0.0.1:62342] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:44.424][127.0.0.1:57857] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:44.513][127.0.0.1:57857] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:44.514][127.0.0.1:57857] client disconnect
+[10:53:44.515][127.0.0.1:57857] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:45.417][127.0.0.1:61126] client connect
+[10:53:45.452][127.0.0.1:61126] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:45.530][127.0.0.1:61126] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:45.530][127.0.0.1:61126] client disconnect
+[10:53:45.530][127.0.0.1:50859] client connect
+[10:53:45.532][127.0.0.1:61126] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:45.572][127.0.0.1:50859] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:45.670][127.0.0.1:50859] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:45.671][127.0.0.1:50859] client disconnect
+[10:53:45.672][127.0.0.1:50859] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.033][127.0.0.1:53856] client connect
+[10:53:47.074][127.0.0.1:53856] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.137][127.0.0.1:49672] client connect
+[10:53:47.163][127.0.0.1:53856] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:47.164][127.0.0.1:53856] client disconnect
+[10:53:47.164][127.0.0.1:53856] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.170][127.0.0.1:49672] server connect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:47.238][127.0.0.1:49672] Client TLS handshake failed. The client does not trust the proxy's certificate for hm.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:47.239][127.0.0.1:49672] client disconnect
+[10:53:47.239][127.0.0.1:49672] server disconnect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:47.737][127.0.0.1:60161] client connect
+[10:53:47.773][127.0.0.1:60161] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.860][127.0.0.1:60161] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:47.860][127.0.0.1:60161] client disconnect
+[10:53:47.862][127.0.0.1:63698] client connect
+[10:53:47.862][127.0.0.1:60161] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.902][127.0.0.1:63698] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:47.990][127.0.0.1:63698] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:47.991][127.0.0.1:63698] client disconnect
+[10:53:47.992][127.0.0.1:63698] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:49.381][127.0.0.1:58688] client connect
+[10:53:49.416][127.0.0.1:58688] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:49.501][127.0.0.1:58688] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:49.502][127.0.0.1:58688] client disconnect
+[10:53:49.502][127.0.0.1:49676] client connect
+[10:53:49.502][127.0.0.1:58688] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:49.532][127.0.0.1:49676] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:49.603][127.0.0.1:49676] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:49.603][127.0.0.1:49676] client disconnect
+[10:53:49.603][127.0.0.1:49676] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:50.584][127.0.0.1:61768] client connect
+[10:53:50.592][127.0.0.1:50664] client connect
+[10:53:50.620][127.0.0.1:61768] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:50.627][127.0.0.1:50664] server connect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:50.643][127.0.0.1:56409] client connect
+[10:53:50.645][127.0.0.1:61825] client connect
+[10:53:50.690][127.0.0.1:56505] server connect novel.hctestedu.com:80 (101.201.254.190:80)
+[10:53:50.691][127.0.0.1:61825] server connect novel.hctestedu.com:80 (101.201.254.190:80)
+[10:53:50.692][127.0.0.1:56409] server connect novel.hctestedu.com:80 (101.201.254.190:80)
+[10:53:50.699][127.0.0.1:50664] Client TLS handshake failed. The client does not trust the proxy's certificate for hm.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:50.699][127.0.0.1:50664] client disconnect
+[10:53:50.701][127.0.0.1:50664] server disconnect hm.baidu.com:443 (124.237.176.160:443)
+[10:53:50.704][127.0.0.1:61768] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:50.705][127.0.0.1:61768] client disconnect
+[10:53:50.706][127.0.0.1:61768] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:51.906][127.0.0.1:55349] client connect
+[10:53:51.944][127.0.0.1:55349] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:52.027][127.0.0.1:55349] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:52.029][127.0.0.1:55349] client disconnect
+[10:53:52.029][127.0.0.1:57055] client connect
+[10:53:52.030][127.0.0.1:55349] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:52.062][127.0.0.1:57055] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:52.139][127.0.0.1:57055] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:52.140][127.0.0.1:57055] client disconnect
+[10:53:52.142][127.0.0.1:57055] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:54.836][127.0.0.1:51596] client connect
+[10:53:54.877][127.0.0.1:51596] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:54.900][127.0.0.1:54441] client connect
+[10:53:54.900][127.0.0.1:55706] client connect
+[10:53:54.901][127.0.0.1:54895] client connect
+[10:53:54.913][127.0.0.1:63034] client connect
+[10:53:54.923][127.0.0.1:64091] client connect
+[10:53:54.938][127.0.0.1:64091] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:54.943][127.0.0.1:63034] server connect img-s.msn.cn:443 (114.230.198.88:443)
+[10:53:54.956][127.0.0.1:64091] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:54.956][127.0.0.1:64091] client disconnect
+[10:53:54.958][127.0.0.1:64091] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:54.969][127.0.0.1:51596] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:54.972][127.0.0.1:51596] client disconnect
+[10:53:54.972][127.0.0.1:61011] client connect
+[10:53:54.973][127.0.0.1:51596] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:54.983][127.0.0.1:63034] Client TLS handshake failed. The client does not trust the proxy's certificate for img-s.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:54.985][127.0.0.1:63034] client disconnect
+[10:53:54.985][127.0.0.1:63034] server disconnect img-s.msn.cn:443 (114.230.198.88:443)
+[10:53:54.992][127.0.0.1:55306] client connect
+[10:53:54.996][127.0.0.1:55309] client connect
+[10:53:55.000][127.0.0.1:55306] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.001][127.0.0.1:55309] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.011][127.0.0.1:54441] server connect c.msn.cn:443 (150.171.110.65:443)
+[10:53:55.014][127.0.0.1:52249] client connect
+[10:53:55.024][127.0.0.1:55309] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.026][127.0.0.1:61011] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.027][127.0.0.1:55306] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.029][127.0.0.1:61682] client connect
+[10:53:55.031][127.0.0.1:55309] client disconnect
+[10:53:55.032][127.0.0.1:55309] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.032][127.0.0.1:55306] client disconnect
+[10:53:55.033][127.0.0.1:55306] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.045][127.0.0.1:58094] client connect
+[10:53:55.049][127.0.0.1:52249] server connect img-s.msn.cn:443 (114.230.198.88:443)
+[10:53:55.074][127.0.0.1:52249] Client TLS handshake failed. The client does not trust the proxy's certificate for img-s.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.075][127.0.0.1:52249] client disconnect
+[10:53:55.075][127.0.0.1:52249] server disconnect img-s.msn.cn:443 (114.230.198.88:443)
+[10:53:55.079][127.0.0.1:59957] client connect
+[10:53:55.081][127.0.0.1:54895] server connect sb.scorecardresearch.com:443 (18.164.154.81:443)
+[10:53:55.081][127.0.0.1:55706] server connect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.088][127.0.0.1:59957] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.097][127.0.0.1:59957] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.098][127.0.0.1:59957] client disconnect
+[10:53:55.098][127.0.0.1:59957] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.107][127.0.0.1:61011] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.107][127.0.0.1:61011] client disconnect
+[10:53:55.107][127.0.0.1:61011] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.108][127.0.0.1:58094] server connect edge.microsoft.com:443 (150.171.28.11:443)
+[10:53:55.136][127.0.0.1:49292] client connect
+[10:53:55.140][127.0.0.1:63276] client connect
+[10:53:55.143][127.0.0.1:49292] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.146][127.0.0.1:63276] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.153][127.0.0.1:49292] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.153][127.0.0.1:49292] client disconnect
+[10:53:55.154][127.0.0.1:49292] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.159][127.0.0.1:63276] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.160][127.0.0.1:63276] client disconnect
+[10:53:55.160][127.0.0.1:63276] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.213][127.0.0.1:61682] server connect browser.events.data.msn.com:443 (20.184.175.15:443)
+[10:53:55.216][127.0.0.1:62608] client connect
+[10:53:55.217][127.0.0.1:50549] client connect
+[10:53:55.239][127.0.0.1:58094] Client TLS handshake failed. The client does not trust the proxy's certificate for edge.microsoft.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.239][127.0.0.1:58094] client disconnect
+[10:53:55.240][127.0.0.1:58094] server disconnect edge.microsoft.com:443 (150.171.28.11:443)
+[10:53:55.240][127.0.0.1:54441] Client TLS handshake failed. The client does not trust the proxy's certificate for c.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.242][127.0.0.1:54441] client disconnect
+[10:53:55.243][127.0.0.1:54441] server disconnect c.msn.cn:443 (150.171.110.65:443)
+[10:53:55.261][127.0.0.1:54895] Client TLS handshake failed. The client does not trust the proxy's certificate for sb.scorecardresearch.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.261][127.0.0.1:54895] client disconnect
+[10:53:55.261][127.0.0.1:54895] server disconnect sb.scorecardresearch.com:443 (18.164.154.81:443)
+[10:53:55.295][127.0.0.1:56858] client connect
+[10:53:55.296][127.0.0.1:57152] client connect
+[10:53:55.311][127.0.0.1:55103] client connect
+[10:53:55.315][127.0.0.1:55103] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.323][127.0.0.1:55103] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.325][127.0.0.1:55103] client disconnect
+[10:53:55.325][127.0.0.1:55103] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.339][127.0.0.1:63495] client connect
+[10:53:55.344][127.0.0.1:63495] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.354][127.0.0.1:63495] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.355][127.0.0.1:63495] client disconnect
+[10:53:55.355][127.0.0.1:63495] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.384][127.0.0.1:50549] server connect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.389][127.0.0.1:62121] client connect
+[10:53:55.396][127.0.0.1:62121] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.399][127.0.0.1:62608] server connect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.406][127.0.0.1:62121] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.408][127.0.0.1:62121] client disconnect
+[10:53:55.409][127.0.0.1:62121] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.444][127.0.0.1:55706] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.446][127.0.0.1:55706] client disconnect
+[10:53:55.447][127.0.0.1:55706] server disconnect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.469][127.0.0.1:57152] server connect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.672][127.0.0.1:51304] client connect
+[10:53:55.719][127.0.0.1:51304] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.720][127.0.0.1:50549] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.720][127.0.0.1:50549] client disconnect
+[10:53:55.722][127.0.0.1:50549] server disconnect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.735][127.0.0.1:61682] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.736][127.0.0.1:61682] client disconnect
+[10:53:55.736][127.0.0.1:61682] server disconnect browser.events.data.msn.com:443 (20.184.175.15:443)
+[10:53:55.747][127.0.0.1:65456] client connect
+[10:53:55.747][127.0.0.1:61778] client connect
+[10:53:55.754][127.0.0.1:65456] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.755][127.0.0.1:61778] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.768][127.0.0.1:62608] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.772][127.0.0.1:65456] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.772][127.0.0.1:61778] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.773][127.0.0.1:62608] client disconnect
+[10:53:55.773][127.0.0.1:62608] server disconnect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.774][127.0.0.1:65456] client disconnect
+[10:53:55.774][127.0.0.1:61778] client disconnect
+[10:53:55.775][127.0.0.1:65456] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.775][127.0.0.1:61778] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.776][127.0.0.1:51860] client connect
+[10:53:55.783][127.0.0.1:61701] client connect
+[10:53:55.818][127.0.0.1:61701] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.819][127.0.0.1:51304] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.819][127.0.0.1:51304] client disconnect
+[10:53:55.821][127.0.0.1:51304] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.827][127.0.0.1:49845] client connect
+[10:53:55.837][127.0.0.1:49845] server connect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.837][127.0.0.1:57152] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.839][127.0.0.1:57152] client disconnect
+[10:53:55.840][127.0.0.1:57152] server disconnect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:55.850][127.0.0.1:49845] Client TLS handshake failed. The client does not trust the proxy's certificate for assets.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.851][127.0.0.1:49845] client disconnect
+[10:53:55.851][127.0.0.1:49845] server disconnect assets.msn.cn:443 (175.12.123.102:443)
+[10:53:55.889][127.0.0.1:63342] client connect
+[10:53:55.900][127.0.0.1:61701] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:55.901][127.0.0.1:61701] client disconnect
+[10:53:55.902][127.0.0.1:61701] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.928][127.0.0.1:63342] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:55.953][127.0.0.1:51860] server connect browser.events.data.msn.com:443 (20.184.175.15:443)
+[10:53:55.999][127.0.0.1:64389] client connect
+[10:53:56.016][127.0.0.1:63342] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.017][127.0.0.1:63342] client disconnect
+[10:53:56.018][127.0.0.1:63342] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.028][127.0.0.1:61249] client connect
+[10:53:56.064][127.0.0.1:61249] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.143][127.0.0.1:50754] client connect
+[10:53:56.177][127.0.0.1:61249] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.179][127.0.0.1:61249] client disconnect
+[10:53:56.179][127.0.0.1:61249] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.182][127.0.0.1:64389] server connect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:56.206][127.0.0.1:50754] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.281][127.0.0.1:50754] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.283][127.0.0.1:50754] client disconnect
+[10:53:56.283][127.0.0.1:50754] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.311][127.0.0.1:51860] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.313][127.0.0.1:51860] client disconnect
+[10:53:56.314][127.0.0.1:51860] server disconnect browser.events.data.msn.com:443 (20.184.175.15:443)
+[10:53:56.558][127.0.0.1:64389] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.558][127.0.0.1:64389] client disconnect
+[10:53:56.559][127.0.0.1:64389] server disconnect browser.events.data.msn.cn:443 (20.184.175.15:443)
+[10:53:56.622][127.0.0.1:55735] client connect
+[10:53:56.669][127.0.0.1:55735] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:56.764][127.0.0.1:55735] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:56.765][127.0.0.1:55735] client disconnect
+[10:53:56.765][127.0.0.1:55735] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:57.743][127.0.0.1:64924] client connect
+[10:53:57.776][127.0.0.1:57186] client connect
+[10:53:57.779][127.0.0.1:54100] client connect
+[10:53:57.800][127.0.0.1:54100] server connect www.baidu.com:443 (183.2.172.177:443)
+[10:53:57.807][127.0.0.1:57186] server connect www.baidu.com:443 (183.2.172.177:443)
+[10:53:57.820][127.0.0.1:64924] server connect edge.microsoft.com:443 (150.171.28.11:443)
+[10:53:57.848][127.0.0.1:54100] Client TLS handshake failed. The client does not trust the proxy's certificate for www.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:57.849][127.0.0.1:54100] client disconnect
+[10:53:57.849][127.0.0.1:54100] server disconnect www.baidu.com:443 (183.2.172.177:443)
+[10:53:57.862][127.0.0.1:57186] Client TLS handshake failed. The client does not trust the proxy's certificate for www.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:57.863][127.0.0.1:57186] client disconnect
+[10:53:57.863][127.0.0.1:57186] server disconnect www.baidu.com:443 (183.2.172.177:443)
+[10:53:57.867][127.0.0.1:57451] client connect
+[10:53:57.942][127.0.0.1:57451] server connect edge-http.microsoft.com:80 (150.171.73.11:80)
+[10:53:57.984][127.0.0.1:64924] Client TLS handshake failed. The client does not trust the proxy's certificate for edge.microsoft.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:57.986][127.0.0.1:64924] client disconnect
+[10:53:57.987][127.0.0.1:64924] server disconnect edge.microsoft.com:443 (150.171.28.11:443)
+[10:53:58.105][127.0.0.1:57955] client connect
+[10:53:58.119][127.0.0.1:54729] client connect
+[10:53:58.135][127.0.0.1:57955] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:53:58.205][127.0.0.1:57955] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:58.206][127.0.0.1:57955] client disconnect
+[10:53:58.207][127.0.0.1:57955] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:53:58.297][127.0.0.1:54729] server connect browser.events.data.msn.cn:443 (20.184.175.2:443)
+[10:53:58.426][127.0.0.1:64537] client connect
+[10:53:58.595][127.0.0.1:64537] server connect browser.events.data.msn.cn:443 (20.184.175.2:443)
+[10:53:58.650][127.0.0.1:54729] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:58.651][127.0.0.1:54729] client disconnect
+[10:53:58.652][127.0.0.1:54729] server disconnect browser.events.data.msn.cn:443 (20.184.175.2:443)
+[10:53:58.939][127.0.0.1:64537] Client TLS handshake failed. The client does not trust the proxy's certificate for browser.events.data.msn.cn (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:53:58.939][127.0.0.1:64537] client disconnect
+[10:53:58.940][127.0.0.1:64537] server disconnect browser.events.data.msn.cn:443 (20.184.175.2:443)
+[10:54:01.103][127.0.0.1:57176] client connect
+[10:54:01.103][127.0.0.1:50763] client connect
+[10:54:01.129][127.0.0.1:50763] server connect www.baidu.com:443 (183.2.172.177:443)
+[10:54:01.132][127.0.0.1:57176] server connect www.baidu.com:443 (183.2.172.177:443)
+[10:54:01.190][127.0.0.1:50763] Client TLS handshake failed. The client does not trust the proxy's certificate for www.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:01.190][127.0.0.1:57176] Client TLS handshake failed. The client does not trust the proxy's certificate for www.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:01.190][127.0.0.1:50763] client disconnect
+[10:54:01.192][127.0.0.1:50763] server disconnect www.baidu.com:443 (183.2.172.177:443)
+[10:54:01.192][127.0.0.1:57176] client disconnect
+[10:54:01.193][127.0.0.1:52688] client connect
+[10:54:01.193][127.0.0.1:57176] server disconnect www.baidu.com:443 (183.2.172.177:443)
+[10:54:01.211][127.0.0.1:52688] server connect www.baidu.com:443 (183.2.172.177:443)
+[10:54:02.016][127.0.0.1:64698] client connect
+[10:54:02.029][127.0.0.1:55863] client connect
+[10:54:02.032][127.0.0.1:57091] client connect
+[10:54:02.034][127.0.0.1:52416] client connect
+[10:54:02.035][127.0.0.1:59480] client connect
+[10:54:02.036][127.0.0.1:63807] client connect
+[10:54:02.038][127.0.0.1:58727] client connect
+[10:54:02.039][127.0.0.1:63627] client connect
+[10:54:02.041][127.0.0.1:60189] client connect
+[10:54:02.043][127.0.0.1:52099] client connect
+[10:54:02.045][127.0.0.1:52977] client connect
+[10:54:02.047][127.0.0.1:56590] client connect
+[10:54:02.048][127.0.0.1:56721] client connect
+[10:54:02.050][127.0.0.1:51837] client connect
+[10:54:02.050][127.0.0.1:54558] client connect
+[10:54:02.054][127.0.0.1:53769] client connect
+[10:54:02.060][127.0.0.1:52199] client connect
+[10:54:02.062][127.0.0.1:52416] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.063][127.0.0.1:55863] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.063][127.0.0.1:57091] server connect t13.baidu.com:443 (175.12.90.36:443)
+[10:54:02.063][127.0.0.1:65227] client connect
+[10:54:02.069][127.0.0.1:64698] server connect cn.bing.com:443 (202.89.233.100:443)
+[10:54:02.083][127.0.0.1:63807] server connect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.083][127.0.0.1:63627] server connect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.084][127.0.0.1:58727] server connect t14.baidu.com:443 (175.12.90.36:443)
+[10:54:02.084][127.0.0.1:60189] server connect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.084][127.0.0.1:59480] server connect t15.baidu.com:443 (175.12.90.36:443)
+[10:54:02.084][127.0.0.1:52099] server connect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.084][127.0.0.1:52977] server connect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.087][127.0.0.1:56721] server connect gips2.baidu.com:443 (175.12.90.38:443)
+[10:54:02.093][127.0.0.1:56590] server connect t8.baidu.com:443 (116.163.33.36:443)
+[10:54:02.095][127.0.0.1:52199] server connect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.096][127.0.0.1:54558] server connect f7.baidu.com:443 (175.12.90.36:443)
+[10:54:02.096][127.0.0.1:51837] server connect gips1.baidu.com:443 (175.12.90.38:443)
+[10:54:02.109][127.0.0.1:53769] server connect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.109][127.0.0.1:52416] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.110][127.0.0.1:65227] server connect hectorstatic.baidu.com:443 (175.12.90.38:443)
+[10:54:02.115][127.0.0.1:55863] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.118][127.0.0.1:61677] client connect
+[10:54:02.120][127.0.0.1:57091] Client TLS handshake failed. The client does not trust the proxy's certificate for t13.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.140][127.0.0.1:52416] client disconnect
+[10:54:02.141][127.0.0.1:61900] client connect
+[10:54:02.143][127.0.0.1:52416] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.147][127.0.0.1:55863] client disconnect
+[10:54:02.147][127.0.0.1:59899] client connect
+[10:54:02.150][127.0.0.1:55863] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.150][127.0.0.1:57091] client disconnect
+[10:54:02.157][127.0.0.1:63807] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg4.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.157][127.0.0.1:63627] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg4.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.159][127.0.0.1:59480] Client TLS handshake failed. The client does not trust the proxy's certificate for t15.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.161][127.0.0.1:58727] Client TLS handshake failed. The client does not trust the proxy's certificate for t14.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.161][127.0.0.1:60189] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg4.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.161][127.0.0.1:52099] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg3.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.162][127.0.0.1:56721] Client TLS handshake failed. The client does not trust the proxy's certificate for gips2.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.163][127.0.0.1:57091] server disconnect t13.baidu.com:443 (175.12.90.36:443)
+[10:54:02.165][127.0.0.1:64838] client connect
+[10:54:02.166][127.0.0.1:52977] Client TLS handshake failed. The client does not trust the proxy's certificate for t7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.183][127.0.0.1:65265] client connect
+[10:54:02.186][127.0.0.1:63807] client disconnect
+[10:54:02.186][127.0.0.1:63627] client disconnect
+[10:54:02.186][127.0.0.1:59480] client disconnect
+[10:54:02.187][127.0.0.1:58727] client disconnect
+[10:54:02.187][127.0.0.1:60189] client disconnect
+[10:54:02.187][127.0.0.1:52099] client disconnect
+[10:54:02.187][127.0.0.1:56721] client disconnect
+[10:54:02.187][127.0.0.1:50831] client connect
+[10:54:02.189][127.0.0.1:63807] server disconnect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.189][127.0.0.1:63627] server disconnect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.189][127.0.0.1:59480] server disconnect t15.baidu.com:443 (175.12.90.36:443)
+[10:54:02.190][127.0.0.1:58727] server disconnect t14.baidu.com:443 (175.12.90.36:443)
+[10:54:02.190][127.0.0.1:60189] server disconnect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.191][127.0.0.1:52099] server disconnect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.192][127.0.0.1:56721] server disconnect gips2.baidu.com:443 (175.12.90.38:443)
+[10:54:02.192][127.0.0.1:52977] client disconnect
+[10:54:02.192][127.0.0.1:50393] client connect
+[10:54:02.193][127.0.0.1:56590] Client TLS handshake failed. The client does not trust the proxy's certificate for t8.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.195][127.0.0.1:52199] Client TLS handshake failed. The client does not trust the proxy's certificate for psstatic.cdn.bcebos.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.195][127.0.0.1:54558] Client TLS handshake failed. The client does not trust the proxy's certificate for f7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.195][127.0.0.1:51837] Client TLS handshake failed. The client does not trust the proxy's certificate for gips1.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.197][127.0.0.1:52977] server disconnect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.206][127.0.0.1:61677] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.210][127.0.0.1:56590] client disconnect
+[10:54:02.210][127.0.0.1:52199] client disconnect
+[10:54:02.210][127.0.0.1:54558] client disconnect
+[10:54:02.210][127.0.0.1:51837] client disconnect
+[10:54:02.211][127.0.0.1:61900] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.213][127.0.0.1:56590] server disconnect t8.baidu.com:443 (116.163.33.36:443)
+[10:54:02.214][127.0.0.1:52199] server disconnect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.214][127.0.0.1:54558] server disconnect f7.baidu.com:443 (175.12.90.36:443)
+[10:54:02.214][127.0.0.1:51837] server disconnect gips1.baidu.com:443 (175.12.90.38:443)
+[10:54:02.218][127.0.0.1:59899] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.218][127.0.0.1:53769] Client TLS handshake failed. The client does not trust the proxy's certificate for t7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.218][127.0.0.1:65227] Client TLS handshake failed. The client does not trust the proxy's certificate for hectorstatic.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.221][127.0.0.1:64838] server connect t15.baidu.com:443 (175.12.90.36:443)
+[10:54:02.222][127.0.0.1:64698] Client TLS handshake failed. The client does not trust the proxy's certificate for cn.bing.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.222][127.0.0.1:53769] client disconnect
+[10:54:02.223][127.0.0.1:65227] client disconnect
+[10:54:02.223][127.0.0.1:65265] server connect t14.baidu.com:443 (175.12.90.36:443)
+[10:54:02.224][127.0.0.1:53769] server disconnect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.224][127.0.0.1:65227] server disconnect hectorstatic.baidu.com:443 (175.12.90.38:443)
+[10:54:02.226][127.0.0.1:64698] client disconnect
+[10:54:02.227][127.0.0.1:64698] server disconnect cn.bing.com:443 (202.89.233.100:443)
+[10:54:02.227][127.0.0.1:50831] server connect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.229][127.0.0.1:50393] server connect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.240][127.0.0.1:61677] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.247][127.0.0.1:61900] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.247][127.0.0.1:61677] client disconnect
+[10:54:02.250][127.0.0.1:59899] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.250][127.0.0.1:61677] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.253][127.0.0.1:64838] Client TLS handshake failed. The client does not trust the proxy's certificate for t15.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.255][127.0.0.1:61900] client disconnect
+[10:54:02.256][127.0.0.1:61900] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.259][127.0.0.1:59899] client disconnect
+[10:54:02.260][127.0.0.1:65265] Client TLS handshake failed. The client does not trust the proxy's certificate for t14.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.261][127.0.0.1:59899] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.261][127.0.0.1:64838] client disconnect
+[10:54:02.261][127.0.0.1:50831] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg3.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.263][127.0.0.1:64838] server disconnect t15.baidu.com:443 (175.12.90.36:443)
+[10:54:02.264][127.0.0.1:50393] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg3.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.265][127.0.0.1:65265] client disconnect
+[10:54:02.265][127.0.0.1:50208] client connect
+[10:54:02.266][127.0.0.1:65265] server disconnect t14.baidu.com:443 (175.12.90.36:443)
+[10:54:02.266][127.0.0.1:50831] client disconnect
+[10:54:02.267][127.0.0.1:59988] client connect
+[10:54:02.269][127.0.0.1:50831] server disconnect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.269][127.0.0.1:50393] client disconnect
+[10:54:02.272][127.0.0.1:50393] server disconnect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.274][127.0.0.1:61901] client connect
+[10:54:02.276][127.0.0.1:51592] client connect
+[10:54:02.279][127.0.0.1:65521] client connect
+[10:54:02.281][127.0.0.1:57056] client connect
+[10:54:02.282][127.0.0.1:53867] client connect
+[10:54:02.283][127.0.0.1:63624] client connect
+[10:54:02.285][127.0.0.1:50208] server connect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.285][127.0.0.1:60763] client connect
+[10:54:02.289][127.0.0.1:62460] client connect
+[10:54:02.289][127.0.0.1:59988] server connect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.291][127.0.0.1:59520] client connect
+[10:54:02.299][127.0.0.1:65521] server connect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.299][127.0.0.1:51592] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.303][127.0.0.1:57056] server connect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.304][127.0.0.1:63624] server connect gips2.baidu.com:443 (175.12.90.38:443)
+[10:54:02.304][127.0.0.1:53867] server connect t8.baidu.com:443 (116.163.33.36:443)
+[10:54:02.305][127.0.0.1:60763] server connect gips1.baidu.com:443 (175.12.90.38:443)
+[10:54:02.309][127.0.0.1:62460] server connect f7.baidu.com:443 (175.12.90.36:443)
+[10:54:02.312][127.0.0.1:61901] server connect sp1.baidu.com:443 (183.2.172.177:443)
+[10:54:02.319][127.0.0.1:59520] server connect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.329][127.0.0.1:50208] Client TLS handshake failed. The client does not trust the proxy's certificate for psstatic.cdn.bcebos.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.339][127.0.0.1:49927] client connect
+[10:54:02.339][127.0.0.1:59988] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg4.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.351][127.0.0.1:50208] client disconnect
+[10:54:02.356][127.0.0.1:65521] Client TLS handshake failed. The client does not trust the proxy's certificate for gimg3.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.356][127.0.0.1:51592] Client TLS handshake failed. The client does not trust the proxy's certificate for pss.bdstatic.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.359][127.0.0.1:50208] server disconnect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.359][127.0.0.1:59988] client disconnect
+[10:54:02.360][127.0.0.1:64202] client connect
+[10:54:02.363][127.0.0.1:59988] server disconnect gimg4.baidu.com:443 (175.12.90.36:443)
+[10:54:02.378][127.0.0.1:62606] client connect
+[10:54:02.381][127.0.0.1:63624] Client TLS handshake failed. The client does not trust the proxy's certificate for gips2.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.384][127.0.0.1:65521] client disconnect
+[10:54:02.385][127.0.0.1:51592] client disconnect
+[10:54:02.385][127.0.0.1:57345] client connect
+[10:54:02.388][127.0.0.1:65521] server disconnect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.389][127.0.0.1:51592] server disconnect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.396][127.0.0.1:53720] client connect
+[10:54:02.397][127.0.0.1:57056] Client TLS handshake failed. The client does not trust the proxy's certificate for t7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.399][127.0.0.1:53867] Client TLS handshake failed. The client does not trust the proxy's certificate for t8.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.399][127.0.0.1:60763] Client TLS handshake failed. The client does not trust the proxy's certificate for gips1.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.404][127.0.0.1:63624] client disconnect
+[10:54:02.407][127.0.0.1:63624] server disconnect gips2.baidu.com:443 (175.12.90.38:443)
+[10:54:02.413][127.0.0.1:62460] Client TLS handshake failed. The client does not trust the proxy's certificate for f7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.415][127.0.0.1:57056] client disconnect
+[10:54:02.416][127.0.0.1:53867] client disconnect
+[10:54:02.416][127.0.0.1:60763] client disconnect
+[10:54:02.416][127.0.0.1:49927] server connect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.419][127.0.0.1:57056] server disconnect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.420][127.0.0.1:53867] server disconnect t8.baidu.com:443 (116.163.33.36:443)
+[10:54:02.420][127.0.0.1:60763] server disconnect gips1.baidu.com:443 (175.12.90.38:443)
+[10:54:02.420][127.0.0.1:59520] Client TLS handshake failed. The client does not trust the proxy's certificate for t7.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.422][127.0.0.1:62460] client disconnect
+[10:54:02.423][127.0.0.1:62460] server disconnect f7.baidu.com:443 (175.12.90.36:443)
+[10:54:02.423][127.0.0.1:64202] server connect gimg3.baidu.com:443 (175.12.90.36:443)
+[10:54:02.427][127.0.0.1:59520] client disconnect
+[10:54:02.427][127.0.0.1:62606] server connect pss.bdstatic.com:443 (113.219.201.36:443)
+[10:54:02.430][127.0.0.1:59520] server disconnect t7.baidu.com:443 (116.163.33.36:443)
+[10:54:02.431][127.0.0.1:61901] Client TLS handshake failed. The client does not trust the proxy's certificate for sp1.baidu.com (OpenSSL Error([('SSL routines', '', 'ssl/tls alert certificate unknown')]))
+[10:54:02.431][127.0.0.1:57345] server connect psstatic.cdn.bcebos.com:443 (175.12.90.38:443)
+[10:54:02.433][127.0.0.1:61901] client disconnect
+[10:54:02.434][127.0.0.1:61901] server disconnect sp1.baidu.com:443 (183.2.172.177:443)

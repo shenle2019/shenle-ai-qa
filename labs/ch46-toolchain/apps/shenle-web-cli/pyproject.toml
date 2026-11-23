@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shenle-web-cli"
+version = "0.1.0"
+description = "命令行驱动的浏览器自动化工具（Playwright + CDP），后续供 AI 自然语言调用"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "shenle" }]
+# 本机 .venv 钉在 playwright 1.57.0（chromium-1200 是唯一可用的二进制）。
+# 1.60+ 会拉 chromium-1223/1244，本地跑不起来，所以封顶 1.57.x。
+dependencies = [
+    "playwright>=1.57,<1.58",
+    "python-dotenv>=1.0",
+    "Pillow>=10.0",
+]
+
+[project.scripts]
+shenle-web-cli = "shenle_web_cli.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

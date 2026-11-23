@@ -91,6 +91,7 @@ export default defineConfig({
             { text: '43 用例与关键字执行器', link: '/chapters/ch43' },
             { text: '44 测试计划与异步执行', link: '/chapters/ch44' },
             { text: '45 平台收口', link: '/chapters/ch45' },
+            { text: '46 AI 测试 Skills 与工具链', link: '/chapters/ch46' },
           ]
         },
         {
@@ -182,6 +183,7 @@ export default defineConfig({
             { text: '43 用例与关键字执行器', link: '/chapters/ch43' },
             { text: '44 测试计划与异步执行', link: '/chapters/ch44' },
             { text: '45 平台收口', link: '/chapters/ch45' },
+            { text: '46 AI 测试 Skills 与工具链', link: '/chapters/ch46' },
           ]
         },
         {

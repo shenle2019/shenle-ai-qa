@@ -1,0 +1,42 @@
+[
+  {
+    "request": {
+      "id": "2403360758864",
+      "method": "POST",
+      "url": "https://middledata.ldmnq.com/collection/upload",
+      "headers": {
+        "timestamp": "1789959962311",
+        "signature": "249dfea2",
+        "clientversion": "500041",
+        "platform": "GAME_CENTER",
+        "mnqversion": "0900016800-64",
+        "deviceid": "010139020461335,Redmi,23113RKC6C,6-961ceb5ae86614d761c53dc585d18568",
+        "appid": "58",
+        "gns": "3",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "368",
+        "accept-encoding": "gzip",
+        "user-agent": "okhttp/4.12.0"
+      },
+      "body": "[{\"appId\":\"58\",\"eventId\":\"75bc8df0d73846699dce1e91a8b742ef\",\"timestamp\":1789959962311,\"type\":\"track\",\"eventKey\":\"mnq_desktop_app\",\"properties\":{\"app_list\":\"com.cyanogenmod.filemanager,com.kenny.logistics,com.kenny.logistics.driver,com.test.demo2,com.zhao.myreader,com.zhinongye,io.appium.settings\",\"mnq_mac\":\"6-961ceb5ae86614d761c53dc585d18568\",\"app_version\":500041}}]",
+      "timestamp": 1789959960.1538222
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "server": "ESA",
+        "content-type": "application/json",
+        "set-cookie": "acw_tc=af0c632617899599601157569e3d2d29d668447684c9742218052d5f91;path=/;HttpOnly;Max-Age=3600, cdn_sec_tc=af0c632617899599601157569e3d2d29d668447684c9742218052d5f91;path=/;HttpOnly;Max-Age=3600",
+        "content-encoding": "gzip",
+        "date": "Mon, 21 Sep 2026 03:06:00 GMT",
+        "vary": "Accept-Encoding, Origin, Access-Control-Request-Method, Access-Control-Request-Headers",
+        "via": "ens-cache28.l2eo166-17[6,0,DP], ens-cache18.cn8238[29,0,DP], ens-cache18.cn8238[29,0]",
+        "x-site-cache-status": "DYNAMIC",
+        "timing-allow-origin": "*",
+        "eagleid": "af0c632617899599601157569e"
+      },
+      "body": "{\"code\":200,\"message\":\"操作成功\",\"data\":\"\"}",
+      "timestamp": 1789959960.2268016
+    }
+  }
+]

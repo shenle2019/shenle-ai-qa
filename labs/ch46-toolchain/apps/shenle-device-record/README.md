@@ -1,0 +1,243 @@
+# shenle-device-record
+
+设备端界面采集命令行工具。测试人员手持真机操作 App，本工具把当前屏幕截图 + 界面结构信息按约定格式落盘，供后续大模型分析界面、生成测试点与用例。
+
+只使用 midscene 的连接、截图、取界面信息能力，**不做任何自动化点击操作**。
+
+## 安装
+
+> 项目路径含中文与空格，**不要跑 `pip install -e .`**——editable 安装会污染全局 site-packages。
+
+```bash
+cd apps/shenle-device-record
+pip install .
+```
+
+外部依赖（PATH 里要能找到）：
+
+- `adb`：Android SDK platform-tools
+- `npx`：Node.js（用于 `npx @midscene/android`）
+
+## 用法
+
+```bash
+# 采集一次当前屏幕；不传 --device-id 则用第一台可用设备
+shenle-device-record record --platform android
+
+# 指定设备序列号
+shenle-device-record record --platform android --device-id ABC123
+
+# 指定批次根目录（默认 .）
+shenle-device-record record --platform android -o D:/captures
+
+# 也支持 python -m 入口
+python -m shenle_device_record record --platform android
+```
+
+退出码约定：
+
+| 退出码 | 含义 |
+|---|---|
+| 0 | 采集并落盘成功 |
+| 1 | adb / midscene 调用失败、参数缺失等通用错误 |
+| 2 | 平台未实现（第一阶段仅 `android`，`ios` / `harmony` / `pc` 返回此码） |
+
+### Windows 控制台编码提示
+
+本工具的日志正文是中文。Windows `cmd.exe` 默认代码页是 GBK（cp936），直接运行时终端里的中文日志可能显示成乱码。**这只是终端显示问题，落盘的 PNG 与 JSON 文件不受影响**（JSON 始终以 UTF-8 写入）。
+
+想让日志正常显示，先把当前控制台切到 UTF-8 再运行：
+
+```bat
+chcp 65001
+shenle-device-record record --platform android
+```
+
+PowerShell / Windows Terminal / Git Bash 一般无需处理。
+
+## serve 子命令（实时画面 + 网页采集）
+
+第一阶段 `record` 一次只能截一张图。第三阶段加了 `serve` 子命令：在本机起一个 HTTP + WebSocket 服务（默认端口 `8765`），自动用 Playwright 打开录制页面，左边看设备实时画面（约每秒 1 帧），右边填模块 / 功能 / 描述后一键落盘。
+
+### 安装新依赖
+
+```bash
+cd apps/shenle-device-record
+pip install websockets psutil pytest-asyncio
+```
+
+### 安装 Playwright 浏览器
+
+`serve` 默认会用 `npx playwright open` 自动起一个 Chromium 窗口。第一次跑之前先装一次（约 30s～2min，看网络）：
+
+```bash
+npx playwright install chromium
+```
+
+国内网络可临时走镜像：
+
+```bash
+npx playwright install chromium --registry=https://registry.npmmirror.com
+```
+
+### 运行
+
+```bash
+# 最简：默认端口 8765，自动开浏览器
+shenle-device-record serve --platform android
+
+# 指定设备
+shenle-device-record serve --platform android --device-id ABC123
+
+# 不自动开浏览器（CI / 调试 / 端口被占时）
+shenle-device-record serve --platform android --no-browser
+
+# 换端口
+shenle-device-record serve --platform android --port 9000
+
+# 指定批次根目录（默认 .）
+shenle-device-record serve --platform android -o D:/captures
+```
+
+启动后终端会打印：
+
+```
+[shenle-device-record] 服务已就绪：http://127.0.0.1:8765/
+[shenle-device-record] WebSocket 监听 ws://127.0.0.1:8765/ws
+```
+
+浏览器自动打开 `http://127.0.0.1:8765/`，左边显示设备实时画面，右边是采集面板。手机开「开发者选项 → USB 调试」连上电脑后，画面会自动开始推流。
+
+### 关键交互
+
+- **模式切换**：右侧「实时 / 按需」单选切换。实时模式持续推流，按需模式停止推流、只在点采集时截一张。
+- **帧率调节**：右侧 `-` / `+` 按钮调整 fps（范围 0.5 ~ 10）。
+- **采集**：填「模块 / 功能点 / 描述」→ 点「截图采集」→ 半透明蒙层短暂显示 → 状态栏「已采」+1，「最近」显示落盘相对路径。
+- **自动降级**：连续 3 次推流失败（比如手机锁屏）会自动切到按需模式并弹 toast 提示。
+
+落盘路径与 `record` 子命令一致：`<output>/AI-信息采集/<批次>/<模块>/<功能>/{img/screenshot_NNN.png, json/android_NNN.json}`。
+
+### 退出
+
+- 关闭 Chromium 窗口：服务在 2～5 秒内自动退出（`stop_event` 被触发）。
+- `--no-browser` 且无 WebSocket 客户端：客户端空闲超过 ~10 秒后自动退出。
+- 想强退：`Ctrl+C`。
+
+### 已知风险与回退
+
+| 现象 | 处理 |
+|---|---|
+| Playwright Chromium 没装好 | 加 `--no-browser`，手动访问 `http://127.0.0.1:8765/` |
+| 端口 8765 被占 | 加 `--port <其它>` |
+| 浏览器关了服务不退 | `Ctrl+C` 强退 |
+| 终端中文乱码 | 先 `chcp 65001`（参见上一节） |
+
+## 输出格式
+
+每次采集会在 `<output>/AI-信息采集/<YYYYMMDD-HHmmss>/<module>/<func>/` 下生成一对文件：
+
+```
+<output>/
+└── AI-信息采集/
+    └── 20260829-171149/
+        └── 未分类/                  # module（第一阶段固定为「未分类」）
+            └── 未分类/              # func（第一阶段固定为「未分类」）
+                ├── img/
+                │   └── screenshot_001.png
+                └── json/
+                    └── android_001.json
+```
+
+同一次批次里再次采集，序号递增到 `002`、`003`……，旧文件保留。
+
+> **多级目录**：虽然第一阶段固定输出 `未分类/未分类/`，但代码本身支持把 module 拆成多级目录。当后续接入真实输入通道时，可以用 `-` 或 `/` 作为分隔符：
+>
+> - 模块名 `电商-用户中心` → `电商/用户中心/<func>/`
+> - 模块名 `电商/用户中心/收货地址` → `电商/用户中心/收货地址/<func>/`
+>
+> 任一段被清洗成空字符串时会自动回落为 `未分类`，避免出现空目录。
+
+### JSON 载荷字段（顺序固定）
+
+```json
+{
+  "content": "<hierarchy>...</hierarchy>",
+  "img": "img/screenshot_001.png",
+  "module": "未分类",
+  "func": "未分类",
+  "desc": ""
+}
+```
+
+- `content`：uiautomator dump 出的界面 XML；抓取失败时为空串
+- `img`：相对功能目录的截图路径
+- `module` / `func` / `desc`：第一阶段为占位值，后续接入真实输入通道
+
+## 手工验证
+
+1. 手机开「开发者选项 → USB 调试」，USB 连电脑，在弹窗里允许调试
+2. 执行 `adb devices -l`，确认能看到 `device` 状态的设备
+3. 执行 `shenle-device-record record --platform android`
+   （Windows cmd.exe 下若日志中文乱码，先执行 `chcp 65001`；不影响落盘文件）
+4. 检查 `AI-信息采集/<批次>/未分类/未分类/img/screenshot_001.png` 是否存在
+5. 检查同目录 `json/android_001.json` 字段顺序与 `img` 相对路径
+
+> **首次运行预期管理**：`npx --yes @midscene/android` 首次跑时会从 npm 拉整个
+> 依赖树（几十 MB，含 sharp 这种大包），通常需要 1～2 分钟，**视网络情况可能更久**，
+> 期间不要 Ctrl-C 中断。midscene 工具内置的默认超时为 5 分钟（300 秒），对首次下载足够。
+>
+> **国内网络加速**：可临时设置 npm 镜像后再跑，例如：
+>
+> ```bash
+> npm config set registry https://registry.npmmirror.com
+> ```
+>
+> 或在当次执行时用 `--registry`：
+>
+> ```bash
+> npx --yes --registry=https://registry.npmmirror.com @midscene/android ...
+> ```
+>
+> 后续每次跑命中本地缓存即可秒开。
+
+## 可选：AI 描述界面
+
+`s serve` 下点采集时若勾选"AI 分析"复选框，工具会把截图发给多模态模型生成三段描述（界面整体 / 布局 / 元素），结果追加到 JSON。**完全可选** —— 没配就跳过，不报错中断采集。
+
+启用步骤：
+
+1. 复制配置示例：
+   ```bash
+   cd apps/shenle-device-record
+   copy .env.example .env   # Windows
+   cp .env.example .env     # macOS / Linux
+   ```
+2. 编辑 `.env`，至少填两项：
+   - `DEVICE_VISION_AI_API_KEY`：API key
+   - `DEVICE_VISION_AI_MODEL`：支持图像的模型名（如 `gpt-4o`）
+3. 可选改 `DEVICE_VISION_AI_BASE_URL`（默认 `https://api.openai.com/v1`）切到火山豆包 / 智谱 / ollama 等兼容服务
+4. 重启 `serve` —— 浏览器里勾上"AI 分析"再点采集即可
+
+JSON 变化：启用时 5 字段变成 8 字段，新增三个（成功为字符串、缺配置/失败为 `null`）：
+
+```json
+{
+  "content": "...", "img": "img/screenshot_001.png",
+  "module": "...", "func": "...", "desc": "...",
+  "interface_desc": "登录页",
+  "layout_desc": "上下布局",
+  "elements_desc": "账号输入框、密码输入框、登录按钮"
+}
+```
+
+## 测试
+
+测试依赖（`pytest-asyncio`）不进主 `dependencies`，跑测试前装一下：
+
+```bash
+cd apps/shenle-device-record
+pip install ".[dev]"
+PYTHONPATH=. pytest
+```
+
+测试全部用 monkeypatch 打桩，不连真机、不起 adb / npx 子进程。

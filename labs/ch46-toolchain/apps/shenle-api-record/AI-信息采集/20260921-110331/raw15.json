@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "id": "2403417864848",
+      "method": "GET",
+      "url": "https://res.ldmnq.com/store/launcherIcons.json",
+      "headers": {
+        "clientversion": "500041",
+        "platform": "GAME_CENTER",
+        "mnqversion": "0900016800-64",
+        "deviceid": "010139020461335,Redmi,23113RKC6C,6-961ceb5ae86614d761c53dc585d18568",
+        "appid": "58",
+        "gns": "3",
+        "content-type": "application/json;charset=UTF-8",
+        "accept-encoding": "gzip",
+        "user-agent": "okhttp/4.12.0"
+      },
+      "body": null,
+      "timestamp": 1789959960.4020967
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "date": "Mon, 21 Sep 2026 03:06:00 GMT",
+        "content-type": "application/json",
+        "server": "openresty",
+        "x-reserved": "amazon, aws and amazon web services are trademarks or registered trademarks of Amazon Technologies, Inc",
+        "x-amz-request-id": "0000019E87193354B946FDDAA9FF7132",
+        "etag": "W/\"7fceee29a3e181aa553286e00bfe1f3a-1\"",
+        "last-modified": "Wed, 11 Feb 2026 04:40:19 GMT",
+        "x-amz-id-2": "36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "x-ccdn-expires": "1714138",
+        "via": "CHN-HNchangsha-SSPM1-CACHE56[4],CHN-HNchangsha-SSPM1-CACHE9[0,TCP_HIT,0],CHN-HNchangsha-GLOBAL1-CACHE16[10],CHN-HNchangsha-GLOBAL1-CACHE9[0,TCP_HIT,1]",
+        "x-hcs-proxy-type": "1",
+        "x-ccdn-cachettl": "2592000",
+        "x-ccdn-req-id-46b1": "042790c0212d613561f26fe92c964732",
+        "nginx-hit": "1",
+        "age": "893734",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET,POST,PUT",
+        "content-encoding": "gzip"
+      },
+      "body": "[{\r\n    \"packageName\" : \"com.ld.wechat.minigame\",\r\n    \"icon\" : \"https://res.ldmnq.com/store/wechat.png\",\r\n    \"name\" : \"微信小游戏\",\r\n    \"isShow\" : false,\r\n    \"isUse\" : false\r\n}]",
+      "timestamp": 1789959960.415989
+    }
+  }
+]

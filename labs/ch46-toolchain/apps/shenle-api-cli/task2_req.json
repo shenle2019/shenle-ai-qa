@@ -1,0 +1,14 @@
+{
+  "url": "http://novel.hctestedu.com/user/login",
+  "method": "POST",
+  "headers": [
+    {"name": "x-requested-with", "value": "XMLHttpRequest"},
+    {"name": "accept", "value": "application/json, text/javascript, */*; q=0.01"},
+    {"name": "content-type", "value": "application/x-www-form-urlencoded; charset=UTF-8"}
+  ],
+  "urlParams": [],
+  "bodyParams": [
+    {"name": "username", "value": "15096268001"},
+    {"name": "password", "value": "123456"}
+  ]
+}

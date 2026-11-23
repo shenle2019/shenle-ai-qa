@@ -83,7 +83,7 @@ features:
 | --- | --- | --- | --- |
 | 32 | 性能测试基础与指标 | ch32 | labs/ch32-perf-basics |
 
-469 条 pytest 用例（15 条真机用例在未接手机时自动跳过），四十五个实操都能单独运行：
+476 条 pytest 用例（15 条真机用例在未接手机时自动跳过），四十六个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
