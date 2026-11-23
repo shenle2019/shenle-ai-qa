@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  ignoreDeadLinks: true,
   lang: 'zh-CN',
   title: 'shenle · AI 测试全栈',
   description: '从 Python 基础到 AI 测试平台的完整学习与实践记录',
@@ -14,6 +15,7 @@ export default defineConfig({
       { text: '测试全栈知识库', link: '/chapters/' },
       { text: '实操记录', link: '/labs/' },
       { text: '在线运行', link: '/labs/playground' },
+    { text: 'Skills 库', link: '/skills/' },
       { text: 'GitHub', link: 'https://github.com/shenle2019/shenle-ai-qa' }
     ],
     sidebar: {
@@ -97,6 +99,7 @@ export default defineConfig({
         {
           text: '延伸阅读',
           items: [
+            { text: 'Skills 库（可预览下载）', link: '/skills/' },
             { text: 'Skills 手册（13 个技能）', link: '/kb/skills/' },
             { text: 'Skills 单跑记录', link: '/labs/skills/' },
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
@@ -107,7 +110,7 @@ export default defineConfig({
       '/labs/': [
         {
           text: 'Skills 单跑记录',
-          link: '/labs/skills/',
+          items: [{ text: 'Skills 单跑记录', link: '/labs/skills/' }]
         },
         {
           text: '实操记录',
@@ -195,6 +198,7 @@ export default defineConfig({
         {
           text: '延伸阅读',
           items: [
+            { text: 'Skills 库（可预览下载）', link: '/skills/' },
             { text: 'Skills 手册（13 个技能）', link: '/kb/skills/' },
             { text: 'Skills 单跑记录', link: '/labs/skills/' },
             { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },

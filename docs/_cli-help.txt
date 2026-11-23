@@ -1,0 +1,198 @@
+﻿### shenle-api-cli
+usage: shenle-api-cli [-h] [--debug] [--version] <command> ...
+
+命令行驱动的接口调用工具（requests），替代 curl 给 AI 跑 API 任务。
+
+positional arguments:
+  <command>
+    send      发送一次 HTTP 请求并把 request/response 落盘到 result 文件
+    extract   从 send 生成的结果文件中提取变量（JSONPath 或自然语言）
+    call      【推荐】send + extract 一步到位：发请求并抽取字段，单次 bash 调用搞定
+    assert    用自然语言断言接口响应（需要 AI 配置）
+
+options:
+  -h, --help  show this help message and exit
+  --debug     调试模式：内部异常打印完整堆栈（默认仅一行提示）
+  --version   show program's version number and exit
+
+### shenle-web-cli
+usage: shenle-web-cli [-h] [--port PORT] [--headless] [--debug] [--version]
+                      <command> ...
+
+命令行驱动的浏览器自动化工具（Playwright + CDP）。后续供 AI 按自然语言调用。
+
+positional arguments:
+  <command>
+    start      启动一个后台浏览器（CDP 监听 --port），可被后续命令反复连接
+    close      关闭后台浏览器
+    navigate   打开网址，并把 viewport 拉到 1440x900
+    screenshot
+               把当前页面截图到文件
+    click      AI 视觉定位并点击一个元素
+    input      AI 视觉定位一个输入框并填入文本（中文 OK）
+    scroll     滚动页面（支持指定区域内滚动）
+    get        AI 视觉描述页面某个区域的内容（4 段结构化文本）
+    url        输出当前页面 URL（默认纯文本，--format json 同时输出 title）
+    title      输出当前页面 title（默认纯文本，--format json 同时输出 url）
+    batch      批量执行多个操作（一次截图识别所有 AI 元素，性能优化）
+    click-at   点击指定像素坐标（无 AI）
+    input-at   在指定坐标点击并输入文本（无 AI）
+    swipe-to   从 (x1,y1) 拖到 (x2,y2)（无 AI，模拟滑动/拖拽）
+
+options:
+  -h, --help   show this help message and exit
+  --port PORT  CDP 端口（start 默认 9222，其它命令读 state.json）
+  --headless   无头模式（仅 start 有意义）
+  --debug      调试模式：内部异常打印完整堆栈（默认仅一行提示）
+  --version    show program's version number and exit
+
+### shenle-web-record
+usage: shenle-web-record [-h] [--version] {record} ...
+
+Record a web page interactively: click the SNAP button to capture viewport +
+DOM.
+
+positional arguments:
+  {record}
+    record    open a URL in a headed browser with a SNAP button
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+
+### shenle-api-record
+usage: shenle-api-record [-h] [--debug] [--version]
+                         {record,install-ca,check,stop} ...
+
+录制任意 HTTP/HTTPS 客户端的网络流量到 raw{NN}.json
+
+positional arguments:
+  {record,install-ca,check,stop}
+    record              启动录制（默认打开 mitmweb Web UI + 浏览器）
+    install-ca          仅安装/重装 mitmproxy CA 证书到系统
+    check               检查环境与依赖
+    stop                停止后台录制
+
+options:
+  -h, --help            show this help message and exit
+  --debug               详细调试日志
+  --version             show program's version number and exit
+
+### shenle-test-runner
+usage: shenle-api-record [-h] [--debug] [--version]
+                         {record,install-ca,check,stop} ...
+
+录制任意 HTTP/HTTPS 客户端的网络流量到 raw{NN}.json
+
+positional arguments:
+  {record,install-ca,check,stop}
+    record              启动录制（默认打开 mitmweb Web UI + 浏览器）
+    install-ca          仅安装/重装 mitmproxy CA 证书到系统
+    check               检查环境与依赖
+    stop                停止后台录制
+
+options:
+  -h, --help            show this help message and exit
+  --debug               详细调试日志
+  --version             show program's version number and exit
+
+### shenle-device-record
+usage: shenle-device-record [-h] [--version] {record,serve} ...
+
+设备端界面采集：截当前屏幕 + 抓界面结构，按约定格式落盘。
+
+positional arguments:
+  {record,serve}
+    record        采集一次当前屏幕
+    serve         起本地 HTTP+WebSocket 服务并自动开浏览器；网页实时画面 + 采集
+
+options:
+  -h, --help      show this help message and exit
+  --version       show program's version number and exit
+
+### shenle-android-cli
+usage: shenle-android-cli [-h] [-s SERIAL] [--debug]
+                          [--input-method {clipboard,adbkeyboard}] [--version]
+                          <command> ...
+
+命令行驱动的安卓 UI 自动化工具（adb shell input）。后续供 AI 按自然语言调用。
+
+positional arguments:
+  <command>
+    devices             列出当前 adb 看得到的所有设备
+    start               选定目标设备（后续 launch / close 等命令会复用同一条规则）
+    launch              启动一个 App
+    close               按 Home 键回到桌面（App 进程保留）
+    screenshot          截当前屏幕到文件
+    click               AI 视觉定位并点击一个元素
+    input               AI 视觉定位输入框并填入文本（中文 / emoji OK）
+    swipe               按方向滑动（整屏 / 区域内）
+    swipe-to            显式坐标滑动（精确定位场景）
+    keyevent            按键（支持 30+ 别名 + 数字键码）
+    recents             打开最近任务（KEYCODE_APP_SWITCH）
+    notifications       下拉通知栏
+    current-app         输出当前前台应用（package/activity）
+    get                 AI 视觉描述页面某个区域的内容（4 段：布局/图标/文字/介绍）
+    batch               一次截图 + 一次 AI 批量识别 + 顺序执行多个操作
+    longpress           AI 视觉定位 + 长按（默认 1500ms）
+    zoom                双指放大（scale > 1 = 张开 = 内容放大；scale < 1 = 合拢 = 内容缩小）
+    pinch               双指缩小（同 zoom，只是 --scale 命名习惯不同）
+    shell               adb shell 透传（剩余所有参数原样传给 adb shell）
+    dump-ui             uiautomator dump → pull 到本地 XML
+    appinfo             dumpsys package —— 输出走 stdout，[OK] 走 stderr 方便 pipe
+    stop                am force-stop —— 杀进程（冷启动测试用）
+
+options:
+  -h, --help            show this help message and exit
+  -s SERIAL, --serial SERIAL
+                        目标设备序列号；不传则用 adb 列表里的第一台可用设备
+  --debug               调试模式：内部异常打印完整堆栈（默认仅一行提示）
+  --input-method {clipboard,adbkeyboard}
+                        中文输入方式：clipboard（默认，Android 10+ cmd clipboard）或
+                        adbkeyboard（ADBKeyboard 第三方 IME）。不传则读 INPUT_METHOD
+                        环境变量；都没有默认 clipboard。顶层 / input / batch 子命令位置都能用。
+  --version             show program's version number and exit
+
+### shenle-report-generate-html
+usage: shenle-android-cli [-h] [-s SERIAL] [--debug]
+                          [--input-method {clipboard,adbkeyboard}] [--version]
+                          <command> ...
+
+命令行驱动的安卓 UI 自动化工具（adb shell input）。后续供 AI 按自然语言调用。
+
+positional arguments:
+  <command>
+    devices             列出当前 adb 看得到的所有设备
+    start               选定目标设备（后续 launch / close 等命令会复用同一条规则）
+    launch              启动一个 App
+    close               按 Home 键回到桌面（App 进程保留）
+    screenshot          截当前屏幕到文件
+    click               AI 视觉定位并点击一个元素
+    input               AI 视觉定位输入框并填入文本（中文 / emoji OK）
+    swipe               按方向滑动（整屏 / 区域内）
+    swipe-to            显式坐标滑动（精确定位场景）
+    keyevent            按键（支持 30+ 别名 + 数字键码）
+    recents             打开最近任务（KEYCODE_APP_SWITCH）
+    notifications       下拉通知栏
+    current-app         输出当前前台应用（package/activity）
+    get                 AI 视觉描述页面某个区域的内容（4 段：布局/图标/文字/介绍）
+    batch               一次截图 + 一次 AI 批量识别 + 顺序执行多个操作
+    longpress           AI 视觉定位 + 长按（默认 1500ms）
+    zoom                双指放大（scale > 1 = 张开 = 内容放大；scale < 1 = 合拢 = 内容缩小）
+    pinch               双指缩小（同 zoom，只是 --scale 命名习惯不同）
+    shell               adb shell 透传（剩余所有参数原样传给 adb shell）
+    dump-ui             uiautomator dump → pull 到本地 XML
+    appinfo             dumpsys package —— 输出走 stdout，[OK] 走 stderr 方便 pipe
+    stop                am force-stop —— 杀进程（冷启动测试用）
+
+options:
+  -h, --help            show this help message and exit
+  -s SERIAL, --serial SERIAL
+                        目标设备序列号；不传则用 adb 列表里的第一台可用设备
+  --debug               调试模式：内部异常打印完整堆栈（默认仅一行提示）
+  --input-method {clipboard,adbkeyboard}
+                        中文输入方式：clipboard（默认，Android 10+ cmd clipboard）或
+                        adbkeyboard（ADBKeyboard 第三方 IME）。不传则读 INPUT_METHOD
+                        环境变量；都没有默认 clipboard。顶层 / input / batch 子命令位置都能用。
+  --version             show program's version number and exit
+
