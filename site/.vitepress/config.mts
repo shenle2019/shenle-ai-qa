@@ -220,9 +220,48 @@ export default defineConfig({
             { text: '知识库索引', link: '/kb/' }
           ]
         }
+      ],
+      '/kb/': [
+        {
+          text: '知识库',
+          items: [
+            { text: '知识库索引', link: '/kb/' },
+            { text: 'Skills 手册（全部技能）', link: '/kb/skills/' },
+            { text: '接口自动化面试题（带答案）', link: '/kb/interview-api' },
+            { text: '内容更新规则', link: '/kb/rules' }
+          ]
+        },
+        {
+          text: '延伸阅读',
+          items: [
+            { text: '测试全栈知识库', link: '/chapters/' },
+            { text: '实操记录', link: '/labs/' },
+            { text: '在线运行 playground', link: '/labs/playground' },
+            { text: 'Skills 库（可预览下载）', link: '/skills/' },
+            { text: 'Skills 单跑记录', link: '/labs/skills/' }
+          ]
+        }
+      ],
+      '/skills/': [
+        {
+          text: 'Skills',
+          items: [
+            { text: 'Skills 库（可预览下载）', link: '/skills/' },
+            { text: 'Skills 手册（全部技能）', link: '/kb/skills/' },
+            { text: 'Skills 单跑记录', link: '/labs/skills/' }
+          ]
+        },
+        {
+          text: '延伸阅读',
+          items: [
+            { text: '知识库索引', link: '/kb/' },
+            { text: '测试全栈知识库', link: '/chapters/' },
+            { text: '实操记录', link: '/labs/' },
+            { text: '内容更新规则', link: '/kb/rules' }
+          ]
+        }
       ]
-    },
-    socialLinks: [{ icon: 'github', link: 'https://github.com/shenle2019/shenle-ai-qa' }],
+    },    socialLinks: [{ icon: 'github', link: 'https://github.com/shenle2019/shenle-ai-qa' }],
     outline: { level: [2, 3], label: '本页目录' },
     docFooter: { prev: '上一篇', next: '下一篇' },
     darkModeSwitchLabel: '主题',
