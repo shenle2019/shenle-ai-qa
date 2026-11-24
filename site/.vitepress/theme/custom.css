@@ -33,3 +33,9 @@
 .VPHero .tagline {
   max-width: 46ch;
 }
+
+/* 主题自带的 last updated 用构建机 locale（会出 11/23/26, 7:22 PM），
+   全站统一改用 components/LastUpdated.vue 的 zh-CN 输出。 */
+.VPDocFooter .last-updated {
+  display: none;
+}
