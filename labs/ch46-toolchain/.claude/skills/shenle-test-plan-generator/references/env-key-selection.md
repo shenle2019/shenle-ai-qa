@@ -41,7 +41,7 @@ Glob("{工作空间}/AI-环境变量/*/")
 ```yaml
 # AI-环境变量/读书屋-测试/meta.yaml
 env_name: "读书屋-测试"
-description: "华测教育小说平台（novel.hctestedu.com）测试环境"
+description: "示例小说平台（novel.example.com）测试环境"
 created_at: "2026-08-25"
 default_browser: "chromium"
 notes: "注册/登录流程使用此环境"
@@ -52,7 +52,7 @@ notes: "注册/登录流程使用此环境"
 | 字段 | 说明 | 示例 |
 |------|------|------|
 | `env_name` | 环境名（和目录名一致） | `读书屋-测试` |
-| `description` | 环境描述（展示给用户） | `华测教育小说平台（novel.hctestedu.com）测试环境` |
+| `description` | 环境描述（展示给用户） | `示例小说平台（novel.example.com）测试环境` |
 
 ### 2.3 env_var.yaml 是 runner 用的
 
@@ -81,7 +81,7 @@ header: "选环境"
 multiSelect: false
 options:
   - label: "读书屋-测试"
-    description: "华测教育小说平台（novel.hctestedu.com）测试环境"
+    description: "示例小说平台（novel.example.com）测试环境"
   - label: "默认"
     description: "默认环境描述"
 ```

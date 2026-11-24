@@ -75,6 +75,21 @@
     "dir": "shenle-api-case-generator"
   },
   {
+    "name": "shenle-api-cli",
+    "lines": 221,
+    "desc_len": 198,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 12,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 109,
+    "dir": "shenle-api-cli"
+  },
+  {
     "name": "shenle-api-doc-generator",
     "lines": 250,
     "desc_len": 85,
@@ -253,6 +268,36 @@
     "D8": 15,
     "total": 111,
     "dir": "shenle-api-record"
+  },
+  {
+    "name": "shenle-device-record",
+    "lines": 121,
+    "desc_len": 486,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 14,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 111,
+    "dir": "shenle-device-record"
+  },
+  {
+    "name": "shenle-report-generate-html",
+    "lines": 185,
+    "desc_len": 262,
+    "D1": 17,
+    "D2": 15,
+    "D3": 13,
+    "D4": 15,
+    "D5": 14,
+    "D6": 12,
+    "D7": 10,
+    "D8": 15,
+    "total": 111,
+    "dir": "shenle-report-generate-html"
   },
   {
     "name": "shenle-test-plan-generator",

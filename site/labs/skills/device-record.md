@@ -9,12 +9,13 @@ title: shenle-device-record 单跑记录
 ## 环境
 
 - 仓库：`shenle-ai-qa`，虚拟环境 `.venv`（Python 3.11.9）
-- 技能：`.claude/skills/` 下已注册；可安装的命令用 `pip install -e --no-deps` 注册为控制台脚本
+- 安装：`.venv\Scripts\python.exe -m pip install -e labs\ch46-toolchain\apps\shenle-device-record --no-deps`
+- 入口：`.venv\Scripts\python.exe -m shenle_device_record`（这个包有 `__main__`）或 `shenle-device-record.exe`
 
 ## 本次调用
 
 ```bash
-shenle-device-record record
+.venv\Scripts\python.exe -m shenle_device_record --version
 ```
 
 ## 真实输出
@@ -25,12 +26,15 @@ shenle-device-record 0.1.0
 
 ## 判读
 
-- 退出正常、能看到命令自身的用法/版本，说明**注册与依赖这一层通了**。
-- 产物形态：截图 PNG + 层级 XML + 元信息 JSON（按用户要求本轮不做真机验证）
-- 需要人工或外部条件（点 SNAP、真机、视觉模型 key）的步骤，标注为「未能自动验证」，不写成功。
+- 退出正常、版本打印出来，说明**安装与入口这一层通了**。
+- 真机采集（`record` / `serve`）本轮**没有跑**：需要一台开着 USB 调试的安卓设备，本次没有接入，因此不写「采集成功」。
+- 产物形态（来自技能文档，未在本轮验证）：时间戳批次目录下 `img/` 截图 + `json/` 层级 + 元信息。
 
 ## 复现
 
 ```bash
-.venv/Scripts/python.exe -m pytest labs/ch46-toolchain -q
+.venv/Scripts/python.exe -m pip install -e labs/ch46-toolchain/apps/shenle-device-record --no-deps
+.venv/Scripts/python.exe -m shenle_device_record --version
 ```
+
+接上设备后追加：`adb devices` 确认状态为 `device`，再跑 `shenle-device-record record`。
