@@ -79,7 +79,7 @@ def resolve(page, spec):
 
 ## 5. 常见坑
 
-- **YAML 里 `text: 登录` 会被当成布尔**：`on/off/yes/no` 在 YAML 1.1 里是布尔值，`登录` 不是，但 `true` 是。统一加引号最省事。
+- **YAML 里 `text: on` 会被当成布尔**：`on/off/yes/no` 在 YAML 1.1 里是布尔值，`text: 登录` 不会（实测 safe_load 返回字符串）。这类取值统一加引号最省事。
 - **`get_by_role("button", name="登录")` 的 name 是「可访问名」**，不是可见文本——按钮里嵌了图标时，可访问名可能来自 `aria-label`。
 - **配置热加载**：改 YAML 要重启进程才生效，这是刻意的（避免跑一半配置变了）。需要热加载就每次 `load()`，代价是 IO。
 
@@ -93,7 +93,7 @@ def resolve(page, spec):
 ## 附：自测答案
 
 1. 因为 `by` 会被拼进 Playwright 调用；没有白名单，配置就能指定任意方法名，等于让配置文件执行代码，且报错信息会变成难以理解的 `AttributeError`。
-2. 不该缓存 locator 对象，缓存「规格」即可。页面重渲染后旧 locator 仍指向旧节点，缓存对象会把「偶发失败」变成「稳定失败」。
+2. locator 对象可以直接缓存：Locator 每次动作都重新解析 DOM，重渲染后仍命中新节点；会「指向旧节点」的是 ElementHandle。把「定位规格」放配置里只是换一种写法，不是必须。
 3. 断言文本随业务规则变（今天「登录成功」，明天「欢迎回来」），它属于用例的期望，不属于元素定位。放 YAML 会让「改文案」变成「改测试基础设施」。
 4. 明文进仓库等于泄露；即使脱敏，也会诱导把真实账号写进测试。正确做法是环境变量注入，YAML 里只放占位符。
 
@@ -131,7 +131,7 @@ A：能，但要有默认值。每条用例都写 `timeout` 会让配置变成�
 
 ## 延伸知识
 
-- **`data-testid` 的约定**：Playwright 默认找 `data-testid`，也支持 `testIdAttribute: 'data-qa'` 改前缀；前后端约定一个前缀，比每次协商选择器省事。
+- **`data-testid` 的约定**：Playwright 默认找 `data-testid`，Python 里用 `test_id_attribute="data-qa"` 换属性名（JS 写 `testIdAttribute`，它指的是属性名不是前缀）；前后端约定一个属性名，比每次协商选择器省事。
 - **配置的版本化**：locators.yaml 跟着代码走 Git，页面改版时和前端提同一个 PR，review 时能看见「定位改了什么」。
 - **兜底定位的代价**：写「先试 testid 再试 css」看起来稳，实际会把「元素没了」变成「定位到了别的元素」，失败信息更难查。
 - **UI 变更的预警**：把 locators.yaml 的 diff 接进 CI 通知，元素频繁变动时能提前发现「前端在重构」，而不是等用例红了再查。

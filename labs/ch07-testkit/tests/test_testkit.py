@@ -136,3 +136,8 @@ def test_fixture_files_can_be_reused_by_cases(tmp_path):
     second = load_json(path)
     assert first == second
     assert {row["sku"] for row in first} == {"SKU-1", "SKU-2", "SKU-3"}
+
+def test_is_phone_rejects_trailing_newline():
+    # `$` 会放过末尾一个换行，validators 改用 fullmatch 才挡得住
+    assert is_phone('13800138000\n') is False
+    assert is_phone('13800138000') is True

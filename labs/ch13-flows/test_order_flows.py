@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pytest
 
 from api_client import ApiError
-from factories import make_order, make_user, unique_name
+from factories import make_order, make_user, unique_name, unique_phone
 
 
 def test_full_order_flow(client, created_orders):
@@ -72,3 +72,10 @@ def test_missing_order_is_404(client):
     with pytest.raises(ApiError) as exc:
         client.get("/api/orders/987654")
     assert exc.value.status == 404
+
+def test_unique_phone_keeps_prefix_for_large_seed():
+    # seed >= 1e9 时旧写法 f"13{n:09d}"[-11:] 会把前缀 13 切掉
+    big = unique_phone(2_000_000_123)
+    assert big.startswith("13") and len(big) == 11
+    assert unique_phone(1).startswith("13") and len(unique_phone(1)) == 11
+    assert unique_phone(123) != unique_phone(456)

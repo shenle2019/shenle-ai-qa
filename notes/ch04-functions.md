@@ -173,7 +173,7 @@ python -m pytest labs/ch04-functions -q
 
 ## 附：自测答案
 
-1. 第二次调用时 `box` 里有两个元素——默认参数只在函数定义时求值一次，`{}` 被所有调用共享。默认值写 `None`，函数体里再 `box = box or {}`。
+1. 第二次调用时 `box` 里有两个元素——默认参数只在函数定义时求值一次，`{}` 被所有调用共享。默认值写 `None`，函数体里用 `if box is None: box = {}` 判空再累加；写成 `box = box or {}` 会把「显式传进来的空 dict」也换成新对象，跟本节的正解不一致。
 2. 只读不用声明；要重新绑定（`x = ...`）才需要 `global`。只想修改可变对象的内容（`lst.append`）也不用 `global`。
 3. `copy.copy([[1]])` 的内层还是同一个列表，改内层两边都变；`deepcopy` 连内层一起复制，互不影响。
 4. `sorted(rows, key=lambda r: (-r["score"], r["name"]))`——数字取负实现降序，字符串按原序升序。

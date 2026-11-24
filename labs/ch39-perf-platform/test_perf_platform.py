@@ -79,3 +79,14 @@ def test_main_rejects_unknown_env(tmp_path) -> None:
     config = tmp_path / "cfg.yaml"
     config.write_text("default_env: local\nenvs: {local: {}}\nscenarios:\n  - {name: a, levels: [1]}\n", encoding="utf-8")
     assert main(["--config", str(config), "--env", "prod"]) == 2
+
+def test_passed_never_goes_negative() -> None:
+    report = Report(env="local")
+    report.failures.extend(["a: 没有可用的执行器", "b: 没有可用的执行器", "c: 没有可用的执行器"])
+    assert report.total == 0
+    assert report.passed == 0
+
+
+def test_load_config_missing_file_raises_config_error(tmp_path) -> None:
+    with pytest.raises(ConfigError, match="读不到配置文件"):
+        load_config(tmp_path / "nope.yaml")

@@ -126,7 +126,6 @@ def count_even(nums):
     for n in nums:
         if n % 2 == 0:
             count += 1
-        # 这里用 continue 只是跳过，不影响计数逻辑
     return count
 ```
 

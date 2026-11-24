@@ -28,7 +28,7 @@
 | `shenle-test-flow-builder` | 把录制产物编排成可执行流程 |
 | `shenle-test-plan-generator` | 生成测试计划（含环境选择、编排扫描） |
 | `shenle-test-runner` | 按计划跑，产出执行结果 |
-| `shenle-report-generate-html` | 把结果渲染成 HTML 报告 |
+| `shenle-report-generate-html` | 把结果渲染成 HTML 报告（`SKILL.md` 在包内 `skill/` 子目录，注册时拷内层目录） |
 | `shenle-dynamic-function-generator` | 按需生成临时函数，补工具缺口 |
 | `playwright-cli` | 通用浏览器操作（配套参考文档三篇） |
 
@@ -40,7 +40,8 @@
 
 ```bash
 cd labs/ch46-toolchain/apps
-for d in shenle-*/; do
+for d in shenle-android-cli shenle-api-cli shenle-api-record \
+         shenle-device-record shenle-web-cli shenle-web-record; do
   .venv/Scripts/python.exe -m pip install -e "$d" --no-deps
 done
 ```

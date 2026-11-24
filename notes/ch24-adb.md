@@ -10,7 +10,7 @@
 | `adb shell getprop ro.product.model` | 型号 | `Pixel 2` 这类硬件名 |
 | `adb shell wm size` / `wm density` | 分辨率、像素密度 | 有 `Override` 时以 Override 为准 |
 
-`adb devices` 空列表的三种典型原因：线只供电不传数据、USB 调试没开、开了但没点「允许」。无线调试在 Android 11 之后要先 `adb pair`，直接扫 5555 端口是连不上的。
+`adb devices` 空列表的典型原因：线只供电不传数据、USB 调试没开、驱动或 adb 服务没起来；没点「允许」的设备会以 `unauthorized` 出现在列表里，不会消失。无线调试在 Android 11 之后要先 `adb pair`，直接扫 5555 端口是连不上的。
 
 ## 2. 把 adb 包成对象
 
@@ -60,7 +60,7 @@ adb reverse tcp:8080 tcp:8080
 1. **看到 `unauthorized` 就以为设备坏了**：手机此时正弹着授权框，点允许即可；勾「一律允许」后不会再问。
 2. **截图拿到的字节不是 PNG**：用了 `adb shell screencap -p` 而非 `exec-out`，换行被改写导致文件损坏。封装里判断了 PNG 魔数，坏的就报错。
 3. **`wm size` 读到物理分辨率**：开发者选项里改过分辨率时会有 `Override size`，要优先用它，否则坐标全偏。
-4. **多设备时命令乱跑**：没带 `-s serial`，adb 会对第一台执行，结果和现象对不上。
+4. **多设备时命令直接失败**：没带 `-s serial`（或 `ANDROID_SERIAL`），adb 报 `more than one device/emulator` 并退出，一台都不会执行——是失败，不是误跑。
 
 ## 自测
 

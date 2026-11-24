@@ -35,7 +35,9 @@ def test_order_flow(client):
 
 ```python
 def unique_phone(seed: int) -> str:
-    return f"13{seed:09d}"[-11:]
+    # 11 位只装得下 10^9 个号：seed 超出范围按模回绕（格式恒对），
+    # 「同一个号绝不重复」得靠已用集合 + 重试，seed 本身保证不了。
+    return "13" + f"{seed % 10**9:09d}"
 ```
 
 ## 3. 清理必须自动

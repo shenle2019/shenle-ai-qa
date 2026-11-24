@@ -183,7 +183,7 @@ A：先拿 frame，再在 frame 里定位。`frame = page.frame_locator("iframe#
 
 **Q：`get_by_text` 命中了父节点怎么办？**
 
-A：`<div><span>登录</span></div>` 里，`get_by_text("登录")` 可能同时命中 div 和 span。加 `exact=True` 只解决「部分匹配」，解决「祖先也含这段文字」要用 `page.get_by_text("登录", exact=True).locator("span")`，或者干脆换成 role/testid。
+A：Text 引擎默认只命中「包含这段文字的最小元素」：`<div><span>登录</span></div>` 只命中 span（实测 count=1），不会命中 div；只有当文字被拆到多个子节点（`<div><span>登</span><span>录</span></div>`）时才会命中父节点。要限定到某个后代，直接 `page.get_by_text("登录").locator("span")`，能换 role/testid 就别靠文本。
 
 ## 面试题
 

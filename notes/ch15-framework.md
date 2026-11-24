@@ -51,7 +51,7 @@ resp = client.post("/api/upload", files=files)
 
 CSV 是测试数据最常见的载体。两个坑：
 
-- **编码**：Excel 默认 GBK，读的时候要 `encoding="utf-8-sig"` 兜住 BOM；
+- **编码**：中文 Windows 上 Excel 另存的 CSV 常是 GBK，读时用 `encoding="gbk"`；只有「CSV UTF-8」导出才带 BOM，那才用 `utf-8-sig` 去 BOM；
 - **部分成功**：批量接口通常「成功 N 条、失败 M 条」，断言要看两类计数，不是只看整体 200。
 
 ## 5. CI 要跑什么

@@ -88,8 +88,15 @@ features:
 | 章 | 主题 | 笔记 | 实操 |
 | --- | --- | --- | --- |
 | 32 | 性能测试基础与指标 | ch32 | labs/ch32-perf-basics |
+| 33 | 压测场景与拐点 | ch33 | labs/ch33-scenarios |
+| 34 | 压测脚本与权重 | ch34 | labs/ch34-scripts |
+| 35 | 性能归因 | ch35 | labs/ch35-analyze |
+| 36 | 中间件与链路指标 | ch36 | labs/ch36-middleware |
+| 37 | 全链路与影子隔离 | ch37 | labs/ch37-chain |
+| 38 | AI 辅助性能分析 | ch38 | labs/ch38-ai |
+| 39 | 性能平台收口 | ch39 | labs/ch39-perf-platform |
 
-476 条 pytest 用例（15 条真机用例在未接手机时自动跳过），四十六个实操都能单独运行：
+480 条 pytest 用例（465 条离线通过 + 15 条真机用例在未接手机时自动跳过），四十六个实操都能单独运行：
 
 ```powershell
 python -m pytest labs -q
@@ -103,9 +110,10 @@ python labs/ch23-framework/run.py --base-url http://127.0.0.1:8000
 | 40 | 平台架构与最小可用 | `labs/ch40-*` |
 | 41 | 项目配置与环境上下文 | `labs/ch41-*` |
 | 42 | 接口资产与一致性校验 | `labs/ch42-*` |
-| 43 | 用例与关键字执行器 | `labs/ch43-*` |
-| 44 | 测试计划与异步执行 | `labs/ch44-*` |
-| 45 | 平台收口 | `labs/ch45-*` |
+| 43 | 用例与关键字执行器 | `labs/ch43-executor` |
+| 44 | 测试计划与异步执行 | `labs/ch44-plans` |
+| 45 | 平台收口：报告、门槛与部署 | `labs/ch45-report` |
+| 46 | 工具链：skills 与 CLI | `labs/ch46-toolchain` |
 
 ## 仓库结构
 
@@ -117,7 +125,4 @@ site/      VitePress 站点（就是你现在看的这个）
 
 ## 下一步
 
-第四阶段：APP 终端 UI 自动化。把 Appium 与设备农场接进来，把「接口通 → 界面对」扩到移动端，再回到测试平台做统一编排。
-| ch43 | 用例与关键字执行器 | `labs/ch43-executor` |
-| ch44 | 测试计划与异步执行 | `labs/ch44-plans` |
-| ch45 | 平台收口：报告、门槛与部署 | `labs/ch45-report` |
+前六个阶段都写完了：Python 基础、接口、Web、APP（ch24–31，只用 adb，不引 Appium）、性能、平台与工具链。下一步是把六个阶段收口成一条流水线——一条命令从接口跑到界面、从压测跑到平台报告；再往后才是真机农场与多环境并行。

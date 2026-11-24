@@ -55,7 +55,9 @@ class Report:
 
     @property
     def passed(self) -> int:
-        return self.total - len(self.failures)
+        # failures 里既有「未达标的结果」也有「配置/执行器错误」，
+        # 直接相减会出负数，钳到 0 更符合直觉
+        return max(self.total - len(self.failures), 0)
 
     @property
     def ok(self) -> bool:
@@ -65,7 +67,11 @@ class Report:
 def load_config(path: str | Path) -> dict:
     import yaml
 
-    raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
+    try:
+        text = Path(path).read_text(encoding="utf-8")
+    except OSError as exc:
+        raise ConfigError(f"读不到配置文件：{path}") from exc
+    raw = yaml.safe_load(text) or {}
     if "default_env" not in raw:
         raise ConfigError("缺少 default_env")
     envs = raw.get("envs") or {}
@@ -104,7 +110,7 @@ def to_markdown(report: Report, env: str) -> str:
 
 def main(argv: list[str] | None = None, runner: Callable[[ScenarioSpec], Result] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
-    config_path = "config.yaml"
+    config_path = str(Path(__file__).with_name("config.yaml"))
     report_path = ""
     env = ""
     only = ""

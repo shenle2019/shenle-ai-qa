@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import re
 
-PHONE_RE = re.compile(r"^1[3-9]\d{9}$")
-EMAIL_RE = re.compile(r"^[\w.+-]+@[\w-]+(\.[\w-]+)+$")
-ID_RE = re.compile(r"^\d{17}[\dXx]$")
-MONEY_RE = re.compile(r"^\d+(\.\d{1,2})?$")
+PHONE_RE = re.compile(r"1[3-9]\d{9}")
+EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+(\.[\w-]+)+")
+ID_RE = re.compile(r"\d{17}[\dXx]")
+MONEY_RE = re.compile(r"\d+(\.\d{1,2})?")
 
 
 class ValidationError(ValueError):
@@ -21,23 +21,23 @@ class ValidationError(ValueError):
 
 
 def is_phone(value: str) -> bool:
-    return isinstance(value, str) and bool(PHONE_RE.match(value))
+    return isinstance(value, str) and bool(PHONE_RE.fullmatch(value))
 
 
 def is_email(value: str) -> bool:
-    return isinstance(value, str) and bool(EMAIL_RE.match(value))
+    return isinstance(value, str) and bool(EMAIL_RE.fullmatch(value))
 
 
 def is_id_card(value: str) -> bool:
     """18 位，前 17 位数字，末位数字或 X。"""
-    return isinstance(value, str) and bool(ID_RE.match(value))
+    return isinstance(value, str) and bool(ID_RE.fullmatch(value))
 
 
 def is_money(value: str | int | float) -> bool:
     """最多两位小数、非负。浮点数会先转成字符串再判断。"""
     if isinstance(value, bool):
         return False
-    return bool(MONEY_RE.match(str(value)))
+    return bool(MONEY_RE.fullmatch(str(value)))
 
 
 def require(field: str, value: object, check) -> object:

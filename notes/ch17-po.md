@@ -77,7 +77,7 @@ class BasePage:
         expect(self.page).to_have_url(re.compile(re.escape(suffix or self.path) + r"$"))
 ```
 
-`expect_path` 里为什么要 `re.escape`：中文和 `?` 在正则里是元字符，不转义会匹配到别的路径。
+`expect_path` 里为什么要 `re.escape`：`?`、`.`、`+`、`(` 是正则元字符（中文不是），URL 的查询串最常带 `?`；不转义会把它当正则语法，匹配到别的路径。
 
 ## 4. 页面类不该做的事
 
@@ -156,4 +156,4 @@ A：两条：一是用例里禁止出现 `page.locator/get_by_test_id`，用 lin
 - **`expect` 自带重试**：`expect(locator).to_contain_text()` 默认 5 秒内轮询，比 `assert locator.inner_text() == ...` 稳得多，页面类里的结构断言优先用它。
 - **`page.wait_for_url` 的匹配规则**：字符串走 glob（`**/todos`），正则走 `re.compile`。混用是最常见的「明明到了却超时」。
 - **页面类的组合优于继承**：`ProfilePage` 里持有一个 `NavBar` 组件对象，比继承 `BasePage` 再复制方法更清晰；本章为了讲继承才用 `BasePage`。
-- **别在页面类里缓存 locator 实例**：Playwright 的 locator 是惰性的，缓存本身没错，但元素被替换后旧 locator 仍指向旧节点——需要缓存就缓存「选择器字符串」。
+- **locator 实例可以缓存**：Locator 只保存选择器与过滤链，每次动作/断言都重新解析 DOM，元素被替换后仍命中新节点（实测）。会「指向旧节点」的是 ElementHandle——那个才该换成 locator 或缓存选择器字符串。

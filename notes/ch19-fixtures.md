@@ -22,7 +22,7 @@
 }
 ```
 
-两块：**cookie** 和 **localStorage**。所以它既能恢复「服务端会话」，也能恢复「前端自己存的 token」。
+顶层两块：**cookies** 和 **origins**（`origins` 里带 `localStorage`，Playwright 1.51 起还包含 `indexedDB`）。所以它既能恢复「服务端会话」，也能恢复「前端自己存的 token」。
 
 用法就两步：
 

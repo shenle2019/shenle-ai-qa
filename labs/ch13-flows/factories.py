@@ -16,7 +16,7 @@ def unique_name(prefix: str = "qa") -> str:
 
 def unique_phone(seed: int | None = None) -> str:
     n = seed if seed is not None else next(_counter)
-    return f"13{n:09d}"[-11:]
+    return "13" + f"{n % 10**9:09d}"
 
 
 def unique_order_no() -> str:

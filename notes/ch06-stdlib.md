@@ -51,7 +51,7 @@ with path.open("r", encoding="utf-8") as f:
 
 要点：
 
-- **永远显式写 `encoding="utf-8"`**，Windows 默认是 gbk，中文会炸；
+- **永远显式写 `encoding="utf-8"`**：`open()` 不写时用系统 locale（中文 Windows 是 GBK/cp936，英文 Windows 是 cp1252），中文内容很容易乱码或直接报错；
 - 用 `with`，离开代码块自动关闭文件（异常也会关）；
 - 大文件不要 `read()` 全读进来，逐行迭代；
 - 二进制用 `"rb"` / `"wb"`，拿到的是 `bytes`。

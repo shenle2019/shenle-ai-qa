@@ -114,7 +114,7 @@ A：文档里三行能跑起来（安装 → 配置 → 一条命令），以及
 
 **Q：怎么让框架在 CI 里稳定？**
 
-A：四件事：固定浏览器版本（`playwright install --with-deps chromium` 锁版本）、固定测试数据（唯一前缀 + 清理）、给整批设超时、失败自动上传截图与 trace。缺一件就会开始出现「本地过 CI 不过」。
+A：四件事：固定浏览器版本——锁的是 `playwright` 包版本（如 `playwright==1.65.2`）并缓存 `PLAYWRIGHT_BROWSERS_PATH`，`playwright install chromium` 只装该包绑定的那版，包一升它就跟着换；固定测试数据（唯一前缀 + 清理）；给整批设超时；失败自动上传截图与 trace。缺一件就会开始出现「本地过 CI 不过」。
 
 **Q：测试报告你会放哪些信息？**
 

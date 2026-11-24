@@ -37,7 +37,7 @@ python labs/ch39-perf-platform/perf_platform.py --env staging --only 健康检�
 
 - 场景数：0
 - 通过：0
-- 失败：3
+- 失败：2
 ```
 
 接上真实 runner 后，`--only` 可以只跑一个场景；`--report` 落盘 Markdown 并打印到终端。
