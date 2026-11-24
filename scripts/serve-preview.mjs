@@ -33,6 +33,15 @@ createServer(async (req, res) => {
         info = htmlInfo
       }
     }
+    // 目录写成 /skills/web-cli 时也要落到 web-cli/index.html（GitHub Pages 会 301 补斜杠）
+    if (!info) {
+      const asIndex = join(file, 'index.html')
+      const indexInfo = await stat(asIndex).catch(() => null)
+      if (indexInfo) {
+        file = asIndex
+        info = indexInfo
+      }
+    }
     if (!info || info.isDirectory()) {
       file = join(file, 'index.html')
     }
@@ -40,9 +49,16 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': TYPES[extname(file)] ?? 'application/octet-stream' })
     res.end(body)
   } catch {
-    // GitHub Pages 对未知路径会回 404.html，这里照着做，避免预览与线上不一致
+    // GitHub Pages 对未知路径会回 404.html；站点在子路径下时要找 <base>/404.html
     try {
-      const body = await readFile(join(root, '404.html'))
+      const seg = (req.url ?? '/').split('?')[0].split('/').filter(Boolean)[0] ?? ''
+      const candidates = [join(root, '404.html'), join(root, seg, '404.html')]
+      let body = null
+      for (const candidate of candidates) {
+        body = await readFile(candidate).catch(() => null)
+        if (body) break
+      }
+      if (!body) throw new Error('no 404 page')
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' })
       res.end(body)
     } catch {

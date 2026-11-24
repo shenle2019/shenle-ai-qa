@@ -22,7 +22,7 @@ def main() -> None:
         page.goto(f"{BASE}/zzz-missing", wait_until="networkidle")
         page.wait_for_timeout(600)
         facts["404_title"] = page.title()
-        facts["404_h1"] = page.locator(".nf-title").inner_text() if page.locator(".nf-title").count() else None
+        facts["404_h1"] = page.locator(".nf-title").inner_text(timeout=5000) if page.locator(".nf-title").count() else None
         facts["404_buttons"] = page.locator(".nf-btn").all_inner_texts()
         page.screenshot(path=str(OUT / "fix-404.png"))
 

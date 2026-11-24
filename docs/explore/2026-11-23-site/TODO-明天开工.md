@@ -109,3 +109,21 @@ git push origin main   # GitHub Actions 会自动部署 Pages
 
 - 站点内容一改，平台侧（ai-qa-lab）的 `apps/sut/backend/app/skill_docs/` 与 `zips/` 是**快照拷贝**，要重新同步并 `railway up --ci`。
 - 那份 `docs/skill-scores.json` / `docs/skill-scores.md` 也要跟着重算（`scripts/_score_skills.py`、`_score_ledger.py`），否则站点分数表与技能正文会脱节。
+
+
+---
+
+## 完工记录（2026-11-24 上午）
+
+14 条全部落地，本地构建 11.67s 通过，scripts/_verify_fixes.py 全绿：
+
+| 项 | 修法 | 实测 |
+| --- | --- | --- |
+| #3 尾斜杠 | 	heme/components/NotFound404.vue 的 onMounted 里纠斜杠（主题层 not-found 插槽，404.md 已删） | /chapters/ch01/ → /chapters/ch01 |
+| #4 404 中文 | 同上，	heme/index.ts 用 h(DefaultTheme.Layout, null, {'not-found': ...}) | 标题「这个地址没有页面」+ 四出口 |
+| #5 slug 别名 | _publish_skills.py 改写 site/public/skills/<short>/index.html 静态 meta refresh | /skills/web-cli → /skills/shenle-web-cli；/kb/skills/<dir> 同样可开 |
+| #2 playground | SLOW_AFTER=12 / GIVE_UP_AFTER=45 + 计时提示 + 「重试」 | 12s 提示「还在下载」，45s 失败文案 + 重试按钮 |
+| #9 日期 | 关掉主题 lastUpdated，自己写 LastUpdated.vue 走 zh-CN + Asia/Shanghai + 24h | 最后更新：2026/11/20 18:13 |
+| #13 首页命名 | hero 四个 action 与导航同名 | 从第一章开始（知识库）/ 看实操记录 / 在线运行 / Skills 库 |
+
+预览用的 scripts/serve-preview.mjs 也补了 cleanUrls（/chapters/ch01 → .html）、目录 index、以及子路径下的 404.html 兜底，否则本地看到的现象跟 GitHub Pages 不一致。

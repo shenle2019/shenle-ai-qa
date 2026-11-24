@@ -1,9 +1,14 @@
 {
-  "404_title": "",
-  "404_h1": null,
-  "404_buttons": [],
-  "alias_url": "http://127.0.0.1:5210/shenle-ai-qa/skills/web-cli",
-  "alias_h1": "Skip to content\nshenle · AI 测试全栈\n搜索\nK\nMain Navigation\n首页\n测试全栈知识库\n实操记录\n在线运行\nSkills 库\nGitHub\n\n正在跳到 shenle-web-cli…",
+  "404_title": "404 | shenle · AI 测试全栈",
+  "404_h1": "这个地址没有页面",
+  "404_buttons": [
+    "去知识库",
+    "看实操",
+    "Skills 库",
+    "回首页"
+  ],
+  "alias_url": "http://127.0.0.1:5210/shenle-ai-qa/skills/shenle-web-cli",
+  "alias_h1": "shenle-web-cli\n​",
   "search_button": 1,
   "search_hits": 16,
   "ch01_h1": "第 1 章 · 环境、第一个程序与基础语法\n​",
@@ -13,6 +18,6 @@
   "zip_text": [
     "下载 zip（SKILL.md+references）"
   ],
-  "trailing_slash_url": "http://127.0.0.1:5210/shenle-ai-qa/chapters/ch01/",
+  "trailing_slash_url": "http://127.0.0.1:5210/shenle-ai-qa/chapters/ch01",
   "playground_has_hint": 4
 }

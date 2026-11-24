@@ -228,9 +228,6 @@ export default defineConfig({
     darkModeSwitchLabel: '主题',
     returnToTopLabel: '回到顶部',
     sidebarMenuLabel: '目录',
-    lastUpdated: {
-      text: '最后更新',
-      formatOptions: { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }
-    }
+    lastUpdated: false
   }
 })

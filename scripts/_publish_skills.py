@@ -32,21 +32,24 @@ SHORT = {
 }
 
 
-def redirect_page(target: str, label: str) -> str:
-    """一个只会跳转的薄页面，用来兜住旧地址与短名。"""
-    return "\n".join([
-        "---",
-        "layout: page",
-        "sidebar: false",
-        "aside: false",
-        "---",
-        "",
-        f'<p>正在跳到 <a href="{target}">{label}</a>…</p>',
-        "<script setup>",
-        f"if (typeof window !== 'undefined') window.location.replace('{target}')",
-        "</script>",
-        "",
-    ])
+def redirect_html(target: str, label: str) -> str:
+    """public 下不参与编译的静态跳转页，兜住短名与旧地址。"""
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>跳到 {label}</title>
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="{target}">
+<style>body{{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:14vh auto;max-width:40rem;padding:0 1.5rem;line-height:1.7}}a{{color:#4d7c0f}}</style>
+</head>
+<body>
+<p>正在跳到 <a href="{target}">{label}</a>…</p>
+<p>没有自动跳转就点上面的链接。</p>
+</body>
+</html>
+"""
+
 
 NAME_RE = re.compile(r"^name:\s*(.+)$", re.M)
 DESC_RE = re.compile(r"^description:\s*(.+)$", re.M)
@@ -133,12 +136,22 @@ def main() -> None:
         # 短名与旧地址都能走到同一页：/skills/web-cli → /skills/shenle-web-cli
         alias = SHORT.get(name)
         if alias:
-            (PAGES / f"{alias}.md").write_text(
-                redirect_page(f"/shenle-ai-qa/skills/{name}", name), encoding="utf-8"
+            stale = PAGES / f"{alias}.md"
+            if stale.exists():
+                stale.unlink()
+            target = f"/shenle-ai-qa/skills/{name}"
+            (PUBLIC / alias).mkdir(parents=True, exist_ok=True)
+            (PUBLIC / alias / "index.html").write_text(
+                redirect_html(target, name), encoding="utf-8"
             )
-            KB.mkdir(parents=True, exist_ok=True)
-            (KB / f"{name}.md").write_text(
-                redirect_page(f"/shenle-ai-qa/kb/skills/{alias}", alias), encoding="utf-8"
+
+            kb_alias = KB / f"{name}.md"
+            if kb_alias.exists():
+                kb_alias.unlink()
+            kb_root = PUBLIC.parent / "kb" / "skills" / name
+            kb_root.mkdir(parents=True, exist_ok=True)
+            (kb_root / "index.html").write_text(
+                redirect_html(f"/shenle-ai-qa/kb/skills/{alias}", alias), encoding="utf-8"
             )
         rows.append((name, lines, len(refs), short(desc)))
 
