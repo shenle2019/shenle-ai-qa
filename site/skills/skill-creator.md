@@ -6,8 +6,9 @@ title: skill-creator
 
 > 新建一个 skill 或给已有 skill 补结构、改 description 时时使用。支持 skill, SKILL.md, frontmatter, validation, quick_validate 相关操作；Use when the task involves skill / SKILL.md / frontmatter / validation / quick_validate.
 
-- 正文 259 行，随包 references 4 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/skill-creator.zip)
+正文 259 行，随包 references 4 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/skill-creator.zip)　·　看说明与评分：[Skills 手册 · skill-creator](/kb/skills/skill-creator)
 
 ---
 

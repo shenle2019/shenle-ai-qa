@@ -6,8 +6,9 @@ title: shenle-web-cli
 
 > 需要用自然语言描述在网页上点击、输入、截图并读回页面状态时时使用。支持 web-cli, 浏览器, navigate, screenshot, 视觉定位 相关操作；Use when the task involves web-cli / 浏览器 / navigate / screenshot / 视觉定位.
 
-- 正文 262 行，随包 references 1 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-web-cli.zip)
+正文 262 行，随包 references 1 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-web-cli.zip)　·　看说明与评分：[Skills 手册 · web-cli](/kb/skills/web-cli)
 
 ---
 

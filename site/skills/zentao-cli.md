@@ -6,8 +6,9 @@ title: zentao-cli
 
 > 使用场景：用 zentao CLI 查询与操作禅道（项目集 / 产品 / 项目 / 执行 / 需求 / Bug / 任务 / 用例 / 测试单），含增删改查与状态流转。当用户提到禅道、zentao、查 Bug、建任务时触发。
 
-- 正文 267 行，随包 references 1 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/zentao-cli.zip)
+正文 267 行，随包 references 1 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/zentao-cli.zip)　·　看说明与评分：[Skills 手册 · zentao-cli](/kb/skills/zentao-cli)
 
 ---
 

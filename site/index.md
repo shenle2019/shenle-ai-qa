@@ -7,17 +7,23 @@ hero:
   tagline: 一章一章往下叠的学习与工程记录：每章都有笔记、能跑的实操、可访问的页面
   actions:
     - theme: brand
-      text: 从第一章开始
+      text: 从第一章开始（知识库）
       link: /chapters/ch01
     - theme: alt
-      text: 看实操代码
+      text: 看实操记录
       link: /labs/
+    - theme: alt
+      text: 在线运行
+      link: /labs/playground
+    - theme: alt
+      text: Skills 库
+      link: /skills/
 
 features:
   - title: 主线四段
     details: Python 与工程基础 → 接口自动化 → Web / APP 自动化 → 测试平台与 AI 能力。性能与 Agent 评估作为选修，不占主线。
   - title: 每章可跑
-    details: 每章配一个 labs 目录，纯标准库优先，需要 key 的会自动降级到 mock，保证在干净环境里也能跑通。
+    details: 每章配一个 labs 目录（实操记录里可以单独跑），纯标准库优先，需要 key 的会自动降级到 mock，保证在干净环境里也能跑通。
   - title: 笔记先于代码
     details: 先把材料读成自己的话（含反例与常见错误），再动手写程序。
   - title: 持续部署

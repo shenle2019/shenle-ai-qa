@@ -13,6 +13,26 @@ const pyodide = ref(null)
 
 const PYODIDE_VERSION = '0.26.4'
 const INDEX_URL = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`
+const SLOW_AFTER = 12 // 秒：超过这里就告诉用户还在干什么
+const GIVE_UP_AFTER = 45 // 秒：当作失败，给「重试」
+
+let ticker = null
+const waited = ref(0)
+
+function startTicker() {
+  stopTicker()
+  waited.value = 0
+  const startedAt = Date.now()
+  ticker = setInterval(() => {
+    waited.value = Math.round((Date.now() - startedAt) / 1000)
+    if (waited.value === SLOW_AFTER) append('还在下载（第一次要 10 MB 左右，慢网会更久）…\n')
+  }, 1000)
+}
+
+function stopTicker() {
+  if (ticker) clearInterval(ticker)
+  ticker = null
+}
 
 function append(text) {
   output.value += text
@@ -22,17 +42,35 @@ async function ensurePyodide() {
   if (pyodide.value) return pyodide.value
   status.value = 'loading'
   append('首次运行：正在下载 Python 运行时（约 10 MB，之后走浏览器缓存）…\n')
+  startTicker()
 
-  await new Promise((resolve, reject) => {
-    if (window.loadPyodide) return resolve()
-    const script = document.createElement('script')
-    script.src = `${INDEX_URL}pyodide.js`
-    script.onload = resolve
-    script.onerror = () => reject(new Error('运行时下载失败，检查网络后重试'))
-    document.head.appendChild(script)
+  const giveUp = new Promise((_, reject) => {
+    setTimeout(
+      () =>
+        reject(
+          new Error(
+            `等 ${GIVE_UP_AFTER} 秒还没下载完，可能网络被挡住了。点旁边的「重试」再来一次，或换网络。`
+          )
+        ),
+      GIVE_UP_AFTER * 1000
+    )
   })
 
-  const instance = await window.loadPyodide({ indexURL: INDEX_URL })
+  const ready = (async () => {
+    if (!window.loadPyodide) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = `${INDEX_URL}pyodide.js`
+        script.onload = resolve
+        script.onerror = () => reject(new Error('运行时脚本下载失败，检查网络后重试'))
+        document.head.appendChild(script)
+      })
+    }
+    return window.loadPyodide({ indexURL: INDEX_URL })
+  })()
+
+  const instance = await Promise.race([ready, giveUp])
+  stopTicker()
   instance.setStdout({ batched: (line) => append(line + '\n') })
   instance.setStderr({ batched: (line) => append(line + '\n') })
   pyodide.value = instance
@@ -56,11 +94,18 @@ async function run() {
 }
 
 function reset() {
+  stopTicker()
   output.value = ''
-  status.value = pyodide.value ? 'idle' : 'idle'
+  status.value = 'idle'
+}
+
+function retry() {
+  reset()
+  run()
 }
 
 onBeforeUnmount(() => {
+  stopTicker()
   pyodide.value = null
 })
 
@@ -78,7 +123,9 @@ print(f"{name} 的总分 {total}，平均 {total / len(scores):.1f}")
       <span class="pg-dot" :data-state="status" />
       <span class="pg-title">在浏览器里直接运行（CPython · WebAssembly）</span>
       <span class="pg-spacer" />
+      <span v-if="status === 'loading' && waited >= SLOW_AFTER" class="pg-wait">已等 {{ waited }}s</span>
       <button class="pg-btn ghost" type="button" @click="reset">清空输出</button>
+      <button v-if="status === 'error'" class="pg-btn ghost" type="button" @click="retry">重试</button>
       <button class="pg-btn" type="button" :disabled="status === 'loading' || status === 'running'" @click="run">
         {{ status === 'loading' ? '加载中…' : status === 'running' ? '运行中…' : '运行' }}
       </button>
@@ -205,5 +252,10 @@ print(f"{name} 的总分 {total}，平均 {total / len(scores):.1f}")
 
 .pg-hint {
   color: #94a3b8;
+}
+
+.pg-wait {
+  font-size: 12px;
+  color: #b45309;
 }
 </style>

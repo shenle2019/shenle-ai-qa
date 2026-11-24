@@ -6,8 +6,9 @@ title: shenle-mitmproxy-record
 
 > 使用场景：用 mitmproxy 代理录制 HTTP/HTTPS 流量，产出可归档的请求清单（.json）与接口资产，供接口文档与用例生成使用。当用户说「录一下流量」「抓包归档」时触发。
 
-- 正文 253 行，随包 references 0 个
-- [下载这个技能（zip，含 SKILL.md）](/skills/shenle-mitmproxy-record.zip)
+正文 253 行，随包 references 0 个。
+
+读完想直接用：[下载 zip（SKILL.md）](/skills/shenle-mitmproxy-record.zip)　·　看说明与评分：[Skills 手册 · shenle-mitmproxy-record](/kb/skills/shenle-mitmproxy-record)
 
 ---
 

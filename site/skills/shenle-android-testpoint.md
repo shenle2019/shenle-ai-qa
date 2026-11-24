@@ -6,8 +6,9 @@ title: shenle-android-testpoint
 
 > 使用场景：读安卓界面层级与需求，产出移动端测试点分析文档（.md，含手势 / 中断 / 权限分支）。当用户说「分析 App 测试点」「出移动端测试点」时触发。
 
-- 正文 259 行，随包 references 2 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-android-testpoint.zip)
+正文 259 行，随包 references 2 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-android-testpoint.zip)　·　看说明与评分：[Skills 手册 · shenle-android-testpoint](/kb/skills/shenle-android-testpoint)
 
 ---
 

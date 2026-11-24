@@ -17,6 +17,39 @@ SKILLS = ROOT / ".claude" / "skills"
 SITE = ROOT / "site"
 PAGES = SITE / "skills"
 PUBLIC = SITE / "public" / "skills"
+KB = SITE / "kb" / "skills"
+
+# 手册页用的是短名（web-cli），技能目录名带 shenle- 前缀（shenle-web-cli）
+SHORT = {
+    "shenle-android-cli": "android-cli",
+    "shenle-api-record": "api-record",
+    "shenle-dynamic-function-generator": "dynamic-function-generator",
+    "shenle-test-flow-builder": "test-flow-builder",
+    "shenle-test-plan-generator": "test-plan-generator",
+    "shenle-test-runner": "test-runner",
+    "shenle-web-cli": "web-cli",
+    "shenle-web-record": "web-record",
+}
+
+
+def redirect_html(target: str, label: str) -> str:
+    """public 下不参与编译的静态跳转页，兜住短名与旧地址。"""
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>跳到 {label}</title>
+<meta http-equiv="refresh" content="0; url={target}">
+<link rel="canonical" href="{target}">
+<style>body{{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:14vh auto;max-width:40rem;padding:0 1.5rem;line-height:1.7}}a{{color:#4d7c0f}}</style>
+</head>
+<body>
+<p>正在跳到 <a href="{target}">{label}</a>…</p>
+<p>没有自动跳转就点上面的链接。</p>
+</body>
+</html>
+"""
+
 
 NAME_RE = re.compile(r"^name:\s*(.+)$", re.M)
 DESC_RE = re.compile(r"^description:\s*(.+)$", re.M)
@@ -78,6 +111,7 @@ def main() -> None:
                     if item.is_file():
                         zf.write(item, f"{name}/{item.relative_to(stage)}")
 
+        kb_slug = SHORT.get(name, name)
         page = [
             "---",
             f"title: {name}",
@@ -87,8 +121,10 @@ def main() -> None:
             "",
             f"> {esc(short(desc, 200))}",
             "",
-            f"- 正文 {lines} 行，随包 references {len(refs)} 个",
-            f"- [下载这个技能（zip，含 SKILL.md{'+references' if refs else ''}）](/skills/{name}.zip)",
+            f"正文 {lines} 行，随包 references {len(refs)} 个。",
+            "",
+            f"读完想直接用：[下载 zip（SKILL.md{'+references' if refs else ''}）](/skills/{name}.zip)"
+            f"　·　看说明与评分：[Skills 手册 · {kb_slug}](/kb/skills/{kb_slug})",
             "",
             "---",
             "",
@@ -96,6 +132,27 @@ def main() -> None:
             "",
         ]
         (PAGES / f"{name}.md").write_text("\n".join(page), encoding="utf-8")
+
+        # 短名与旧地址都能走到同一页：/skills/web-cli → /skills/shenle-web-cli
+        alias = SHORT.get(name)
+        if alias:
+            stale = PAGES / f"{alias}.md"
+            if stale.exists():
+                stale.unlink()
+            target = f"/shenle-ai-qa/skills/{name}"
+            (PUBLIC / alias).mkdir(parents=True, exist_ok=True)
+            (PUBLIC / alias / "index.html").write_text(
+                redirect_html(target, name), encoding="utf-8"
+            )
+
+            kb_alias = KB / f"{name}.md"
+            if kb_alias.exists():
+                kb_alias.unlink()
+            kb_root = PUBLIC.parent / "kb" / "skills" / name
+            kb_root.mkdir(parents=True, exist_ok=True)
+            (kb_root / "index.html").write_text(
+                redirect_html(f"/shenle-ai-qa/kb/skills/{alias}", alias), encoding="utf-8"
+            )
         rows.append((name, lines, len(refs), short(desc)))
 
     table = [
@@ -113,7 +170,7 @@ def main() -> None:
     for name, lines, ref_count, desc in rows:
         table.append(
             f"| `{name}` | {esc(desc)} | {lines} 行 | {ref_count} | "
-            f"[预览](/skills/{name}) · [zip](/skills/{name}.zip) |"
+            f"[预览](/skills/{name}) · [下载 zip](/skills/{name}.zip) |"
         )
     table += [
         "",

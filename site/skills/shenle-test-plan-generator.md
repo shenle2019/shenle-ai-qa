@@ -6,8 +6,9 @@ title: shenle-test-plan-generator
 
 > 需要从需求或接口清单生成测试计划、拆出用例范围与排期时时使用。支持 plan, 用例范围, 优先级, 排期, 风险 相关操作；Use when the task involves plan / 用例范围 / 优先级 / 排期 / 风险.。触发词：cli / record / runner / adapter / skill。
 
-- 正文 171 行，随包 references 4 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/shenle-test-plan-generator.zip)
+正文 171 行，随包 references 4 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/shenle-test-plan-generator.zip)　·　看说明与评分：[Skills 手册 · test-plan-generator](/kb/skills/test-plan-generator)
 
 ---
 

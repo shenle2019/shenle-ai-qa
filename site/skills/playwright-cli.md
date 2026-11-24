@@ -6,8 +6,9 @@ title: playwright-cli
 
 > 需要直接驱动浏览器做一次性的页面操作或取页面文本时时使用。支持 playwright, browser, page, selector, snapshot 相关操作；Use when the task involves playwright / browser / page / selector / snapshot.。触发词：cli / record / runner / adapter / …
 
-- 正文 302 行，随包 references 11 个
-- [下载这个技能（zip，含 SKILL.md+references）](/skills/playwright-cli.zip)
+正文 302 行，随包 references 11 个。
+
+读完想直接用：[下载 zip（SKILL.md+references）](/skills/playwright-cli.zip)　·　看说明与评分：[Skills 手册 · playwright-cli](/kb/skills/playwright-cli)
 
 ---
 
