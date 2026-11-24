@@ -65,7 +65,8 @@ onMounted(() => {
   line-height: 1.7;
 }
 .nf-desc code {
-  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .nf-actions {
   display: flex;
