@@ -119,11 +119,29 @@ git push origin main   # GitHub Actions 会自动部署 Pages
 
 | 项 | 修法 | 实测 |
 | --- | --- | --- |
-| #3 尾斜杠 | 	heme/components/NotFound404.vue 的 onMounted 里纠斜杠（主题层 not-found 插槽，404.md 已删） | /chapters/ch01/ → /chapters/ch01 |
-| #4 404 中文 | 同上，	heme/index.ts 用 h(DefaultTheme.Layout, null, {'not-found': ...}) | 标题「这个地址没有页面」+ 四出口 |
+| #3 尾斜杠 | `theme/components/NotFound404.vue` 的 onMounted 里纠斜杠（主题层 not-found 插槽，404.md 已删） | /chapters/ch01/ → /chapters/ch01 |
+| #4 404 中文 | 同上，`theme/index.ts` 用 h(DefaultTheme.Layout, null, {'not-found': ...}) | 标题「这个地址没有页面」+ 四出口 |
 | #5 slug 别名 | _publish_skills.py 改写 site/public/skills/<short>/index.html 静态 meta refresh | /skills/web-cli → /skills/shenle-web-cli；/kb/skills/<dir> 同样可开 |
 | #2 playground | SLOW_AFTER=12 / GIVE_UP_AFTER=45 + 计时提示 + 「重试」 | 12s 提示「还在下载」，45s 失败文案 + 重试按钮 |
 | #9 日期 | 关掉主题 lastUpdated，自己写 LastUpdated.vue 走 zh-CN + Asia/Shanghai + 24h | 最后更新：2026/11/20 18:13 |
 | #13 首页命名 | hero 四个 action 与导航同名 | 从第一章开始（知识库）/ 看实操记录 / 在线运行 / Skills 库 |
 
 预览用的 scripts/serve-preview.mjs 也补了 cleanUrls（/chapters/ch01 → .html）、目录 index、以及子路径下的 404.html 兜底，否则本地看到的现象跟 GitHub Pages 不一致。
+
+### 线上复核（2026-11-24，已合并 main 并部署成功）
+
+| 检查项 | 线上实测 |
+| --- | --- |
+| 搜索 | 导航里有「搜索 · Ctrl K」，输 `playwright` 命中 16 条 |
+| 404 | 标题「这个地址没有页面」，四个出口：去知识库 / 看实操 / Skills 库 / 回首页 |
+| 尾斜杠 | `/chapters/ch01/` 自动跳 `/chapters/ch01` |
+| slug 别名 | `/skills/web-cli` → `/skills/shenle-web-cli`；`/kb/skills/shenle-web-cli` 也通 |
+| 侧栏文案 | 「Skills 手册（全部技能）」，侧栏 52 条链接 |
+| 知识库索引 | `/kb/` 200，标题「知识库」 |
+| 日期 | 「最后更新：2026/11/20 18:13」，英文那条已隐藏（CSS 隐藏主题自带的 `.VPLastUpdated`） |
+| playground | 折叠块里有「约 10 MB / 浏览器缓存」说明；12s/45s 兜底与「重试」按钮在本机预览已实测 |
+| 首页 CTA | 从第一章开始（知识库）/ 看实操记录 / 在线运行 / Skills 库 |
+| Skills 库 | 18 行，18 个下载链接 |
+| 提交 | `0ef29b3` → 合并 `0ec707f` → `89aec02`（404 断行）→ `d0c9214`（隐藏英文日期）→ `c022618` |
+
+遗留小项（不影响使用）：`/kb/`、`/skills/` 不在 sidebar 分组的 key 里，这两页自身不显示左侧栏，只能靠顶部导航回到别处。
