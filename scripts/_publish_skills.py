@@ -90,11 +90,17 @@ def main() -> None:
     for skill in sorted(p for p in SKILLS.iterdir() if p.is_dir()):
         entry = skill / "SKILL.md"
         if not entry.is_file():
-            continue
+            # 少数技能是「包内再套一层 skill/<name>/」的形态，SKILL.md 在更深的目录里
+            nested = sorted(p for p in skill.glob("**/SKILL.md") if p.parent != skill)
+            if len(nested) != 1:
+                continue
+            entry = nested[0]
         name = skill.name
         text = entry.read_text(encoding="utf-8", errors="replace")
         desc = frontmatter(text).get("description", "")
         refs = sorted((skill / "references").glob("*.md")) if (skill / "references").is_dir() else []
+        if not refs:
+            refs = sorted(skill.glob("*/references/*.md"))
         lines = len(text.splitlines())
         body = re.sub(r"\A---\s*\n.*?\n---\s*\n", "", text, count=1, flags=re.S).lstrip("\n")
         body = body.replace("<", "&lt;").replace(">", "&gt;").replace("{{", "&#123;&#123;")
