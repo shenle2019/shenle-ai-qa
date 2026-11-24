@@ -144,4 +144,4 @@ git push origin main   # GitHub Actions 会自动部署 Pages
 | Skills 库 | 18 行，18 个下载链接 |
 | 提交 | `0ef29b3` → 合并 `0ec707f` → `89aec02`（404 断行）→ `d0c9214`（隐藏英文日期）→ `c022618` |
 
-遗留小项（不影响使用）：`/kb/`、`/skills/` 不在 sidebar 分组的 key 里，这两页自身不显示左侧栏，只能靠顶部导航回到别处。
+~~遗留小项：`/kb/`、`/skills/` 不在 sidebar 分组的 key 里~~ → 2026-11-24 已补：`config.mts` 加了 `'/kb/': [...]` 与 `'/skills/': [...]` 两组（知识库 / Skills + 延伸阅读），两页现在都有左侧栏；线上实测 `/kb/` 侧栏 11 项、`/skills/` 9 项。
