@@ -10,7 +10,10 @@ import { basics, collections, decorator, exception } from '../.vitepress/theme/s
 
 这里不用装 Python：代码在浏览器里用 CPython（WebAssembly 版）执行，点一下就跑，输出直接回显。
 
-首次运行会下载一次运行时（约 10 MB），之后走缓存，几乎瞬开。代码框可以随便改。
+首次运行会下载一次运行时（约 10 MB），之后走缓存，几乎瞬开。整页共用同一份运行时，所以第二段起是秒开的。
+
+代码框可以随便改。两点先记住：只支持标准库（
+equests、pytest 这类装了也跑不了）；别写 while True——浏览器里跑死循环会把这个标签页卡住，刷新才能恢复。
 
 ## 1. 基础：变量与 f-string
 

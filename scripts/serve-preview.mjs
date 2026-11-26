@@ -16,7 +16,15 @@ const TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.woff2': 'font/woff2',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  // 下面几个是 GitHub Pages 会带正确 MIME 的类型，本地预览必须跟上，
+  // 否则 Pyodide 会报 "Incorrect response MIME type. Expected 'application/wasm'"
+  '.wasm': 'application/wasm',
+  '.zip': 'application/zip',
+  '.mjs': 'text/javascript; charset=utf-8',
+  '.map': 'application/json; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.md': 'text/markdown; charset=utf-8'
 }
 
 createServer(async (req, res) => {

@@ -110,6 +110,19 @@ export default defineConfig({
           ]
         },
         {
+          text: '第七阶段 · AI 应用与 Agent 专项测试',
+          items: [
+            { text: '47 AI 应用功能测试：把 Prompt 当接口', link: '/chapters/ch47' },
+            { text: '48 AI 性能：TTFT、TPOT 与并发', link: '/chapters/ch48' },
+            { text: '49 Prompt 专项与回归', link: '/chapters/ch49' },
+            { text: '50 RAG：检索层与生成层', link: '/chapters/ch50' },
+            { text: '51 安全与合规：注入、泄露、越权', link: '/chapters/ch51' },
+            { text: '52 MCP 工具调用测试', link: '/chapters/ch52' },
+            { text: '53 Agent：规划、循环、记忆与不可逆', link: '/chapters/ch53' },
+            { text: '54 大模型评估与部署', link: '/chapters/ch54' },
+          ]
+        },
+        {
           text: '延伸阅读',
           items: [
             { text: 'Skills 库（可预览下载）', link: '/skills/' },
